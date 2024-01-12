@@ -4,16 +4,18 @@ import Personal from "./navbarcomponents/personal";
 import Bussiness from "./navbarcomponents/bussiness";
 import "./navbar.css";
 import SearchBar from "./navbarcomponents/searchbar";
-import SearchIcon from "@mui/icons-material/Search";
+import SearchResultList from "./navbarcomponents/searchresultlist";
+import {useState} from "react";
 
 export default function Navbar() {
+  const [results, setResults] = useState([]);
   return (
-    <span style={{ color: "red" }} class="navbar">
+    <span style={{ color: "red" }} className="navbar">
       <Logo />
       <Personal />
       <Bussiness />
-      <SearchBar />
-      <SearchIcon />
+      <SearchBar setResults = {setResults}/>
+      {/* <SearchResultList results={results} /> */}
     </span>
   );
 }
