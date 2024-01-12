@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import Boilerplats from "./statics/boilerplates/boilerplate";
+import Boilerplate from "./statics/boilerplates/boilerplate";
 
 function App() {
   return (
