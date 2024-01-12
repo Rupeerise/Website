@@ -1,10 +1,8 @@
-import { useState } from "react";
-import Boilerplate from "./statics/boilerplates/boilerplate";
+import React from "react";
 import "./App.css";
+import Boilerplats from "./statics/boilerplates/boilerplate";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
       <Boilerplate />

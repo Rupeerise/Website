@@ -1,0 +1,6 @@
+.navbar {
+  display: flex;
+  height: 2.5rem;
+  background-color: lightblue;
+  gap: 3rem;
+}
