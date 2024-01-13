@@ -4,11 +4,14 @@
   bottom: 1rem;
   right: 1rem;
   background-color: aqua;
-  width: 15rem;
+  width: 10rem;
   height: 3.5rem;
   border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  font-size: 1.72rem;
 }
 .datecontainer-icon {
-  margin-top: 0.55rem;
-  margin-left: 0.7rem;
+  margin-left: 0.8rem;
+  margin-right: 0.7rem;
 }
