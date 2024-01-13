@@ -1,21 +1,27 @@
-.input-wrapper{
-    background-color: white;
-    width: 25rem;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    
+.input-wrapper {
+  background-color: white;
+  width: 25rem;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
 }
 
-#text-input{
-   background-color: transparent;
-   border: none;
-   height: 100%;
-   font-size: 1.25rem;
-   width: 100%;
-   margin-left: 5px;
+#text-input {
+  background-color: transparent;
+  border: none;
+  height: 100%;
+  font-size: 1.25rem;
+  width: 20rem;
 }
 
 #text-input:focus {
-    outline: none;
+  outline: none;
+}
+
+#search-icon {
+  width: 3rem;
+  padding-left: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+  height: 2.5rem;
 }

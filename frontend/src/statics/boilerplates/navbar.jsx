@@ -4,8 +4,8 @@ import Personal from "./navbarcomponents/personal";
 import Bussiness from "./navbarcomponents/bussiness";
 import "./navbar.css";
 import SearchBar from "./navbarcomponents/searchbar";
-import SearchResultList from "./navbarcomponents/searchresultlist";
-import {useState} from "react";
+import { useState } from "react";
+import Profile from "./navbarcomponents/profile";
 
 export default function Navbar() {
   const [results, setResults] = useState([]);
@@ -14,8 +14,8 @@ export default function Navbar() {
       <Logo />
       <Personal />
       <Bussiness />
-      <SearchBar setResults = {setResults}/>
-      {/* <SearchResultList results={results} /> */}
+      <SearchBar setResults={setResults} />
+      <Profile />
     </span>
   );
 }
