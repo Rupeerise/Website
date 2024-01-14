@@ -1,36 +1,36 @@
-import React, {useState} from "react";
-import SearchIcon from '@mui/icons-material/Search';
-import "./searchbar.css"
+import React, { useState } from "react";
+import SearchIcon from "@mui/icons-material/Search";
+import "./searchbar.css";
 
 export default function SearchBar() {
-  const [input, setInput] = useState("")
+  const [input, setInput] = useState("");
 
   const fetchData = (value) => {
     fetch("https://jsonplaceholder.typicode.com/users")
-      .then((response) => response.json())  
-      .then((json) =>{
+      .then((response) => response.json())
+      .then((json) => {
         const results = json.filter((user) => {
-          return (
-            value && 
-            user && 
-            user.name.toLowerCase().includes(value)
-          );
-
+          return value && user && user.name.toLowerCase().includes(value);
         });
         setResults(results);
       });
-  }
+  };
 
-  const handleChange = (value) =>{
-    setInput(value)
-    fetchData(value)
-  }
+  const handleChange = (value) => {
+    setInput(value);
+    fetchData(value);
+  };
 
-  return(
+  return (
     <>
       <div className="input-wrapper">
-        <SearchIcon id="search-icon"/>
-        <input type="Type to Search..." id="text-input" value={input} onChange={(e) => handleChange(e.target.value)}/>
+        <SearchIcon className="search-icon" />
+        <input
+          type="Type to Search..."
+          className="text-input"
+          value={input}
+          onChange={(e) => handleChange(e.target.value)}
+        />
       </div>
     </>
   );

@@ -1,0 +1,24 @@
+.income-card {
+  width: 100%;
+  border: 1px solid black;
+  background-color: azure;
+}
+.income-card-title {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #00ffcc;
+}
+.income-card-title-name {
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+.income-card-title-value {
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+.progressbar {
+  margin: 1rem;
+  border-radius: 10px;
+  padding: 0.2rem 0rem;
+}
