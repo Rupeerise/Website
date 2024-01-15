@@ -1,8 +1,9 @@
 .navbar {
   display: flex;
   height: 3.5rem;
-  background-color: lightblue;
+  background-color: #00ffd1;
   gap: 3rem;
   align-items: center;
   font-size: 1.25rem;
+  color: rgb(58, 58, 58);
 }

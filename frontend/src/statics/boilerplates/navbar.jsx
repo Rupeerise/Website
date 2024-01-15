@@ -10,7 +10,7 @@ import Profile from "./navbarcomponents/profile";
 export default function Navbar() {
   const [results, setResults] = useState([]);
   return (
-    <span style={{ color: "red" }} className="navbar">
+    <span className="navbar">
       <Logo />
       <Personal />
       <Bussiness />

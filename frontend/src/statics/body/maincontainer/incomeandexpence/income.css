@@ -2,23 +2,30 @@
   width: 100%;
   border: 1px solid black;
   background-color: azure;
+  border-radius: 1rem;
+  background-color: #00f5ff;
 }
 .income-card-title {
   display: flex;
-  justify-content: space-between;
-  padding: 1rem 2rem;
+  padding: 1rem 2rem 1rem 2rem;
   border-bottom: 1px solid #00ffcc;
+  align-items: center;
 }
 .income-card-title-name {
   font-size: 1.5rem;
-  font-weight: 900;
 }
 .income-card-title-value {
   font-size: 1.5rem;
-  font-weight: 900;
 }
 .progressbar {
-  margin: 1rem;
-  border-radius: 10px;
-  padding: 0.2rem 0rem;
+  margin: 0 1rem 1rem 1rem;
+  border-radius: 3rem;
+  padding: 0.4rem 0rem;
+}
+.income-card-button {
+  padding: 0.2rem 2rem;
+  font-size: 1rem;
+  border-radius: 3px;
+  border: 1px solid black;
+  background-color: white;
 }
