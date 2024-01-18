@@ -1,22 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
-import Boilerplate from "./statics/boilerplates/boilerplate";
-import MainBody from "./statics/body/maincontainer/mainbody";
-import Footer from "./statics/boilerplates/footer";
+import Login from "../pages/login"
 
-function App() {
-  return (
+export default function App(){
+  return(
     <>
-      <div className="page-container">
-        <Boilerplate />
-        <MainBody />
-      </div>
-      
-      <div className="footer">
-        <Footer />
-      </div>
+      <Login />
     </>
-  );
+  )
 }
-
-export default App;

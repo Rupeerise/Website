@@ -1,11 +1,11 @@
 import * as React from "react";
-import Logo from "./navbarcomponents/Logo";
-import Personal from "./navbarcomponents/personal";
-import Bussiness from "./navbarcomponents/bussiness";
+import Logo from "./logo";
+import Personal from "./personal";
+import Bussiness from "./bussiness";
 import "./navbar.css";
-import SearchBar from "./navbarcomponents/searchbar";
+import SearchBar from "./searchbar";
 import { useState } from "react";
-import Profile from "./navbarcomponents/profile";
+import Profile from "./profile";
 
 export default function Navbar() {
   const [results, setResults] = useState([]);

@@ -1,6 +1,6 @@
 import * as React from "react";
 import Navbar from "./navbar";
-import CurrentDate from "./date/currentdate";
+import CurrentDate from "./currentdate";
 
 
 
