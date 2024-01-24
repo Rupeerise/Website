@@ -1,0 +1,25 @@
+.signup-container{
+  width: 75vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  background-color: aliceblue;
+}
+
+.signup-input {
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.signup-input hr{
+  margin: 10px;
+}
+
+.signup-input-box{
+  outline: none;
+  border: none;
+  background: transparent;
+  margin-left: 10px;
+}
