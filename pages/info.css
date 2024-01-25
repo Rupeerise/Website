@@ -1,0 +1,22 @@
+.navbar {
+  display: flex;
+  height: 3.5rem;
+  background-color: #00ffd1;
+  gap: 3rem;
+  align-items: center;
+  font-size: 1.25rem;
+  color: rgb(58, 58, 58);
+}
+
+.signin{
+  text-decoration: none;
+  color: rgb(58, 58, 58);
+}
+
+.info-profile{
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 1rem;
+}
