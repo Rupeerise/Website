@@ -5,7 +5,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import HttpsIcon from "@mui/icons-material/Https";
 
 export default function Login() {
-  let backendUrl = import.meta.env.VITE_APP_BACKEND_URL;
+  let backendUrl = import.meta.env.VITE_TEST_BACKEND;
 
   let [FormData, setFormData] = useState({
     username: "",
@@ -22,40 +22,30 @@ export default function Login() {
     });
   };
 
-  // let handleSubmit = (event) => {
-  //   event.preventDefault();
-
-  //   setFormData({
-  //     username: "",
-  //     password: ""
-  //   })
-  // }
-
   let handleSubmit = async (event) => {
     event.preventDefault();
-    // Send a request to the backend server
-    const response = await fetch(backendUrl + "/login", {
+
+    let response = await fetch(backendUrl + "/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
+      credentials: "include",
       body: JSON.stringify(FormData),
     });
 
-    // If the login is successful, store the token
     if (response.ok) {
-      const data = await response.json();
-      document.cookie = `token=${data.token}; path=/; HttpOnly`;
+      let jsonResponse = await response.json();
+      console.log(jsonResponse);
+      // Clear the form
+      setFormData({
+        username: "",
+        password: "",
+      });
       window.location = "/";
     } else {
-      // Handle error
-      console.error("Login failed");
+      console.log("HTTP-Error: " + response.status);
     }
-
-    setFormData({
-      username: "",
-      password: "",
-    });
   };
 
   return (

@@ -7,7 +7,7 @@ import SearchBar from "./searchbar";
 import { useState } from "react";
 import Profile from "./profile";
 
-export default function Navbar() {
+export default function Navbar({ username }) {
   const [results, setResults] = useState([]);
   return (
     <span className="navbar">
@@ -15,7 +15,7 @@ export default function Navbar() {
       <Personal />
       <Bussiness />
       <SearchBar setResults={setResults} />
-      <Profile />
+      <Profile username={username} />
     </span>
   );
 }

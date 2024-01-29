@@ -4,13 +4,14 @@ import ProgressBar from "./progressbar";
 import EditRoundedIcon from "@mui/icons-material/EditRounded";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
-export default function Income() {
-  const progressValue = 60;
+export default function Income({ name, current, target }) {
+  const progressValue = (current / target) * 100;
+
   return (
     <div className="income-card">
       <div className="income-card-title">
-        <div className="income-card-title-name">Income :</div>
-        <div className="income-card-title-value">100000</div>
+        <div className="income-card-title-name">{name} :</div>
+        <div className="income-card-title-value">{target}</div>
         <EditRoundedIcon style={{ fontSize: "1.5rem", marginLeft: "auto" }} />
         <MoreVertIcon style={{ fontSize: "1.5rem", marginLeft: "0.3rem" }} />
       </div>
