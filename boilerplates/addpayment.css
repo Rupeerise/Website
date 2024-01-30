@@ -1,0 +1,15 @@
+.add-payment-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-payment-button {
+  /* Add your button styles here */
+  font-size: 2rem;
+  margin-top: 1rem;
+}
+
+.add-payment-input-box {
+  font-size: 2rem; /* Adjust as needed */
+}
