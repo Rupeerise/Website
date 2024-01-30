@@ -19,10 +19,12 @@ function Home() {
 
       if (response.ok) {
         let jsonResponse = await response.json();
-        console.log(jsonResponse);
         setUser(jsonResponse);
       } else {
         console.log("HTTP-Error: " + response.status);
+        if (response.status === 401) {
+          window.location = "/login";
+        }
       }
     };
 

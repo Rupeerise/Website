@@ -93,7 +93,7 @@ export default function Login() {
           </button>
 
           <p className="login-register">
-            Don't have an account? <a href="/">Register</a>
+            Don't have an account? <a href="/signup">Register</a>
           </p>
         </form>
       </div>

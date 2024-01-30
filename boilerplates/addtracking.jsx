@@ -26,6 +26,7 @@ export default function AddTracking() {
 
     if (response.ok) {
       console.log("Form submitted successfully");
+      location.reload(true);
     } else {
       console.error("Error submitting form");
     }

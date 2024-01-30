@@ -2,7 +2,7 @@ import * as React from "react";
 import "./addpayment.css";
 
 export default function AddPayment() {
-  const [form, setForm] = React.useState({ name: "", target: "" });
+  const [form, setForm] = React.useState({ name: "", amount: "" });
 
   const handleChange = (event) => {
     setForm({
@@ -12,6 +12,8 @@ export default function AddPayment() {
   };
 
   const handleSubmit = async (event) => {
+    let formsubmit = { ...form, date: new Date() };
+    console.log(formsubmit);
     event.preventDefault();
     let backendUrl = import.meta.env.VITE_TEST_BACKEND;
     // Make a POST request to /addpayment
@@ -21,16 +23,17 @@ export default function AddPayment() {
         "Content-Type": "application/json",
       },
       credentials: "include",
-      body: JSON.stringify(form),
+      body: JSON.stringify(formsubmit),
     });
 
     if (response.ok) {
       console.log("Form submitted successfully");
+      location.reload(true);
     } else {
       console.error("Error submitting form");
     }
 
-    setForm({ name: "", target: "" });
+    setForm({ name: "", amount: "" });
   };
 
   return (
@@ -46,10 +49,10 @@ export default function AddPayment() {
         />
         <input
           type="text"
-          name="target"
+          name="amount"
           className="add-payment-input-box"
-          placeholder="target/month"
-          value={form.target}
+          placeholder="amount/month"
+          value={form.amount}
           onChange={handleChange}
         />
         <button type="submit" className="add-payment-button">

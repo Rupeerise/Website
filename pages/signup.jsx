@@ -29,6 +29,7 @@ export default function Login() {
       headers: {
         "Content-Type": "application/json",
       },
+      credentials: "include",
       body: JSON.stringify(FormData),
     });
 
@@ -88,6 +89,7 @@ export default function Login() {
                 type="password"
                 placeholder="Password"
                 name="password"
+                value={FormData.password}
                 onChange={handleInputChange}
               />
             </div>
@@ -99,7 +101,7 @@ export default function Login() {
             </button>
 
             <p className="signup-login">
-              Already have an account? <a href="/">Login</a>
+              Already have an account? <a href="/login">Login</a>
             </p>
           </div>
         </form>
