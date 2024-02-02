@@ -8,8 +8,6 @@ export default function Boilerplate({ username }) {
   return (
     <>
       <Navbar username={username} />
-      <AddPayment />
-      <AddTracking />
       <CurrentDate />
     </>
   );

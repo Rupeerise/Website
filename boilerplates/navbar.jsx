@@ -6,6 +6,7 @@ import "./navbar.css";
 import SearchBar from "./searchbar";
 import { useState } from "react";
 import Profile from "./profile";
+import Passbook from "../pages/passbook/passbook";
 
 export default function Navbar({ username }) {
   const [results, setResults] = useState([]);
@@ -15,6 +16,7 @@ export default function Navbar({ username }) {
       <Personal />
       <Bussiness />
       <SearchBar setResults={setResults} />
+      <Passbook />
       <Profile username={username} />
     </span>
   );
