@@ -1,7 +1,7 @@
 import * as React from "react";
 import "./addpayment.css";
 
-export default function AddPayment() {
+export default function AddPayment({ closePopup }) {
   const [form, setForm] = React.useState({ name: "", amount: "" });
 
   const handleChange = (event) => {
@@ -39,6 +39,7 @@ export default function AddPayment() {
   return (
     <div className="add-payment-container">
       <form onSubmit={handleSubmit}>
+        <div className="add-payment-header">Add new Payment</div>
         <input
           type="text"
           name="name"
@@ -51,13 +52,22 @@ export default function AddPayment() {
           type="text"
           name="amount"
           className="add-payment-input-box"
-          placeholder="amount/month"
+          placeholder="amount"
           value={form.amount}
           onChange={handleChange}
         />
-        <button type="submit" className="add-payment-button">
-          Add Payment
-        </button>
+        <div className="payment-button-container">
+          <button type="submit" className="add-payment-button">
+            Add Payment
+          </button>
+          <button
+            type="button"
+            onClick={closePopup}
+            className="close-payment-button"
+          >
+            Close
+          </button>
+        </div>
       </form>
     </div>
   );

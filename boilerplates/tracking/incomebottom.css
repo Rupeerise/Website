@@ -1,0 +1,21 @@
+.income-bottom-text {
+  display: flex;
+  justify-content: space-between;
+  padding: 0rem 2rem;
+  text-align: center;
+}
+.income-bottom-text-left {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.income-bottom-text-right {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.income-bottom-text-left-value {
+  margin-left: 0.3rem;
+}

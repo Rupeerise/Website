@@ -40,7 +40,8 @@
   margin-bottom: 15px;
 }
 
-.income-card-button:hover{
+.income-card-button:hover {
   background-color: rgb(104 255 104);
   transition: 0.3s;
+  border-radius: 6px;
 }
