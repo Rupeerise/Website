@@ -4,9 +4,9 @@ import "./income.css";
 import ProgressBar from "../progressbar";
 import EditRoundedIcon from "@mui/icons-material/EditRounded";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Edittracking from "./edittracking";
 import IncomeBottom from "./incomebottom.jsx";
+import Incomemore from "./incomemore.jsx";
 
 export default function Income({
   name,
@@ -54,7 +54,7 @@ export default function Income({
             onClick={handleEditClick}
           />
         )}
-        <MoreVertIcon style={{ fontSize: "1.5rem", marginLeft: "0.3rem" }} />
+        <Incomemore id={id} />
       </div>
       <ProgressBar value={progressValue} />
       {showIncomeBottom && (

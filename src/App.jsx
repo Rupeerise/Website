@@ -22,7 +22,6 @@ export default function App() {
           <Route path="/info" element={<Info />} />
           <Route path="/passbook" element={<Passbookpage />} />
           <Route path="/addTracking" element={<AddTracking />} />
-          <Route path="/addPayment" element={<AddPayment />} />
           <Route path="*" element={<h1>Error 404 Not Found</h1>} />
         </Routes>
       </BrowserRouter>
