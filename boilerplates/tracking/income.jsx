@@ -8,7 +8,13 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Edittracking from "./edittracking";
 import IncomeBottom from "./incomebottom.jsx";
 
-export default function Income({ name, current, target, id }) {
+export default function Income({
+  name,
+  current,
+  target,
+  id,
+  secondaryTracking,
+}) {
   const [isEditing, setIsEditing] = useState(false);
   const progressValue = (current / target) * 100;
 
@@ -51,7 +57,13 @@ export default function Income({ name, current, target, id }) {
         <MoreVertIcon style={{ fontSize: "1.5rem", marginLeft: "0.3rem" }} />
       </div>
       <ProgressBar value={progressValue} />
-      {showIncomeBottom && <IncomeBottom current={current} target={target} />}
+      {showIncomeBottom && (
+        <IncomeBottom
+          current={current}
+          target={target}
+          secondaryTracking={secondaryTracking}
+        />
+      )}
       <button className="income-card-button" onClick={handleButtonClick}>
         {showIncomeBottom ? "Close Info" : "Show all"}
       </button>

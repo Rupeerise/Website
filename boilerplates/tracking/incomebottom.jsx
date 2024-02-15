@@ -1,8 +1,10 @@
 import React from "react";
 import ProgressBar from "../progressbar";
 import "./incomebottom.css";
+import SecondaryTracking from "./secondarytracking";
+import Pichart from "../mainbody/pichart";
 
-function IncomeBottom({ current, target }) {
+function IncomeBottom({ current, target, secondaryTracking }) {
   // Get the current date
   const currentDate = new Date();
 
@@ -31,6 +33,19 @@ function IncomeBottom({ current, target }) {
           <div className="income-bottom-text-right-title">Ideal Value:</div>
           <div className="income-bottom-text-right-value">{idealValue}</div>
         </div>
+      </div>
+      <div className="income-bottom-secondary">
+        <div className="">
+          {secondaryTracking.map((item) => (
+            <SecondaryTracking
+              key={item._id}
+              name={item.name}
+              target={item.target}
+              current={item.current}
+            />
+          ))}
+        </div>
+        <div className="">{/* <Pichart /> */}</div>
       </div>
     </div>
   );

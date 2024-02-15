@@ -3,19 +3,32 @@
   justify-content: space-between;
   padding: 0rem 2rem;
   text-align: center;
+  padding-top: 0.3rem;
 }
 .income-bottom-text-left {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  background-color: rgb(255, 204, 0);
+  padding: 0.5rem 2rem;
+  border-radius: 25rem;
 }
 .income-bottom-text-right {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  background-color: rgb(255, 204, 0);
+  padding: 0.5rem 2rem;
+  border-radius: 25rem;
 }
 .income-bottom-text-left-value {
   margin-left: 0.3rem;
+}
+.income-bottom-text-right-value {
+  margin-left: 0.3rem;
+}
+.income-bottom-secondary {
+  display: flex;
 }
