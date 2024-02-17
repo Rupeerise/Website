@@ -1,7 +1,7 @@
 import * as React from "react";
 import "./addtracking.css";
 
-export default function AddTracking() {
+export default function AddTracking({ closePopup }) {
   const [form, setForm] = React.useState({ name: "", target: "" });
 
   const handleChange = (event) => {
@@ -37,6 +37,7 @@ export default function AddTracking() {
   return (
     <div className="add-tracking-container">
       <form onSubmit={handleSubmit}>
+        <div className="add-tracking-header">Add new Tracking</div>
         <input
           type="text"
           name="name"
@@ -53,9 +54,18 @@ export default function AddTracking() {
           value={form.target}
           onChange={handleChange}
         />
-        <button type="submit" className="add-tracking-button">
-          Add Tracking
-        </button>
+        <div className="tracking-button-container">
+          <button type="submit" className="add-tracking-button">
+            Add Tracking
+          </button>
+          <button
+            type="button"
+            onClick={closePopup}
+            className="close-tracking-button"
+          >
+            Close
+          </button>
+        </div>
       </form>
     </div>
   );

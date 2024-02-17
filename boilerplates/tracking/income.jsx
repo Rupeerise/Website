@@ -54,7 +54,7 @@ export default function Income({
             onClick={handleEditClick}
           />
         )}
-        <Incomemore id={id} />
+        <Incomemore id={id} name={name} />
       </div>
       <ProgressBar value={progressValue} />
       {showIncomeBottom && (

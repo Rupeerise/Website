@@ -6,8 +6,6 @@ import SignUp from "../pages/signup";
 import Info from "../pages/info";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Passbookpage from "../pages/passbook/passbookpage";
-import AddTracking from "../boilerplates/addtracking";
-import AddPayment from "../boilerplates/addpayment";
 
 export default function App() {
   return (
@@ -21,7 +19,6 @@ export default function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/info" element={<Info />} />
           <Route path="/passbook" element={<Passbookpage />} />
-          <Route path="/addTracking" element={<AddTracking />} />
           <Route path="*" element={<h1>Error 404 Not Found</h1>} />
         </Routes>
       </BrowserRouter>

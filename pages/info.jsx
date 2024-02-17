@@ -1,25 +1,21 @@
 import React from "react";
 import "./info.css";
-import Logo from "../boilerplates/logo";
-import Personal from "../boilerplates/personal";
-import Bussiness from "../boilerplates/bussiness";
-import SearchBar from "../boilerplates/searchbar";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import Navbar from "../boilerplates/navbar/navbar";
 
 export default function Info() {
-  return(
+  return (
     <>
       <span className="navbar">
-        <Logo />
-        <Personal />
-        <Bussiness />
-        <SearchBar />
-        
+        <Navbar />
+
         <div className="info-profile">
-          <a href="/login" className="info-signin">Sign In</a>
+          <a href="/login" className="info-signin">
+            Sign In
+          </a>
           <AccountCircleIcon className="info-profile-icon" fontSize="large" />
         </div>
       </span>
     </>
-  )
+  );
 }

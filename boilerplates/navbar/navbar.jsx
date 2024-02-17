@@ -6,7 +6,7 @@ import "./navbar.css";
 import SearchBar from "./searchbar";
 import { useState } from "react";
 import Profile from "./profile";
-import Passbook from "../pages/passbook/passbook";
+import Passbook from "../../pages/passbook/passbook";
 
 export default function Navbar({ username }) {
   const [results, setResults] = useState([]);
