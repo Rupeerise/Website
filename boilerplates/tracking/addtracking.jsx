@@ -2,7 +2,11 @@ import * as React from "react";
 import "./addtracking.css";
 
 export default function AddTracking({ closePopup }) {
-  const [form, setForm] = React.useState({ name: "", target: "" });
+  const [form, setForm] = React.useState({
+    name: "",
+    target: "",
+    trackingType: "income",
+  });
 
   const handleChange = (event) => {
     setForm({
@@ -15,7 +19,7 @@ export default function AddTracking({ closePopup }) {
     event.preventDefault();
     let backendUrl = import.meta.env.VITE_TEST_BACKEND;
     // Make a POST request to /addtracking
-    const response = await fetch(backendUrl + "/addtracking", {
+    const response = await fetch(backendUrl + "/tracking/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -54,6 +58,16 @@ export default function AddTracking({ closePopup }) {
           value={form.target}
           onChange={handleChange}
         />
+        <select
+          name="trackingType"
+          className="add-tracking-input-box"
+          value={form.trackingType}
+          onChange={handleChange}
+        >
+          <option value="income">income</option>
+          <option value="constant expense">constant expense</option>
+          <option value="variable expense">variable expense</option>
+        </select>
         <div className="tracking-button-container">
           <button type="submit" className="add-tracking-button">
             Add Tracking
