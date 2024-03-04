@@ -22,27 +22,45 @@ export default function MainBody({ trackingArray }) {
 
   return (
     <div className="mainbody">
-      <ButtonFlex />
-      <div
-        className=""
-        style={{ height: "20rem", width: "30rem", display: "inline-block" }}
-      >
-        <Mainchart labels={names} current={current} target={target} />
+      {/* <ButtonFlex /> */}
+      <div className="charts">
+        <div className="barchart">
+          <Mainchart labels={names} current={current} target={target} />
+        </div>
+        <div className="pichartcontainer">
+          <div className="pichart">
+            <Pichart
+              labels={names}
+              current={current}
+              target={target}
+              displayInfo={displayInfo}
+            />
+          </div>
+          <button
+            onClick={() => handleButtonClick("current")}
+            className="pichartbutton"
+            style={
+              displayInfo === "current"
+                ? { backgroundColor: "#34eb34", color: "black" }
+                : {}
+            }
+          >
+            Current
+          </button>
+          <button
+            onClick={() => handleButtonClick("target")}
+            className="pichartbutton"
+            style={
+              displayInfo === "target"
+                ? { backgroundColor: "#34eb34", color: "black" }
+                : {}
+            }
+          >
+            Target
+          </button>
+        </div>
       </div>
-      <button onClick={() => handleButtonClick("current")}>Current</button>
-      <button onClick={() => handleButtonClick("target")}>Target</button>
-      <div
-        className=""
-        style={{ height: "20rem", width: "30rem", display: "inline-block" }}
-      >
-        <Pichart
-          labels={names}
-          current={current}
-          target={target}
-          displayInfo={displayInfo}
-        />
-      </div>
-      {trackingArray.map((item) => (
+      {/* {trackingArray.map((item) => (
         <Income
           key={item._id}
           id={item._id}
@@ -51,7 +69,7 @@ export default function MainBody({ trackingArray }) {
           target={item.target}
           secondaryTracking={item.secondaryTracking}
         />
-      ))}
+      ))} */}
     </div>
   );
 }

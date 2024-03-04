@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import IconButton from "@mui/material/IconButton";
-import AddSecondaryTracking from "./AddSecondaryTracking";
+import AddSecondaryTracking from "./addsecondarytracking";
 import "./incomemore.css";
 
 function Incomemore({ id, name }) {

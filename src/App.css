@@ -2,9 +2,3 @@
   flex: 1;
   margin-top: 20px;
 }
-
-.page-container{
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}

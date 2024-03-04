@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import Boilerplate from "../boilerplates/boilerplate";
 import MainBody from "../boilerplates/mainbody/mainbody";
 import Footer from "../boilerplates/footer";
+import Sidebar from "../boilerplates/sidebar/sidebar";
+import "./home.css";
 
 function Home() {
   const [user, setUser] = useState(null);
@@ -33,8 +35,9 @@ function Home() {
 
   return (
     <>
+      <Boilerplate username={user ? user.username : ""} />
       <div className="page-container">
-        <Boilerplate username={user ? user.username : ""} />
+        <Sidebar />
         <MainBody trackingArray={user ? user.trackingArray : []} />
       </div>
 

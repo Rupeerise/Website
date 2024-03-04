@@ -2,7 +2,6 @@ import React from "react";
 import "./passbooklisting.css";
 
 function Passbooklisting({ payment }) {
-  console.log(payment);
   const date = new Date(payment.date);
   const formattedDate = `${date.getDate()}/${
     date.getMonth() + 1
@@ -12,7 +11,7 @@ function Passbooklisting({ payment }) {
     let backendUrl = import.meta.env.VITE_TEST_BACKEND;
     // Perform delete operation here
     try {
-      const response = await fetch(backendUrl + `/deletepayment/${id}`, {
+      const response = await fetch(backendUrl + `/payment/${id}`, {
         method: "DELETE",
         credentials: "include",
       });

@@ -17,7 +17,7 @@ export default function AddPayment({ closePopup }) {
     event.preventDefault();
     let backendUrl = import.meta.env.VITE_TEST_BACKEND;
     // Make a POST request to /addpayment
-    const response = await fetch(backendUrl + "/addpayment", {
+    const response = await fetch(backendUrl + "/payment/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -1,0 +1,9 @@
+.sidebar {
+  position: absolute;
+  left: 0;
+}
+
+.sidenav-container {
+  font-size: 50px;
+  /* padding: 100px; */
+}
