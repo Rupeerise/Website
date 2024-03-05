@@ -3,7 +3,7 @@ import * as React from "react";
 export default function Logout() {
   const logout = async () => {
     let backendUrl = import.meta.env.VITE_TEST_BACKEND;
-    let response = await fetch(backendUrl + "/logout", {
+    let response = await fetch(backendUrl + "/api/logout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

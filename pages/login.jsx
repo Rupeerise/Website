@@ -25,7 +25,7 @@ export default function Login() {
   let handleSubmit = async (event) => {
     event.preventDefault();
 
-    let response = await fetch(backendUrl + "/login", {
+    let response = await fetch(backendUrl + "/api/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

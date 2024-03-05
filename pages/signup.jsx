@@ -24,7 +24,7 @@ export default function Login() {
   let handleSubmit = async (event) => {
     event.preventDefault();
     let backendServer = import.meta.env.VITE_TEST_BACKEND;
-    let response = await fetch(backendServer + "/signup", {
+    let response = await fetch(backendServer + "/api/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

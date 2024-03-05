@@ -26,15 +26,16 @@
   font-size: 1.2rem;
   width: 12rem;
   margin: 0 auto;
+  margin-top: 3rem;
   margin-bottom: 1rem;
   background-color: white;
   border: 1px solid rgb(45, 45, 45);
   border-radius: 4rem;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 .pichartbutton:hover {
   background-color: rgb(33, 111, 255) !important;
-  color: white;
+  color: white !important;
 }
 .pichartname {
   text-align: center;

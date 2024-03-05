@@ -11,7 +11,7 @@ function Home() {
   useEffect(() => {
     const fetchUser = async () => {
       let backendUrl = import.meta.env.VITE_TEST_BACKEND;
-      let response = await fetch(backendUrl + "/user", {
+      let response = await fetch(backendUrl + "/api/user", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -35,12 +35,12 @@ function Home() {
 
   return (
     <>
+      +6
       <Boilerplate username={user ? user.username : ""} />
       <div className="page-container">
         <Sidebar />
         <MainBody trackingArray={user ? user.trackingArray : []} />
       </div>
-
       <div className="footer">
         <Footer />
       </div>

@@ -36,6 +36,11 @@ function Mainchart({ labels, target, current }) {
   };
 
   const options = {
+    defaults: {
+      global: {
+        defaultFontFamily: "Arial",
+      },
+    },
     plugins: {
       legend: {
         display: false,
@@ -45,9 +50,19 @@ function Mainchart({ labels, target, current }) {
     scales: {
       x: {
         beginAtZero: true,
+        ticks: {
+          font: {
+            size: 20,
+          },
+        },
       },
       y: {
         beginAtZero: true,
+        ticks: {
+          font: {
+            size: 20,
+          },
+        },
       },
     },
   };

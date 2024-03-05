@@ -4,6 +4,7 @@ import Income from "../tracking/income";
 import ButtonFlex from "./buttonflex";
 import Mainchart from "./mainchart";
 import Pichart from "./pichart";
+import Maintext from "./maintext";
 
 export default function MainBody({ trackingArray }) {
   const names = trackingArray.map((item) => item.name);
@@ -60,6 +61,7 @@ export default function MainBody({ trackingArray }) {
           </button>
         </div>
       </div>
+      <Maintext />
       {/* {trackingArray.map((item) => (
         <Income
           key={item._id}
