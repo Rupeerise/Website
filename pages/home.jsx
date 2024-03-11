@@ -32,15 +32,18 @@ function Home() {
 
     fetchUser();
   }, []);
-
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
-      <Boilerplate username={user ? user.username : ""} />
+      <Boilerplate
+        username={user ? user.username : ""}
+        setIsOpen={setIsOpen}
+        isOpen={isOpen}
+      />
       <div className="page-container">
-        <Sidebar />
+        <Sidebar isOpen={isOpen} />
         <MainBody trackingArray={user ? user.trackingArray : []} />
       </div>
-
       <div className="footer">
         <Footer />
       </div>

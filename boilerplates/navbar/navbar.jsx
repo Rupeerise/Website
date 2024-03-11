@@ -5,21 +5,19 @@ import "./navbar.css";
 import SearchBar from "./searchbar";
 import { useState } from "react";
 import Profile from "./profile";
-import Passbook from "../../pages/passbook/passbook";
 import DensityMediumIcon from "@mui/icons-material/DensityMedium";
 
-export default function Navbar({ username }) {
+export default function Navbar({ username, setIsOpen, isOpen }) {
   const [results, setResults] = useState([]);
   return (
     <span className="navbar">
       <div className="three-lines-icon">
-        <DensityMediumIcon />
+        <DensityMediumIcon onClick={() => setIsOpen(!isOpen)} />
       </div>
 
       <Personal />
       <Bussiness />
       <SearchBar setResults={setResults} />
-      <Passbook />
       <Profile username={username} />
     </span>
   );

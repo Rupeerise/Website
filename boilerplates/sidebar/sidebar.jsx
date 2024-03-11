@@ -1,68 +1,49 @@
 import * as React from "react";
-import { useState } from "react";
 import "./sidebar.css";
-import DensityMediumIcon from "@mui/icons-material/DensityMedium";
-import GridViewIcon from "@mui/icons-material/GridView";
-import AssessmentIcon from "@mui/icons-material/Assessment";
+import ImportContactsIcon from "@mui/icons-material/ImportContacts";
 import SettingsIcon from "@mui/icons-material/Settings";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
-import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
-import ArchiveIcon from '@mui/icons-material/Archive';
+import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
+import ArchiveIcon from "@mui/icons-material/Archive";
+import AnalyticsIcon from "@mui/icons-material/Analytics";
+import { Link } from "react-router-dom";
 
-export default function Sidebar() {
-  const [isOpen, setIsOpen] = useState(false);
+export default function Sidebar({ isOpen }) {
+  const icons = [
+    { key: "1", Icon: AnalyticsIcon, label: "Graphs", path: "/" },
+    {
+      key: "2",
+      Icon: ImportContactsIcon,
+      label: "Passbook",
+      path: "/passbook",
+    },
+    { key: "3", Icon: SettingsIcon, label: "Settings Icon" },
+    {
+      key: "4",
+      Icon: AccountBalanceWalletIcon,
+      label: "Account Balance Wallet Icon",
+    },
+    { key: "5", Icon: AccountBalanceIcon, label: "Account Balance Icon" },
+    { key: "6", Icon: ArchiveIcon, label: "Archive Icon" },
+  ];
+
   return (
     <div className="sidebar">
-      <DensityMediumIcon onClick={() => setIsOpen(!isOpen)} />
-      {!isOpen && (
-        <div>
-          <ul className="sidenav-list">
+      <div>
+        <ul className="sidenav-list">
+          {icons.map(({ Icon, label, path }) => (
             <li className="sidenav-list-item">
-              <GridViewIcon fontSize="inherit" />
+              <Link
+                to={path}
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <Icon fontSize="inherit" />
+                {isOpen && <p>{label}</p>}
+              </Link>
             </li>
-            <li className="sidenav-list-item">
-              <AssessmentIcon fontSize="inherit" />
-            </li>
-            <li className="sidenav-list-item">
-              <SettingsIcon fontSize="inherit" />
-            </li>
-            <li className="sidenav-list-item">
-              <AccountBalanceWalletIcon fontSize="inherit" />
-            </li>
-            <li className="sidenav-list-item">
-              <AccountBalanceIcon fontSize="inherit" />
-            </li>
-            <li className="sidenav-list-item">
-              <ArchiveIcon fontSize="inherit" />
-            </li>
-          </ul>
-        </div>
-      )}
-      {isOpen && (
-        <div>
-          <ul className="sidenav-list">
-            <li className="sidenav-list-item">
-              <GridViewIcon fontSize="inherit" /> <p>Grid Icon</p>
-            </li>
-            <li className="sidenav-list-item">
-              <AssessmentIcon fontSize="inherit" /> <p>Assessment Icon</p>
-            </li>
-            <li className="sidenav-list-item">
-              <SettingsIcon fontSize="inherit" /> <p>Settings Icon</p>
-            </li>
-            <li className="sidenav-list-item">
-              <AccountBalanceWalletIcon fontSize="inherit" /> <p>Account Balance Wallet Icon</p>
-            </li>
-            <li className="sidenav-list-item">
-              <AccountBalanceIcon fontSize="inherit" /> <p>Account Balance Icon</p>
-            </li>
-            <li className="sidenav-list-item">
-              <ArchiveIcon fontSize="inherit" /> <p>Archive Icon</p>
-            </li>
-          </ul>
-        </div>
-      )
-      }
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

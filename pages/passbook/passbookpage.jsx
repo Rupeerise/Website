@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Boilerplate from "../../boilerplates/boilerplate";
 import Footer from "../../boilerplates/footer";
-import PassbookBody from "./passbookbody.jsx";
+import Sidebar from "../../boilerplates/sidebar/sidebar";
+import "../home.css";
 
 function Passbookpage() {
   const [user, setUser] = useState(null);
@@ -9,7 +10,7 @@ function Passbookpage() {
   useEffect(() => {
     const fetchUser = async () => {
       let backendUrl = import.meta.env.VITE_TEST_BACKEND;
-      let response = await fetch(backendUrl + "/user", {
+      let response = await fetch(backendUrl + "/api/user", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -30,18 +31,21 @@ function Passbookpage() {
 
     fetchUser();
   }, []);
-
+  const [isOpen, setIsOpen] = useState(false);
   return (
-    <>
+    <div>
+      <Boilerplate
+        username={user ? user.username : ""}
+        setIsOpen={setIsOpen}
+        isOpen={isOpen}
+      />
       <div className="page-container">
-        <Boilerplate username={user ? user.username : ""} />
-        <PassbookBody PassbookArray={user ? user.paymentArray : []} />
+        <Sidebar isOpen={isOpen} />
       </div>
-
       <div className="footer">
         <Footer />
       </div>
-    </>
+    </div>
   );
 }
 

@@ -1,6 +1,7 @@
 .sidebar {
-  position: absolute;
-  left: 0;
+  /* position: absolute; */
+  /* left: 0; */
+  text-decoration: none;
 }
 
 .sidenav-container {
@@ -24,5 +25,15 @@
   cursor: pointer;
   color: black;
   display: flex;
+  align-items: center; /* Added this line */
   font-size: 30px;
+}
+.sidenav-list-item a {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.sidenav-list-item p {
+  margin: 0 0 0 10px; /* Add some left margin to separate the text from the icon */
 }
