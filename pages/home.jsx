@@ -34,17 +34,17 @@ function Home() {
   }, []);
 
   return (
-    <>
-      +6
+    <div>
       <Boilerplate username={user ? user.username : ""} />
       <div className="page-container">
         <Sidebar />
         <MainBody trackingArray={user ? user.trackingArray : []} />
       </div>
+
       <div className="footer">
         <Footer />
       </div>
-    </>
+    </div>
   );
 }
 
