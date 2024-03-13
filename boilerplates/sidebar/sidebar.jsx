@@ -2,8 +2,9 @@ import * as React from "react";
 import "./sidebar.css";
 import ImportContactsIcon from "@mui/icons-material/ImportContacts";
 import SettingsIcon from "@mui/icons-material/Settings";
+import CalculateIcon from '@mui/icons-material/Calculate';
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
-import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import ArchiveIcon from "@mui/icons-material/Archive";
 import AnalyticsIcon from "@mui/icons-material/Analytics";
 import { Link } from "react-router-dom";
@@ -17,14 +18,14 @@ export default function Sidebar({ isOpen }) {
       label: "Passbook",
       path: "/passbook",
     },
-    { key: "3", Icon: SettingsIcon, label: "Settings Icon" },
+    { key: "3", Icon: SettingsIcon, label: "Tracking" },
     {
       key: "4",
-      Icon: AccountBalanceWalletIcon,
-      label: "Account Balance Wallet Icon",
+      Icon: CalculateIcon,
+      label: "Calculators",
     },
-    { key: "5", Icon: AccountBalanceIcon, label: "Account Balance Icon" },
-    { key: "6", Icon: ArchiveIcon, label: "Archive Icon" },
+    { key: "5", Icon: AccountBalanceWalletIcon, label: "Budget" },
+    { key: "6", Icon: CalendarMonthIcon, label: "Calendar" },
   ];
 
   return (
