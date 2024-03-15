@@ -5,7 +5,7 @@ import Home from "../pages/home";
 import SignUp from "../pages/signup";
 import Info from "../pages/info";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Passbookpage from "../pages/passbook/passbookpage";
+import Passbookpage from "../public/passbook/passbookpage";
 
 export default function App() {
   return (
