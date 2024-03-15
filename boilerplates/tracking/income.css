@@ -24,11 +24,6 @@
 .income-card-title-value {
   font-size: 1.5rem;
 }
-.progressbar {
-  margin: 0 1rem 1rem 1rem;
-  border-radius: 3rem;
-  padding: 0.4rem 0rem;
-}
 .income-card-button {
   padding: 0.2rem 2rem;
   font-size: 1rem;
