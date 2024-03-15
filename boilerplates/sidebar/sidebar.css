@@ -1,0 +1,57 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.sidebar {
+  /* position: absolute; */
+  /* left: 0; */
+  text-decoration: none;
+  background-color: rgba(213, 213, 213, 0.987);
+}
+
+.sidenav-container {
+  font-size: 40px;
+  font-weight: lighter;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 20px;
+
+}
+
+.sidenav-list {
+  list-style-type: none;
+}
+
+.sidenav-list-item {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+  cursor: pointer;
+  color: black;
+  display: flex;
+  align-items: center; /* Added this line */
+  font-size: 30px;
+}
+
+.sidenav-list-item:hover {
+  background-color: rgba(141, 141, 141, 0.739);
+}
+
+.sidenav-list-item a {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding-top: 5px;
+}
+
+.sidenav-list-item p {
+  margin-left: 10px;
+  font-size: 25px;  
+  
+}

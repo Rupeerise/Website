@@ -1,0 +1,43 @@
+.mainbody {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 1rem;
+}
+.charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+.barchart {
+  margin: 2rem;
+}
+.pichartcontainer {
+  margin: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 100vw;
+}
+.pichart {
+  grid-column: span 2;
+}
+.pichartbutton {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  width: 12rem;
+  margin: 0 auto;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  background-color: white;
+  border: 1px solid rgb(45, 45, 45);
+  border-radius: 4rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.pichartbutton:hover {
+  background-color: rgb(33, 111, 255) !important;
+  color: white !important;
+}
+.pichartname {
+  text-align: center;
+  font-size: 2rem;
+}

@@ -1,0 +1,21 @@
+.edit-tracking-input {
+  width: 15rem;
+  font-size: 1.5rem;
+  padding: 3px 6px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-right: 1rem;
+}
+.edit-tracking-button {
+  font-size: 1.5rem;
+  border-radius: 3px;
+  border: 1px solid black;
+  background-color: white;
+  padding: 3px 1.5rem;
+}
+.edit-tracking-button:hover {
+  background-color: rgb(104 255 104);
+  border-radius: 8px;
+  transition: 0.1s;
+}

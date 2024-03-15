@@ -1,0 +1,23 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  color: white;
+  background-color: rgb(94, 94, 201);
+}
+
+.row{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  gap: 80px;
+}
+
+.col{
+  padding: 20px;
+  flex: 1;
+}
+
+.list{
+  list-style-type: none;
+}
