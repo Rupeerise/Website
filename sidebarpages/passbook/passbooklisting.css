@@ -1,0 +1,16 @@
+.card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 10px;
+  width: 200px;
+}
+
+.card-name {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.card-tag, .card-date, .card-amount {
+  font-size: 15px;
+}
