@@ -1,11 +1,11 @@
 import React from "react";
 
-export default function ProgressBar({ value, color }) {
+export default function ProgressBar({ value, color, backgroundColor }) {
   const containerStyle = {
-    height: "0.6rem",
+    height: "0.7rem",
     width: "100%",
     margin: "0.3rem auto",
-    backgroundColor: "#eee",
+    backgroundColor: backgroundColor || "#eee",
     borderRadius: "50px",
     overflow: "hidden",
   };

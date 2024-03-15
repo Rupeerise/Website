@@ -1,10 +1,10 @@
 import * as React from "react";
 import "./sidebar.css";
 import ImportContactsIcon from "@mui/icons-material/ImportContacts";
-import SettingsIcon from "@mui/icons-material/Settings";
-import CalculateIcon from '@mui/icons-material/Calculate';
+import TableChartIcon from "@mui/icons-material/TableChart";
+import CalculateIcon from "@mui/icons-material/Calculate";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import ArchiveIcon from "@mui/icons-material/Archive";
 import AnalyticsIcon from "@mui/icons-material/Analytics";
 import { Link } from "react-router-dom";
@@ -18,7 +18,7 @@ export default function Sidebar({ isOpen }) {
       label: "Passbook",
       path: "/passbook",
     },
-    { key: "3", Icon: SettingsIcon, label: "Tracking" },
+    { key: "3", Icon: TableChartIcon, label: "Tracking", path: "/tracking" },
     {
       key: "4",
       Icon: CalculateIcon,
@@ -32,8 +32,8 @@ export default function Sidebar({ isOpen }) {
     <div className="sidebar">
       <div>
         <ul className="sidenav-list">
-          {icons.map(({ Icon, label, path }) => (
-            <li className="sidenav-list-item">
+          {icons.map(({ Icon, label, path }, index) => (
+            <li key={index} className="sidenav-list-item">
               <Link
                 to={path}
                 style={{ textDecoration: "none", color: "inherit" }}

@@ -1,0 +1,22 @@
+.trackingbody {
+  padding: 2rem;
+  /* background-color: aquamarine; */
+  width: 100%;
+}
+.trackingobject {
+  padding: 2rem 3rem;
+  background-color: rgb(79, 234, 255);
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  border: solid 1px black;
+  font-size: 1.8rem;
+}
+.trackingobjecttop {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.tracking-progressbar {
+  margin-top: 2rem;
+}
