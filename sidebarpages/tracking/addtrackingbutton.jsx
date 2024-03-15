@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./addbutton.css";
-import AddTracking from "../tracking/addtracking";
+import AddTracking from "./addtracking";
 
 function AddTrackingButton() {
   const [showPopup, setShowPopup] = useState(false);
@@ -15,11 +15,11 @@ function AddTrackingButton() {
 
   return (
     <div>
-      <div onClick={handleClick} className="add-button">
+      <div onClick={handleClick} className="add-tracking-button">
         Add Tracking
       </div>
       {showPopup && (
-        <div className={`popup ${showPopup ? "" : "hide"}`}>
+        <div className={`tracking-popup ${showPopup ? "" : "hide"}`}>
           <AddTracking closePopup={closePopup} />
         </div>
       )}

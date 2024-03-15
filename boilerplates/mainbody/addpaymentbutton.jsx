@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./addbutton.css";
 import AddPayment from "../addpayment";
 
 function AddPaymentButton() {

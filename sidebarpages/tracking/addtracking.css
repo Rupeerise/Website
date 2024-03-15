@@ -15,7 +15,7 @@
   padding: 3rem;
 }
 
-.add-tracking-button {
+.add-tracking-button-form {
   font-size: 1.5rem;
   margin-top: 1rem;
   padding: 0.5rem;
@@ -23,7 +23,7 @@
   border-radius: 0.5rem;
   background: rgb(255, 255, 255);
 }
-.add-tracking-button:hover {
+.add-tracking-button-form:hover {
   background-color: #00ff00;
   color: #000000;
   cursor: pointer;

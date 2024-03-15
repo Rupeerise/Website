@@ -65,11 +65,13 @@ export default function AddTracking({ closePopup }) {
           onChange={handleChange}
         >
           <option value="income">income</option>
-          <option value="constant expense">constant expense</option>
           <option value="variable expense">variable expense</option>
+          <option value="emi">emi</option>
+          <option value="loan repayment">loan repayment</option>
+          <option value="investment">investment</option>
         </select>
         <div className="tracking-button-container">
-          <button type="submit" className="add-tracking-button">
+          <button type="submit" className="add-tracking-button-form">
             Add Tracking
           </button>
           <button
