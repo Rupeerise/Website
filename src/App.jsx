@@ -5,8 +5,9 @@ import Home from "../pages/home";
 import SignUp from "../pages/signup";
 import Info from "../pages/info";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Passbookpage from "../pages/passbook/passbookpage";
+import Passbookpage from "../sidebarpages/passbook/passbookpage";
 import Tracking from "../sidebarpages/tracking/Tracking";
+import Calculator from "../sidebarpages/calculator/Calculator";
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
           <Route path="/info" element={<Info />} />
           <Route path="/passbook" element={<Passbookpage />} />
           <Route path="/tracking" element={<Tracking />} />
+          <Route path="/calculator" element={<Calculator />} />
           <Route path="*" element={<h1>Error 404 Not Found</h1>} />
         </Routes>
       </BrowserRouter>

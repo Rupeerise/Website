@@ -23,6 +23,7 @@ export default function Sidebar({ isOpen }) {
       key: "4",
       Icon: CalculateIcon,
       label: "Calculators",
+      path: "/calculator",
     },
     { key: "5", Icon: AccountBalanceWalletIcon, label: "Budget" },
     { key: "6", Icon: CalendarMonthIcon, label: "Calendar" },
