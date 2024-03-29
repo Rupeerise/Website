@@ -1,43 +1,29 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./calculator.css";
 import CalculatorCard from "./Calculatorcard";
 
 const cardValues = [
   {
-    title: "Title",
+    title: "SIP",
     content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente tempora animi suscipit iure quia, vitae odit omnis modi non explicabo!",
+      "Calculate wealth gained by investing in SIP. Compare returns with inflation.",
     footer: "footer",
+    path: "/calculator/sip",
   },
   {
-    title: "Title",
+    title: "Lumpsum",
     content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente tempora animi suscipit iure quia, vitae odit omnis modi non explicabo!",
+      "Calculate wealth gained by investing in Lumpsum amount. Compare returns with inflation.",
     footer: "footer",
+    path: "/calculator/lumpsum",
   },
   {
-    title: "Title",
+    title: "FD",
     content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente tempora animi suscipit iure quia, vitae odit omnis modi non explicabo!",
+      "Calculate wealth gained by investing in Fixed Deposit. Compare returns with inflation.",
     footer: "footer",
-  },
-  {
-    title: "Title",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente tempora animi suscipit iure quia, vitae odit omnis modi non explicabo!",
-    footer: "footer",
-  },
-  {
-    title: "Title",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente tempora animi suscipit iure quia, vitae odit omnis modi non explicabo!",
-    footer: "footer",
-  },
-  {
-    title: "Title",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente tempora animi suscipit iure quia, vitae odit omnis modi non explicabo!",
-    footer: "footer",
+    path: "/calculator/fd",
   },
 ];
 
@@ -45,12 +31,13 @@ function CalculatorBody() {
   return (
     <div className="calculatorbody">
       {cardValues.map((card, index) => (
-        <CalculatorCard
-          key={index}
-          title={card.title}
-          content={card.content}
-          footer={card.footer}
-        />
+        <Link to={card.path} key={index}>
+          <CalculatorCard
+            title={card.title}
+            content={card.content}
+            footer={card.footer}
+          />
+        </Link>
       ))}
     </div>
   );
