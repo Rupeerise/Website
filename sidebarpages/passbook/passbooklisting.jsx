@@ -4,7 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import { Typography } from '@mui/material';
 import Box from '@mui/material/Box';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+import MyCard from '../../components/pastpaymentcard';
 
 import "./passbooklisting.css";
 
@@ -32,22 +32,7 @@ const PassbookListing = () => {
 
       <h2>Upcoming Payments</h2>
 
-      <div className='past-payment'>
-        <div className='past-payment-content'>
-          <div className='past-payment-left'>
-            <div className='past-payment-left-text'>
-              <p className="past-payment-amount">Credited or Debited: $2000</p>
-              <p className='past-payment-date'>on 69/69/2069</p>
-            </div>
-            <div className='past-payment-left-tag'>
-              Tag = Salary
-            </div>
-          </div>
-          <div className="past-payment-right">
-            <MoreVertIcon />
-          </div>
-        </div>
-      </div>
+      <MyCard />
       
       
     </>
