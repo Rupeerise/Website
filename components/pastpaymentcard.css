@@ -1,51 +1,62 @@
 .past-payment {
-    margin-top: 1rem;
-    border: 3px solid #89d3ff; 
-    border-radius: 50px; 
-    height: 6.5rem;
+  margin-top: 1rem;
+  border: 3px solid #89d3ff;
+  border-radius: 50px;
+  height: 6.5rem;
+  width: 100%;
+  display: flex;
 }
 
-.past-payment-left{
-    background-color: white;
-    display: flex;
-    justify-content: space-between;
+.past-payment-left {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
 }
 
 .past-payment-right {
-    background-color: #89d3ff;
-    align-items: center;
+  background-color: #89d3ff;
+  align-items: center;
 }
 
-.past-payment-tag{
-    display: flex;
-    align-items: center;
-    font-size: 1rem;
-    margin-right: 200px;
+.past-payment-tag {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  margin-right: 200px;
 }
 
-.past-payment-details{
-    margin-left: 80px;
+.past-payment-details {
+  margin-left: 80px;
 }
 
 .sell-icon {
-    margin-right: 1rem;
+  margin-right: 1rem;
 }
 
-.past-payment-amount{
-    font-size: 1.2rem;
+.past-payment-amount {
+  font-size: 1.2rem;
 }
 
 .past-payment-date {
-    font-size: 0.8rem;
-    text-align: center;
-    margin-top: 3px;
+  font-size: 0.8rem;
+  text-align: center;
+  margin-top: 3px;
 }
 
-.past-payment-tag-name{
-    text-align: center;
-    font-size: 1.2rem;
+.past-payment-tag-name {
+  text-align: center;
+  font-size: 1.2rem;
 }
 
-.past-payment-morevert{
-    color: black;
+.past-payment-morevert {
+  color: black;
+}
+.past-payment-left {
+  padding: 1rem;
+  flex-basis: 95%;
+}
+
+.past-payment-right {
+  padding: 2rem;
+  flex-basis: 5%;
 }

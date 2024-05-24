@@ -4,7 +4,7 @@ import "./income.css";
 import ProgressBar from "../progressbar";
 import EditRoundedIcon from "@mui/icons-material/EditRounded";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
-import Edittracking from "./edittracking";
+import Edittracking from "./edittracking.jsx";
 import IncomeBottom from "./incomebottom.jsx";
 import Incomemore from "./incomemore.jsx";
 

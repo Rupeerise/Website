@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AddPayment from "../addpayment";
+import AddPayment from "../../sidebarpages/passbook/addpayment";
 
 function AddPaymentButton() {
   const [showPopup, setShowPopup] = useState(false);
