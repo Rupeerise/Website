@@ -1,0 +1,53 @@
+.past-payment {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  height: 7.5rem;
+  border-radius: 2rem;
+}
+.past-payment-left {
+  display: flex;
+  width: 90%;
+  align-items: center;
+  height: 100%;
+  justify-content: space-around;
+  border: 3px solid #89d3ff;
+  border-radius: 2rem 0 0 2rem;
+}
+.past-payment-right {
+  width: 10%;
+  align-items: center;
+  background: #89d3ff;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 2rem 2rem 0;
+}
+.past-payment-morevert {
+  color: black;
+}
+.past-payment-tag {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.past-payment-tag-name {
+  font-size: 1.75rem;
+  color: #000000;
+  margin-left: 1rem;
+}
+.past-payment-amount {
+  font-size: 1.75rem;
+  color: #000000;
+}
+.past-payment-date {
+  font-size: 1.125rem;
+  color: #000000;
+}
+.past-payment-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

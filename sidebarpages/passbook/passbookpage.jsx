@@ -3,8 +3,8 @@ import Boilerplate from "../../boilerplates/boilerplate";
 import Footer from "../../boilerplates/footer";
 import Sidebar from "../../boilerplates/sidebar/sidebar";
 import "../../pages/home.css";
-import Passbooklisting from "./passbooklisting";
 import "./passbook.css";
+import PassbookBody from "./passbookbody";
 
 function Home() {
   const [user, setUser] = useState(null);
@@ -43,8 +43,7 @@ function Home() {
       />
       <div className="page-container">
         <Sidebar isOpen={isOpen} />
-
-        <Passbooklisting />
+        <PassbookBody paymentArray={user.paymentArray} />
       </div>
       <div className="footer">
         <Footer />
