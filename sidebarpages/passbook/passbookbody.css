@@ -1,0 +1,39 @@
+* {
+  margin-left: 100px;
+  box-sizing: content-box;
+}
+
+.add-payment {
+  background-color: #f5f5f5;
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
+  margin-right: 40px;
+  margin-left: 40px;
+  width: 100%;
+}
+
+.add-payment-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 20px 0 20px;
+}
+
+.horizontal-line {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  width: 100%;
+}
+
+.passbookpage-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 8rem;
+  padding-top: 0;
+}
