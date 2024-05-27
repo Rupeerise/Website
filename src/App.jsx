@@ -5,8 +5,10 @@ import Home from "../pages/home";
 import SignUp from "../pages/signup";
 import Info from "../pages/info";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Passbookpage from "../sidebarpages/passbook/passbookpage";
+import SidebarRouter from "../sidebarpages/sidebarrouter";
 import Tracking from "../sidebarpages/tracking/Tracking";
+import { Provider } from "react-redux";
+import store from "../store/store";
 
 export default function App() {
   return (
@@ -19,7 +21,14 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/info" element={<Info />} />
-          <Route path="/passbook" element={<Passbookpage />} />
+          <Route
+            path="/passbook"
+            element={
+              <Provider store={store}>
+                <SidebarRouter />
+              </Provider>
+            }
+          />
           <Route path="/tracking" element={<Tracking />} />
           <Route path="*" element={<h1>Error 404 Not Found</h1>} />
         </Routes>

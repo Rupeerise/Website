@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
-import Boilerplate from "../../boilerplates/boilerplate";
-import Footer from "../../boilerplates/footer";
-import Sidebar from "../../boilerplates/sidebar/sidebar";
-import "../../pages/home.css";
-import "./passbook.css";
-import PassbookBody from "./passbookbody";
+import Boilerplate from "./../boilerplates/boilerplate";
+import Footer from "./../boilerplates/footer";
+import Sidebar from "./../boilerplates/sidebar/sidebar";
+import "./../pages/home.css";
+// import "./passbook.css";
+import PassbookBody from "./passbook/passbookbody";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUser } from "../../store/userSlice";
+import { fetchUser } from "./../store/userSlice";
 
-function Home() {
+function SidebarRouter() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
 
@@ -35,4 +35,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default SidebarRouter;
