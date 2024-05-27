@@ -1,12 +1,10 @@
 import * as React from "react";
 import "./mainbody.css";
-import Income from "../tracking/income";
-import ButtonFlex from "./buttonflex";
 import Mainchart from "./mainchart";
 import Pichart from "./pichart";
 import Maintext from "./maintext";
 
-export default function MainBody({ trackingArray }) {
+export default function GraphBody({ trackingArray }) {
   const names = trackingArray.map((item) => item.name);
   const current = trackingArray.map((item) => item.current);
   const target = trackingArray.map((item) => item.target);
@@ -23,7 +21,6 @@ export default function MainBody({ trackingArray }) {
 
   return (
     <div className="mainbody">
-      {/* <ButtonFlex /> */}
       <div className="charts">
         <div className="barchart">
           <Mainchart labels={names} current={current} target={target} />

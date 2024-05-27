@@ -6,7 +6,6 @@ import SignUp from "../pages/signup";
 import Info from "../pages/info";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SidebarRouter from "../sidebarpages/sidebarrouter";
-import Tracking from "../sidebarpages/tracking/Tracking";
 import { Provider } from "react-redux";
 import store from "../store/store";
 
@@ -15,9 +14,30 @@ export default function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route index element={<Home />} />
-          <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
+          <Route
+            index
+            element={
+              <Provider store={store}>
+                <SidebarRouter />
+              </Provider>
+            }
+          />
+          <Route
+            path="/"
+            element={
+              <Provider store={store}>
+                <SidebarRouter />
+              </Provider>
+            }
+          />
+          <Route
+            path="/home"
+            element={
+              <Provider store={store}>
+                <SidebarRouter />
+              </Provider>
+            }
+          />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/info" element={<Info />} />
@@ -29,7 +49,14 @@ export default function App() {
               </Provider>
             }
           />
-          <Route path="/tracking" element={<Tracking />} />
+          <Route
+            path="/tracking"
+            element={
+              <Provider store={store}>
+                <SidebarRouter />
+              </Provider>
+            }
+          />
           <Route path="*" element={<h1>Error 404 Not Found</h1>} />
         </Routes>
       </BrowserRouter>

@@ -7,6 +7,9 @@ import "./../pages/home.css";
 import PassbookBody from "./passbook/passbookbody";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUser } from "./../store/userSlice";
+import TrackingBody from "./tracking/trackingbody";
+import { useLocation } from "react-router-dom";
+import GraphBody from "./graph/graphbody";
 
 function SidebarRouter() {
   const dispatch = useDispatch();
@@ -26,7 +29,18 @@ function SidebarRouter() {
       />
       <div className="page-container">
         <Sidebar isOpen={isOpen} />
-        <PassbookBody paymentArray={user ? user.paymentArray : []} />
+        {location.pathname === "/passbook" && (
+          <PassbookBody paymentArray={user ? user.paymentArray : []} />
+        )}
+        {location.pathname === "/tracking" && (
+          <TrackingBody trackingArray={user ? user.trackingArray : []} />
+        )}
+        {location.pathname === "/" && (
+          <GraphBody trackingArray={user ? user.trackingArray : []} />
+        )}
+        {location.pathname === "/home" && (
+          <GraphBody trackingArray={user ? user.trackingArray : []} />
+        )}
       </div>
       <div className="footer">
         <Footer />

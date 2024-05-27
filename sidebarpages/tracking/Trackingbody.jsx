@@ -1,5 +1,5 @@
 import React from "react";
-import TrackingObject from "./Trackingobject";
+import TrackingObject from "./trackingobject";
 import AddTrackingButton from "./addtrackingbutton";
 
 function TrackingBody({ trackingArray }) {

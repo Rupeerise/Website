@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Boilerplate from "../../boilerplates/boilerplate";
-import MainBody from "../../boilerplates/mainbody/mainbody";
 import Footer from "../../boilerplates/footer";
 import Sidebar from "../../boilerplates/sidebar/sidebar";
 import "../../pages/home.css";
-import TrackingBody from "./Trackingbody";
+import TrackingBody from "./trackingbody";
 import "./tracking.css";
 
 function Home() {

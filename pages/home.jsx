@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Boilerplate from "../boilerplates/boilerplate";
-import MainBody from "../boilerplates/mainbody/mainbody";
+import MainBody from "../sidebarpages/graph/graphbody";
 import Footer from "../boilerplates/footer";
 import Sidebar from "../boilerplates/sidebar/sidebar";
 import "./home.css";
