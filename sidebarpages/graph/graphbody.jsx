@@ -3,8 +3,14 @@ import "./mainbody.css";
 import Mainchart from "./mainchart";
 import Pichart from "./pichart";
 import Maintext from "./maintext";
+import { useSelector } from "react-redux";
 
-export default function GraphBody({ trackingArray }) {
+export default function GraphBody() {
+  const user = useSelector((state) => state.user);
+  let trackingArray = [];
+  if (user && user.trackingArray) {
+    trackingArray = user.trackingArray;
+  }
   const names = trackingArray.map((item) => item.name);
   const current = trackingArray.map((item) => item.current);
   const target = trackingArray.map((item) => item.target);

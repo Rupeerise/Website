@@ -7,8 +7,7 @@ import "./../pages/home.css";
 import PassbookBody from "./passbook/passbookbody";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUser } from "./../store/userSlice";
-import TrackingBody from "./tracking/trackingbody";
-import { useLocation } from "react-router-dom";
+import TrackingBody from "./tracking/Trackingbody";
 import GraphBody from "./graph/graphbody";
 
 function SidebarRouter() {
@@ -38,9 +37,7 @@ function SidebarRouter() {
         {location.pathname === "/" && (
           <GraphBody trackingArray={user ? user.trackingArray : []} />
         )}
-        {location.pathname === "/home" && (
-          <GraphBody trackingArray={user ? user.trackingArray : []} />
-        )}
+        {location.pathname === "/home" && <GraphBody />}
       </div>
       <div className="footer">
         <Footer />
