@@ -54,7 +54,7 @@ export default function AddTracking({ closePopup }) {
           type="text"
           name="target"
           className="add-tracking-input-box"
-          placeholder="target/month"
+          placeholder="target per month"
           value={form.target}
           onChange={handleChange}
         />

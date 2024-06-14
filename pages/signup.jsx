@@ -14,7 +14,6 @@ export default function Login() {
   let handleInputChange = (event) => {
     let fieldName = event.target.name;
     let newValue = event.target.value;
-
     setFormData((currData) => {
       currData[fieldName] = newValue;
       return { ...currData };

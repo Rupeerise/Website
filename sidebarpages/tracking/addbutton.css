@@ -3,21 +3,23 @@
   right: 20px;
   background-color: #ffffff;
   text-align: center;
-  font-size: 1.4rem;
-  width: 15rem;
+  font-size: 1.3rem;
+  width: 12rem;
   height: 4rem;
-  padding-top: 1.1rem;
-  border-radius: 0.8rem;
+  padding-top: 1rem;
+  border-radius: 0.3rem;
   border: 3px solid #2600ff;
   margin: auto;
   margin-bottom: 2rem;
+  transition: border-radius 0.2s ease;
 }
 
 .add-tracking-button:hover {
   background-color: #2600ff;
   color: #ffffff;
   cursor: pointer;
-  border: 4px solid #09b5ff;
+  border: 4px solid #2600ff;
+  border-radius: 1.1rem;
 }
 
 @keyframes fadeIn {

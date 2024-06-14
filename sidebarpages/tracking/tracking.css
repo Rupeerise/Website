@@ -1,16 +1,17 @@
 .trackingbody {
   padding: 2rem;
-  /* background-color: aquamarine; */
   width: 100%;
 }
 .trackingobject {
-  padding: 2rem 2.5rem;
+  padding: 1.5rem 2rem;
   background-color: rgb(79, 234, 255);
-  width: 100%;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
   border-radius: 1.5rem;
   margin-bottom: 10px;
   border: solid 1px black;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
 }
 .trackingobjecttop {
   display: flex;
@@ -18,5 +19,5 @@
   margin-bottom: 1rem;
 }
 .tracking-progressbar {
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 }

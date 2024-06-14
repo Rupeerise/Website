@@ -4,7 +4,7 @@ import AddTrackingButton from "./addtrackingbutton";
 import "./tracking.css";
 
 function TrackingBody({ trackingArray }) {
-  return (
+  return (  
     <div className="trackingbody">
       <AddTrackingButton />
       {trackingArray.map((trackingObject) => (
