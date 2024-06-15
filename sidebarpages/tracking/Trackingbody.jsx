@@ -7,12 +7,16 @@ function TrackingBody({ trackingArray }) {
   return (  
     <div className="trackingbody">
       <AddTrackingButton />
-      {trackingArray.map((trackingObject) => (
-        <TrackingObject
-          key={trackingObject._id}
-          trackingObject={trackingObject}
-        />
-      ))}
+      {trackingArray && trackingArray.length > 0 ? (
+  trackingArray.map((trackingObject) => (
+    <TrackingObject
+      key={trackingObject._id}
+      trackingObject={trackingObject}
+    />
+  ))
+) : (
+  <div>No tracking data available.</div>
+)}
     </div>
   );
 }

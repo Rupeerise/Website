@@ -3,7 +3,7 @@ import Boilerplate from "../../boilerplates/boilerplate";
 import Footer from "../../boilerplates/footer";
 import Sidebar from "../../boilerplates/sidebar/sidebar";
 import "../../pages/home.css";
-import TrackingBody from "./trackingbody";
+import TrackingBody from "./Trackingbody";
 import "./tracking.css";
 
 function Home() {
