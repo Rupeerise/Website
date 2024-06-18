@@ -5,7 +5,7 @@ export default function AddTracking({ closePopup }) {
   const [form, setForm] = React.useState({
     name: "",
     target: "",
-    trackingType: "income",
+    tagType: "income",
   });
 
   const handleChange = (event) => {
@@ -19,7 +19,7 @@ export default function AddTracking({ closePopup }) {
     event.preventDefault();
     let backendUrl = import.meta.env.VITE_TEST_BACKEND;
     // Make a POST request to /addtracking
-    const response = await fetch(backendUrl + "/tracking/add", {
+    const response = await fetch(backendUrl + "/tag", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -59,9 +59,12 @@ export default function AddTracking({ closePopup }) {
           onChange={handleChange}
         />
         <select
-          name="trackingType"
+          name="tagType"
           className="add-tracking-input-box"
-          value={form.trackingType}
+          value={form.tagType
+
+            
+          }
           onChange={handleChange}
         >
           <option value="income">income</option>

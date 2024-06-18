@@ -6,7 +6,7 @@ import "../../pages/home.css";
 import TrackingBody from "./Trackingbody";
 import "./tracking.css";
 
-function Home() {
+function Tracking() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -43,7 +43,7 @@ function Home() {
       />
       <div className="page-container">
         <Sidebar isOpen={isOpen} />
-        <TrackingBody trackingArray={user ? user.trackingArray : []} />
+        <TrackingBody tagArray={user ? user.tagArray : []} />
       </div>
       <div className="footer">
         <Footer />
@@ -52,4 +52,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Tracking;

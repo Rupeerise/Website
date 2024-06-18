@@ -2,10 +2,10 @@ import React from "react";
 import ProgressBar from "../../boilerplates/progressbar";
 
 function TrackingObject({ trackingObject }) {
-  const { id, name, current, target, type } = trackingObject;
+  const { _id, name, current, target, type } = trackingObject;
 
   return (
-    <div className="trackingobject" key={id}>
+    <div className="trackingobject" key={_id}>
       <div className="trackingobjecttop">
         <div>
           {name} : {current}
@@ -21,8 +21,7 @@ function TrackingObject({ trackingObject }) {
         <ProgressBar value={(current * 100) / target} />
       </div>
       <div>
-        <button className="tracking-edit">Edit</button>
-        <button className="tracking-delete">Delete</button>
+        <button onClick={() => window.location.href = "/tag/" + _id}>Edit</button>
       </div>
     </div>
   );

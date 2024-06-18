@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SidebarRouter from "../sidebarpages/sidebarrouter";
 import { Provider } from "react-redux";
 import store from "../store/store";
+import Tracking from "../sidebarpages/tracking/Tracking";
 
 export default function App() {
   return (
@@ -42,15 +43,16 @@ export default function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/info" element={<Info />} />
           <Route
-            path="/passbook"
+            path="/passbook" 
             element={
               <Provider store={store}>
                 <SidebarRouter />
+                <Tracking />
               </Provider>
             }
           />
           <Route
-            path="/tracking"
+            path="/tag"
             element={
               <Provider store={store}>
                 <SidebarRouter />

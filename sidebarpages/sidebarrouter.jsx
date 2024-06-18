@@ -31,11 +31,11 @@ function SidebarRouter() {
         {location.pathname === "/passbook" && (
           <PassbookBody paymentArray={user ? user.paymentArray : []} />
         )}
-        {location.pathname === "/tracking" && (
-          <TrackingBody trackingArray={user ? user.trackingArray : []} />
+        {location.pathname === "/tag" && (
+          <TrackingBody tagArray={user ? user.tagArray : []} />
         )}
         {location.pathname === "/" && (
-          <GraphBody trackingArray={user ? user.trackingArray : []} />
+          <GraphBody tagArray={user ? user.tagArray : []} />
         )}
         {location.pathname === "/home" && <GraphBody />}
       </div>
