@@ -1,9 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import userReducer from "./userSlice";
+import { paymentArraySlice } from "./paymentArraySlice";
+import { tagArraySlice } from "./tagArraySlice";
+import { usernameSlice } from "./usernameSlice";
 
 export const store = configureStore({
   reducer: {
-    user: userReducer,
+    paymentArray: paymentArraySlice,
+    tagArray: tagArraySlice,
+    username: usernameSlice,
   },
 });
 

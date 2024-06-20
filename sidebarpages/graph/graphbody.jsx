@@ -65,16 +65,6 @@ export default function GraphBody() {
         </div>
       </div>
       <Maintext />
-      {/* {trackingArray.map((item) => (
-        <Income
-          key={item._id}
-          id={item._id}
-          name={item.name}
-          current={item.current}
-          target={item.target}
-          secondaryTracking={item.secondaryTracking}
-        />
-      ))} */}
     </div>
   );
 }

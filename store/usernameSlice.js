@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-export const fetchUser = createAsyncThunk("user/fetchUser", async () => {
+const getUsername = createAsyncThunk("username/get", async () => {
   let backendUrl = import.meta.env.VITE_TEST_BACKEND;
   let response = await fetch(backendUrl + "/api/user", {
     method: "GET",
@@ -9,27 +9,27 @@ export const fetchUser = createAsyncThunk("user/fetchUser", async () => {
     },
     credentials: "include",
   });
-
   if (response.ok) {
     let jsonResponse = await response.json();
     return jsonResponse;
   } else {
     console.log("HTTP-Error: " + response.status);
-    if (response.status === 401) {
-      window.location = "/login";
-    }
+    return "";
   }
 });
 
-export const userSlice = createSlice({
-  name: "user",
-  initialState: null,
+export const usernameSlice = createSlice({
+  name: "username",
+  initialState: {
+    value: "",
+  },
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchUser.fulfilled, (state, action) => {
-      return action.payload;
+    builder.addCase(getUsername.fulfilled, (state, action) => {
+      state.value = action.payload.username;
     });
   },
 });
 
-export default userSlice.reducer;
+export default usernameSlice.reducer;
+export { getUsername };
