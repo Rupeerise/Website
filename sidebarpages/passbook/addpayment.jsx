@@ -1,5 +1,7 @@
 import * as React from "react";
 import "./addpayment.css";
+import { addPayment } from "../../store/paymentArraySlice";
+import { useDispatch } from "react-redux";
 
 export default function AddPayment({ closePopup }) {
   const [form, setForm] = React.useState({ name: "", amount: "" });
@@ -11,28 +13,12 @@ export default function AddPayment({ closePopup }) {
     });
   };
 
-  const handleSubmit = async (event) => {
-    let formsubmit = { ...form, date: new Date() };
-    console.log(formsubmit);
+  const dispatch = useDispatch();
+
+  const handleSubmit = (event) => {
     event.preventDefault();
-    let backendUrl = import.meta.env.VITE_TEST_BACKEND;
-    const response = await fetch(backendUrl + "/payment/add", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-      body: JSON.stringify(formsubmit),
-    });
-
-    if (response.ok) {
-      console.log("Form submitted successfully");
-      location.reload(true);
-    } else {
-      console.error("Error submitting form");
-    }
-
-    setForm({ name: "", amount: "" });
+    dispatch(addPayment(form));
+    closePopup();
   };
 
   return (

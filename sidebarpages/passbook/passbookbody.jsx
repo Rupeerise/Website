@@ -6,9 +6,17 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import PastPaymentCard from "./pastpaymentcard";
+import { getPaymentArray } from "../../store/paymentArraySlice";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
-const PassbookBody = ({ paymentArray }) => {
+const PassbookBody = () => {
   const [showAddPayment, setShowAddPayment] = useState(false);
+  const dispatch = useDispatch();
+  const paymentArray = useSelector((state) => state.paymentArray.value);
+  useEffect(() => {
+    dispatch(getPaymentArray());
+  }, [dispatch]);
   return (
     <div className="passbookpage-body">
       <Card className="add-payment">

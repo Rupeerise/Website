@@ -6,37 +6,34 @@ import "./../pages/home.css";
 // import "./passbook.css";
 import PassbookBody from "./passbook/passbookbody";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUser } from "./../store/userSlice";
+import { getUsername } from "../store/usernameSlice";
 import TrackingBody from "./tracking/Trackingbody";
 import GraphBody from "./graph/graphbody";
 
 function SidebarRouter() {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
+
+  const username = useSelector((state) => state.username.value);
 
   useEffect(() => {
-    dispatch(fetchUser());
+    dispatch(getUsername());
   }, [dispatch]);
 
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
       <Boilerplate
-        username={user ? user.username : ""}
+        username={username ? username : ""}
         setIsOpen={setIsOpen}
         isOpen={isOpen}
       />
       <div className="page-container">
         <Sidebar isOpen={isOpen} />
         {location.pathname === "/passbook" && (
-          <PassbookBody paymentArray={user ? user.paymentArray : []} />
+          <PassbookBody paymentArray={[]} />
         )}
-        {location.pathname === "/tag" && (
-          <TrackingBody tagArray={user ? user.tagArray : []} />
-        )}
-        {location.pathname === "/" && (
-          <GraphBody tagArray={user ? user.tagArray : []} />
-        )}
+        {location.pathname === "/tag" && <TrackingBody tagArray={[]} />}
+        {location.pathname === "/" && <GraphBody tagArray={[]} />}
         {location.pathname === "/home" && <GraphBody />}
       </div>
       <div className="footer">

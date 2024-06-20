@@ -5,9 +5,9 @@ import { usernameSlice } from "./usernameSlice";
 
 export const store = configureStore({
   reducer: {
-    paymentArray: paymentArraySlice,
-    tagArray: tagArraySlice,
-    username: usernameSlice,
+    paymentArray: paymentArraySlice.reducer,
+    tagArray: tagArraySlice.reducer,
+    username: usernameSlice.reducer,
   },
 });
 
