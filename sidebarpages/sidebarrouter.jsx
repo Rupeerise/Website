@@ -29,7 +29,7 @@ function SidebarRouter() {
       />
       <div className="page-container">
         <Sidebar isOpen={isOpen} />
-        {location.pathname === "/passbook" && (
+        {location.pathname === "/payment" && (
           <PassbookBody paymentArray={[]} />
         )}
         {location.pathname === "/tag" && <TrackingBody tagArray={[]} />}

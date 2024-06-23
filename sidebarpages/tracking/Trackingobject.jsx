@@ -1,8 +1,13 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getTagArray } from "../../store/tagArraySlice";
 import ProgressBar from "../../boilerplates/progressbar";
 
 function TrackingObject({ trackingObject }) {
   const { _id, name, current, target, type } = trackingObject;
+
+  const tagArray = useSelector((state) => state.tagArray);
+  console.log(tagArray);
 
   return (
     <div className="trackingobject" key={_id}>
@@ -14,7 +19,7 @@ function TrackingObject({ trackingObject }) {
       </div>
       <div>
         <div>
-          Type: {type} 
+          Type: {type}
         </div>
       </div>
       <div className="tracking-progressbar">
