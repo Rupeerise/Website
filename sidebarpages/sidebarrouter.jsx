@@ -28,12 +28,11 @@ function SidebarRouter() {
 
   const { id } = useParams();
 
-  const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
-      <Boilerplate setIsOpen={setIsOpen} isOpen={isOpen} />
+      <Boilerplate />
       <div className="page-container">
-        <Sidebar isOpen={isOpen} />
+        <Sidebar />
         {location.pathname === "/payments" && (
           <PassbookBody paymentArray={[]} />
         )}

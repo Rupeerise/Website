@@ -11,7 +11,12 @@
   /* position: absolute; */
   /* left: 0; */
   text-decoration: none;
-  background-color: rgba(213, 213, 213, 0.987);
+  background-color: rgb(191, 200, 255);
+  /* height: 100%;
+  margin-top: 3rem;
+  margin-left: 2rem; */
+  /* overflow: hidden;
+  border-radius: 1rem; */
 }
 
 .sidenav-container {
@@ -20,7 +25,6 @@
   padding-left: 5px;
   padding-right: 5px;
   padding-top: 20px;
-
 }
 
 .sidenav-list {
@@ -40,7 +44,8 @@
 }
 
 .sidenav-list-item:hover {
-  background-color: rgba(141, 141, 141, 0.739);
+  background-color: rgb(147, 156, 216);
+  padding-left: 1rem;
 }
 
 .sidenav-list-item a {
@@ -52,6 +57,21 @@
 
 .sidenav-list-item p {
   margin-left: 10px;
-  font-size: 25px;  
-  
+  font-size: 25px;
+}
+/* sidebar.css */
+.sidenav-label {
+  opacity: 0;
+  max-width: 0; /* Start with max-width at 0 */
+  overflow: hidden; /* Prevent content from overflowing */
+  display: inline-block; /* Allows max-width animation */
+  white-space: nowrap; /* Keep the label in a single line */
+  transform: translateX(-20px);
+  transition: opacity 0.5s, max-width 0.5s ease, transform 0.5s ease;
+}
+
+.sidenav-list-item.open .sidenav-label {
+  opacity: 1;
+  max-width: 200px; /* Adjust based on the expected width of the label */
+  transform: translateX(0);
 }

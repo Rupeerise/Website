@@ -5,6 +5,8 @@ import "./tagfullinfo.css";
 import PastPaymentCard from "../passbook/pastpaymentcard";
 import ProgressBar from "../../boilerplates/progressbar";
 import { useNavigate } from "react-router-dom";
+import TagGraph from "../graph/taggraph";
+import LabelOutlinedIcon from "@mui/icons-material/LabelOutlined";
 
 export default function Tagfullinfo() {
   const { id } = useParams();
@@ -40,7 +42,10 @@ export default function Tagfullinfo() {
 
   return (
     <div className="tag-full">
-      <h1 className="tag-full-name">{tag?.name}</h1>
+      <div className="tag-full-title">
+        <LabelOutlinedIcon id="tag-full-label-icon" />
+        <h1 className="tag-full-name">{tag?.name}</h1>
+      </div>
 
       <div className="tag-full-bar-top">
         <h2>Current: {current}</h2>
@@ -53,7 +58,9 @@ export default function Tagfullinfo() {
       <div className="tag-full-edit" onClick={onClickEdit}>
         Edit
       </div>
-      <div>
+      <TagGraph id={id} />
+      <div className="tag-full-payments">
+        <h2 className="tag-full-payments-title">Past Payments</h2>
         {tagPayments.map((payment) => (
           <PastPaymentCard key={payment._id} payment={payment} />
         ))}

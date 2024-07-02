@@ -1,11 +1,13 @@
-.container{
+.container {
   display: flex;
   flex-direction: column;
   color: white;
   background-color: rgb(94, 94, 201);
 }
-
-.row{
+.footer {
+  flex: 1;
+}
+.row {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,11 +15,11 @@
   gap: 80px;
 }
 
-.col{
+.col {
   padding: 20px;
   flex: 1;
 }
 
-.list{
+.list {
   list-style-type: none;
 }
