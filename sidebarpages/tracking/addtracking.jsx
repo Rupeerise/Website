@@ -1,12 +1,17 @@
 import * as React from "react";
 import "./addtracking.css";
+import { addTag } from "../../store/tagArraySlice";
+import { useDispatch } from "react-redux";
 
 export default function AddTracking({ closePopup }) {
   const [form, setForm] = React.useState({
     name: "",
     target: "",
     tagType: "income",
+    timePeriod: 0,
   });
+
+  const dispatch = useDispatch();
 
   const handleChange = (event) => {
     setForm({
@@ -17,24 +22,7 @@ export default function AddTracking({ closePopup }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    let backendUrl = import.meta.env.VITE_TEST_BACKEND;
-    // Make a POST request to /addtracking
-    const response = await fetch(backendUrl + "/tag", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-      body: JSON.stringify(form),
-    });
-
-    if (response.ok) {
-      console.log("Form submitted successfully");
-      location.reload(true);
-    } else {
-      console.error("Error submitting form");
-    }
-
+    dispatch(addTag(form));
     setForm({ name: "", target: "" });
   };
 
@@ -61,16 +49,13 @@ export default function AddTracking({ closePopup }) {
         <select
           name="tagType"
           className="add-tracking-input-box"
-          value={form.tagType
-
-            
-          }
+          value={form.tagType}
           onChange={handleChange}
         >
           <option value="income">income</option>
           <option value="variable expense">variable expense</option>
           <option value="emi">emi</option>
-          <option value="loan repayment">loan repayment</option>
+          <option value="loan">loan</option>
           <option value="investment">investment</option>
         </select>
         <div className="tracking-button-container">

@@ -21,3 +21,8 @@
 .tracking-progressbar {
   margin-top: 1.5rem;
 }
+.trackingobjectbottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

@@ -2,31 +2,30 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTagArray } from "../../store/tagArraySlice";
 import ProgressBar from "../../boilerplates/progressbar";
+import { useNavigate } from "react-router-dom";
 
 function TrackingObject({ trackingObject }) {
-  const { _id, name, current, target, type } = trackingObject;
+  const targets = trackingObject.targets;
 
-  const tagArray = useSelector((state) => state.tagArray);
-  console.log(tagArray);
+  const month = new Date().getMonth();
+  const year = new Date().getFullYear();
 
+  const currenttarget = targets.find(
+    (target) => target.month === month && target.year === year
+  );
+  const navigate = useNavigate();
+  const onClick = () => {
+    navigate("/tag/" + trackingObject._id);
+  };
   return (
-    <div className="trackingobject" key={_id}>
+    <div className="trackingobject" key={trackingObject._id} onClick={onClick}>
       <div className="trackingobjecttop">
-        <div>
-          {name} : {current}
-        </div>
-        <div>Target : {target}</div>
+        <div>{trackingObject.name}</div>
+        <div>This month : 3000</div>
       </div>
-      <div>
-        <div>
-          Type: {type}
-        </div>
-      </div>
-      <div className="tracking-progressbar">
-        <ProgressBar value={(current * 100) / target} />
-      </div>
-      <div>
-        <button onClick={() => window.location.href = "/tag/" + _id}>Edit</button>
+      <div className="trackingobjectbottom">
+        <div>Type: {trackingObject.tagType}</div>
+        <div>Target: {currenttarget ? currenttarget.amount : 0}</div>
       </div>
     </div>
   );

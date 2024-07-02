@@ -7,7 +7,7 @@ import { useState } from "react";
 import Profile from "./profile";
 import DensityMediumIcon from "@mui/icons-material/DensityMedium";
 
-export default function Navbar({ username, setIsOpen, isOpen }) {
+export default function Navbar({ setIsOpen, isOpen }) {
   const [results, setResults] = useState([]);
   return (
     <span className="navbar">
@@ -15,10 +15,7 @@ export default function Navbar({ username, setIsOpen, isOpen }) {
         <DensityMediumIcon onClick={() => setIsOpen(!isOpen)} />
       </div>
 
-      <Personal />
-      <Bussiness />
-      <SearchBar setResults={setResults} />
-      <Profile username={username} />
+      <Profile />
     </span>
   );
 }

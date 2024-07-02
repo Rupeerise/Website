@@ -2,10 +2,11 @@ import React from "react";
 import TrackingObject from "./Trackingobject";
 import AddTrackingButton from "./addtrackingbutton";
 import "./tracking.css";
+import { useSelector } from "react-redux";
 
-function TrackingBody({ tagArray }) {
-  console.log(tagArray);
-  return (  
+function TrackingBody() {
+  const tagArray = useSelector((state) => state.tagArray.value);
+  return (
     <div className="trackingbody">
       <AddTrackingButton />
       {tagArray && tagArray.length > 0 ? (
