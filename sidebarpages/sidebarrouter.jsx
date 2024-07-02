@@ -33,7 +33,9 @@ function SidebarRouter() {
       <Boilerplate setIsOpen={setIsOpen} isOpen={isOpen} />
       <div className="page-container">
         <Sidebar isOpen={isOpen} />
-        {location.pathname === "/payment" && <PassbookBody paymentArray={[]} />}
+        {location.pathname === "/payments" && (
+          <PassbookBody paymentArray={[]} />
+        )}
         {location.pathname === "/tag" && <TrackingBody />}
         {location.pathname === "/" && <GraphBody tagArray={[]} />}
         {location.pathname === "/home" && <GraphBody />}

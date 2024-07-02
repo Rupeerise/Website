@@ -38,7 +38,7 @@ const deletePayment = createAsyncThunk("paymentArray/delete", async (id) => {
 const addPayment = createAsyncThunk("paymentArray/add", async (payment) => {
   let backendUrl = import.meta.env.VITE_TEST_BACKEND;
   let response = await fetch(backendUrl + "/payment", {
-    method: "POST", 
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
@@ -50,6 +50,7 @@ const addPayment = createAsyncThunk("paymentArray/add", async (payment) => {
     return jsonResponse;
   } else {
     console.log("HTTP-Error: " + response.status);
+    console.log("message: " + response.message);
     return false;
   }
 });

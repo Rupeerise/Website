@@ -11,6 +11,10 @@ export default function Tagfullinfo() {
   return (
     <div className="tag-full">
       <h1 className="tag-full-name">{tag?.name}</h1>
+      <div>
+        <h2>Tag Type: {tag?.tagType}</h2>
+        <h2>Targets:</h2>
+      </div>
     </div>
   );
 }

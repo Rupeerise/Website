@@ -17,6 +17,7 @@
     "@mui/styled-engine-sc": "^6.0.0-alpha.12",
     "@reduxjs/toolkit": "^2.2.5",
     "@vercel/speed-insights": "^1.0.9",
+    "braces": "^3.0.3",
     "chart.js": "^4.4.1",
     "dotenv": "^16.4.0",
     "nodemon": "^3.1.0",

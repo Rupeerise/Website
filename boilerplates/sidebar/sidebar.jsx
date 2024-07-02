@@ -11,34 +11,21 @@ import { Link } from "react-router-dom";
 
 export default function Sidebar({ isOpen }) {
   const icons = [
-    { key: "1", 
-      Icon: AnalyticsIcon, 
-      label: "Graphs", 
-      path: "/" 
-    },
+    { key: "1", Icon: AnalyticsIcon, label: "Graphs", path: "/" },
     {
       key: "2",
       Icon: ImportContactsIcon,
-      label: "Passbook",
-      path: "/passbook",
+      label: "Payments",
+      path: "/payments",
     },
-    { key: "3", 
-      Icon: TableChartIcon, 
-      label: "Tracking", 
-      path: "/tag" },
+    { key: "3", Icon: TableChartIcon, label: "Tracking", path: "/tag" },
     {
       key: "4",
       Icon: CalculateIcon,
       label: "Calculators",
     },
-    { key: "5", 
-      Icon: AccountBalanceWalletIcon, 
-      label: "Budget" 
-    },
-    { key: "6", 
-      Icon: CalendarMonthIcon, 
-      label: "Calendar" 
-    },
+    { key: "5", Icon: AccountBalanceWalletIcon, label: "Budget" },
+    { key: "6", Icon: CalendarMonthIcon, label: "Calendar" },
   ];
 
   return (
