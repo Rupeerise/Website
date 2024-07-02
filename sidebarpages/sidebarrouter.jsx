@@ -14,6 +14,7 @@ import { getTagArray } from "../store/tagArraySlice";
 import { getCurrency } from "../store/currencySlice";
 import Tagfullinfo from "./tracking/tagfullinfo";
 import { useParams } from "react-router-dom";
+import EditTag from "./tracking/edittag";
 
 function SidebarRouter() {
   const dispatch = useDispatch();
@@ -40,6 +41,7 @@ function SidebarRouter() {
         {location.pathname === "/" && <GraphBody tagArray={[]} />}
         {location.pathname === "/home" && <GraphBody />}
         {location.pathname === "/tag/" + id && <Tagfullinfo />}
+        {location.pathname === "/tag/edit/" + id && <EditTag />}
       </div>
       <div className="footer">
         <Footer />

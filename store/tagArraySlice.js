@@ -70,7 +70,7 @@ const addTarget = createAsyncThunk("tagArray/addTarget", async (form) => {
     return jsonResponse;
   } else {
     console.log("HTTP-Error: " + response.status);
-    console.log("message: " + response.message);
+    console.log(response);
     return false;
   }
 });
@@ -90,7 +90,7 @@ const updateTarget = createAsyncThunk("tagArray/updateTarget", async (form) => {
     return jsonResponse;
   } else {
     console.log("HTTP-Error: " + response.status);
-    console.log("message: " + response.message);
+    console.log(response);
     return false;
   }
 });

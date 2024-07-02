@@ -17,7 +17,9 @@ const PastPaymentCard = ({ payment }) => {
     <div className="past-payment">
       <div className="past-payment-left">
         <div className="past-payment-details">
-          <p className="past-payment-amount">Credited: {amount}</p>
+          <p className="past-payment-amount">
+            {payment.paymentType}: {amount}
+          </p>
           <p className="past-payment-date">on {date}</p>
         </div>
         <div className="past-payment-tag">

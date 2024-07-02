@@ -65,6 +65,14 @@ export default function App() {
               </Provider>
             }
           />
+          <Route
+            path="/tag/edit/:id"
+            element={
+              <Provider store={store}>
+                <SidebarRouter />
+              </Provider>
+            }
+          />
           <Route path="*" element={<h1>Error 404 Not Found</h1>} />
         </Routes>
       </BrowserRouter>
