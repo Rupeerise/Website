@@ -2,17 +2,28 @@ import * as React from "react";
 import "./mainbody.css";
 import Mainchart from "./mainchart";
 import Pichart from "./pichart";
-import Maintext from "./maintext";
 import { useSelector } from "react-redux";
 
 export default function GraphBody() {
-  const user = useSelector((state) => state.user);
-  let trackingArray = [];
-  if (user && user.trackingArray) {
-    trackingArray = user.trackingArray;
+  const tagArray = useSelector((state) => state.tagArray.value);
+  const trackingArray = [];
+  const names = tagArray.map((item) => item.name);
+
+  const paymentArray = useSelector((state) => state.paymentArray.value);
+
+  for (let i = 0; i < tagArray.length; i++) {
+    let current = 0;
+    let target = 0;
+    for (let j = 0; j < paymentArray.length; j++) {
+      if (paymentArray[j].tagid._id == tagArray[i]._id) {
+        current += paymentArray[j].amount;
+      }
+    }
+    trackingArray.push(current);
   }
-  const names = trackingArray.map((item) => item.name);
-  const current = trackingArray.map((item) => item.current);
+
+  console.log(trackingArray);
+  const current = trackingArray;
   const target = trackingArray.map((item) => item.target);
 
   const [displayInfo, setDisplayInfo] = React.useState("current"); // default to 'current'
@@ -64,7 +75,6 @@ export default function GraphBody() {
           </button>
         </div>
       </div>
-      <Maintext />
     </div>
   );
 }
