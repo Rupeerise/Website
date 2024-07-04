@@ -3,6 +3,7 @@ import "./mainbody.css";
 import Mainchart from "./mainchart";
 import Pichart from "./pichart";
 import { useSelector } from "react-redux";
+import GraphDates from "./graphdates";
 
 export default function GraphBody() {
   const tagArray = useSelector((state) => state.tagArray.value);
@@ -22,7 +23,7 @@ export default function GraphBody() {
     trackingArray.push(current);
   }
 
-  console.log(trackingArray);
+  // console.log(trackingArray);
   const current = trackingArray;
   const target = trackingArray.map((item) => item.target);
 
@@ -38,6 +39,7 @@ export default function GraphBody() {
 
   return (
     <div className="mainbody">
+      <GraphDates />
       <div className="charts">
         <div className="barchart">
           <Mainchart labels={names} current={current} target={target} />

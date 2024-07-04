@@ -3,6 +3,7 @@ import { paymentArraySlice } from "./paymentArraySlice";
 import { tagArraySlice } from "./tagArraySlice";
 import { usernameSlice } from "./usernameSlice";
 import { currencySlice } from "./currencySlice";
+import { graphSlice } from "./graphSlice";
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     tagArray: tagArraySlice.reducer,
     username: usernameSlice.reducer,
     currency: currencySlice.reducer,
+    graph: graphSlice.reducer,
   },
 });
 
