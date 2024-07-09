@@ -39,6 +39,9 @@ export default function Tagfullinfo() {
   const onClickEdit = () => {
     navigate(`/tag/edit/${id}`);
   };
+  const onClickEditTarget = () => {
+    navigate(`/tag/edittarget/${id}`);
+  };
 
   return (
     <div className="tag-full">
@@ -57,6 +60,9 @@ export default function Tagfullinfo() {
       </div>
       <div className="tag-full-edit" onClick={onClickEdit}>
         Edit
+      </div>
+      <div className="tag-full-edit" onClick={onClickEditTarget}>
+        Edit Targets
       </div>
       <TagGraph id={id} />
       <div className="tag-full-payments">

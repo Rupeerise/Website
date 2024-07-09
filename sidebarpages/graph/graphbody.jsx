@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import "./mainbody.css";
 import Mainchart from "./mainchart";
 import Pichart from "./pichart";
@@ -7,25 +7,83 @@ import GraphDates from "./graphdates";
 
 export default function GraphBody() {
   const tagArray = useSelector((state) => state.tagArray.value);
-  const trackingArray = [];
+  const startdate = useSelector((state) => state.graph.startdate);
+  const enddate = useSelector((state) => state.graph.enddate);
+  const paymentType = useSelector((state) => state.graph.paymentType);
+  // console.log(paymentType);
+
+  const current = [];
   const names = tagArray.map((item) => item.name);
 
-  const paymentArray = useSelector((state) => state.paymentArray.value);
+  let paymentArray = useSelector((state) => state.paymentArray.value);
+  paymentArray = paymentArray.filter((item) => {
+    return new Date(item.date) >= new Date(startdate) &&
+      new Date(item.date) <= new Date(enddate)
+      ? item
+      : null;
+  });
 
   for (let i = 0; i < tagArray.length; i++) {
-    let current = 0;
-    let target = 0;
+    let currentnow = 0;
     for (let j = 0; j < paymentArray.length; j++) {
-      if (paymentArray[j].tagid._id == tagArray[i]._id) {
-        current += paymentArray[j].amount;
+      if (
+        paymentArray[j].tagid._id == tagArray[i]._id &&
+        paymentArray[j].paymentType == paymentType
+      ) {
+        currentnow += paymentArray[j].amount;
       }
     }
-    trackingArray.push(current);
+    current.push(currentnow);
   }
 
   // console.log(trackingArray);
-  const current = trackingArray;
-  const target = trackingArray.map((item) => item.target);
+  const thismonth = new Date(startdate).getMonth();
+  const thisyear = new Date(startdate).getFullYear();
+  const target = [];
+  const ifstartandendaremonth = () => {
+    const teststartdate = new Date(startdate);
+    const testenddate = new Date(enddate);
+    if (teststartdate.getDate() != 1) {
+      return false;
+    }
+    if (
+      testenddate.getDate() !=
+      new Date(
+        testenddate.getFullYear(),
+        testenddate.getMonth() + 1,
+        0
+      ).getDate()
+    ) {
+      return false;
+    }
+    if (teststartdate.getMonth() != testenddate.getMonth()) {
+      return false;
+    }
+    return true;
+  };
+
+  useEffect(() => {
+    const ifmonth = ifstartandendaremonth();
+    if (ifmonth) {
+      for (let i = 0; i < tagArray?.length; i++) {
+        let targetnow = 0;
+        for (let j = 0; j < tagArray[i].targets?.length; j++) {
+          if (
+            tagArray[i].targets[j].month == thismonth &&
+            tagArray[i].targets[j].year == thisyear
+          ) {
+            targetnow = tagArray[i].targets[j].amount;
+          }
+        }
+        target.push(targetnow);
+      }
+    } else {
+      for (let i = 0; i < tagArray?.length; i++) {
+        target.push(0);
+      }
+    }
+  }),
+    [startdate, tagArray];
 
   const [displayInfo, setDisplayInfo] = React.useState("current"); // default to 'current'
 

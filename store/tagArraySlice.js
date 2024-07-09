@@ -95,21 +95,31 @@ const updateTarget = createAsyncThunk("tagArray/updateTarget", async (form) => {
   }
 });
 
+const updateTag = createAsyncThunk("tagArray/updateTag", async (tag) => {
+  let backendUrl = import.meta.env.VITE_TEST_BACKEND;
+  let response = await fetch(backendUrl + "/tag/" + tag._id, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+    body: JSON.stringify(tag),
+  });
+  if (response.ok) {
+    let jsonResponse = await response.json();
+    return jsonResponse;
+  } else {
+    console.log("HTTP-Error: " + response.status);
+    return false;
+  }
+});
+
 export const tagArraySlice = createSlice({
   name: "tagArray",
   initialState: {
     value: [],
   },
-  reducers: {
-    updateTagCurrent: (state, action) => {
-      const tagToUpdate = state.value.find(
-        (tag) => tag._id === action.payload.tag._id
-      );
-      if (tagToUpdate) {
-        tagToUpdate.current += action.payload.amount;
-      }
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(getTagArray.fulfilled, (state, action) => {
@@ -142,10 +152,17 @@ export const tagArraySlice = createSlice({
               action.payload.updateTarget;
           }
         }
+      })
+      .addCase(updateTag.fulfilled, (state, action) => {
+        const index = state.value.findIndex(
+          (tag) => tag._id === action.payload.updateTag._id
+        );
+        if (index !== -1) {
+          state.value[index] = action.payload.updateTag;
+        }
       });
   },
 });
 
 export default tagArraySlice.reducer;
-export const { updateTagCurrent } = tagArraySlice.actions;
-export { getTagArray, deleteTag, addTag, addTarget, updateTarget };
+export { getTagArray, deleteTag, addTag, addTarget, updateTarget, updateTag };

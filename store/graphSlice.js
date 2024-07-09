@@ -3,43 +3,35 @@ import { createSlice } from "@reduxjs/toolkit";
 // External function to set month start and end
 function getMonthStartAndEnd() {
   const now = new Date();
-  const startOfMonth = new Date(
-    now.getFullYear(),
-    now.getMonth(),
-    1
-  ).toDateString();
-  const endOfMonth = new Date(
-    now.getFullYear(),
-    now.getMonth() + 1,
-    0
-  ).toDateString();
+  const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1)
+    .toLocaleDateString()
+    .split("T")[0];
+  const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0)
+    .toLocaleDateString()
+    .split("T")[0];
   return { startOfMonth, endOfMonth };
 }
 
 // External function to set week start and end
 function getWeekStartAndEnd() {
   const now = new Date();
-  const startOfWeek = new Date(
-    now.setDate(now.getDate() - now.getDay())
-  ).toISOString();
-  const endOfWeek = new Date(
-    now.setDate(now.getDate() - now.getDay() + 6)
-  ).toISOString();
+  const startOfWeek = new Date(now.setDate(now.getDate() - now.getDay()))
+    .toISOString()
+    .split("T")[0];
+  const endOfWeek = new Date(now.setDate(now.getDate() - now.getDay() + 6))
+    .toISOString()
+    .split("T")[0];
   return { startOfWeek, endOfWeek };
 }
 
 function getlastMonthStartAndEnd() {
   const now = new Date();
-  const startOfMonth = new Date(
-    now.getFullYear(),
-    now.getMonth() - 1,
-    1
-  ).toISOString();
-  const endOfMonth = new Date(
-    now.getFullYear(),
-    now.getMonth(),
-    0
-  ).toISOString();
+  const startOfMonth = new Date(now.getFullYear(), now.getMonth() - 1, 1).split(
+    "T"
+  )[0];
+  const endOfMonth = new Date(now.getFullYear(), now.getMonth(), 0).split(
+    "T"
+  )[0];
   return { startOfMonth, endOfMonth };
 }
 
@@ -48,6 +40,7 @@ export const graphSlice = createSlice({
   initialState: {
     startdate: new Date().toISOString(),
     enddate: new Date().toISOString(),
+    paymentType: "credit",
   },
   reducers: {
     setStartDate: (state, action) => {
@@ -71,6 +64,9 @@ export const graphSlice = createSlice({
       state.startdate = startOfMonth;
       state.enddate = endOfMonth;
     },
+    changePaymentType: (state, action) => {
+      state.paymentType = action.payload;
+    },
   },
 });
 
@@ -79,6 +75,7 @@ export const {
   setEndDate,
   setMonthStartAndEnd,
   setWeekStartAndEnd,
+  changePaymentType,
   setLastMonthStartAndEnd,
 } = graphSlice.actions;
 export default graphSlice.reducer;
