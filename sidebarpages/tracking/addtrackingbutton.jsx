@@ -14,9 +14,10 @@ function AddTrackingButton() {
   };
 
   return (
-    <div>
+    <div className="add-tracking-button-container">
+      <div className="add-tracking-title">Tags</div>
       <div onClick={handleClick} className="add-tracking-button">
-        Add Tracking
+        Add Tag
       </div>
       {showPopup && (
         <div className={`tracking-popup ${showPopup ? "" : "hide"}`}>
