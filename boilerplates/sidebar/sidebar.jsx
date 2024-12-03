@@ -20,12 +20,6 @@ export default function Sidebar() {
       path: "/payments",
     },
     { key: "3", Icon: TableChartIcon, label: "Tracking", path: "/tag" },
-    {
-      key: "4",
-      Icon: CalculateIcon,
-      label: "Calculators",
-    },
-    { key: "5", Icon: AccountBalanceWalletIcon, label: "Budget" },
     { key: "6", Icon: CalendarMonthIcon, label: "Calendar" },
   ];
   const handleMouseEnter = () => setIsOpen(true);

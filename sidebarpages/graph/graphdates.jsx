@@ -34,7 +34,7 @@ export default function GraphDates() {
     dispatch(setMonthStartAndEnd());
   }, []);
 
-  const paymentenums = ["credit", "debit"];
+  const paymentenums = ["paid", "received"];
 
   const [filter, setFilter] = useState("Current Month");
   const filterchange = (e) => {

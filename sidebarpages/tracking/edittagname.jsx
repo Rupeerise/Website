@@ -1,28 +1,31 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { updateTag } from "../../store/tagArraySlice";
-import { useNavigate } from "react-router-dom";
+import "./edittagname.css";
+import { HexColorPicker } from "react-colorful";
 
-export default function EditTagName() {
+export default function EditTagName({ closeEdit }) {
   const { id } = useParams();
-  //   console.log(id);
   const tagArray = useSelector((state) => state.tagArray.value);
   const tag = tagArray.find((tag) => tag._id === id);
-  console.log(tag);
+
   const [form, setForm] = useState({
     name: "",
     tagType: "",
-    timeperiod: "",
+    color: "",
     _id: "",
   });
+
+  const formRef = useRef(null);
+
   useEffect(() => {
     if (tag) {
       setForm({
-        name: tag.name || "", // Provide a default empty string
-        tagType: tag.tagType || "", // Provide a default empty string
-        timeperiod: tag.timeperiod || "", // Provide a default empty string
-        _id: tag._id || "", // Assuming you want to handle _id similarly
+        name: tag.name || "",
+        tagType: tag.tagType || "",
+        color: tag.color || "",
+        _id: tag._id || "",
       });
     }
   }, [tag]);
@@ -33,55 +36,74 @@ export default function EditTagName() {
       [e.target.name]: e.target.value,
     }));
   };
+
+  const handleColorChange = (color) => {
+    setForm((prevForm) => ({
+      ...prevForm,
+      color: color,
+    }));
+  };
+
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(updateTag(form));
-    navigate(`/tag/${id}`);
+    closeEdit();
   };
-  const dispatch = useDispatch();
-  const tagTypeEnum = [
-    "income",
-    "variable expense",
-    "emi",
-    "loan",
-    "investment",
-  ];
+
+  const handleClickOutside = (event) => {
+    if (formRef.current && !formRef.current.contains(event.target)) {
+      closeEdit();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
-    <>
-      <div>Edit Tag Name</div>
+    <div className="edit-tagname-container" ref={formRef}>
       <form onSubmit={handleSubmit}>
-        <label>
-          Name:
-          <input
-            type="text"
-            name="name"
-            value={form.name}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Tag Type:
-          <select name="tagType" value={form.tagType} onChange={handleChange}>
-            {tagTypeEnum.map((tagType) => (
-              <option key={tagType} value={tagType}>
-                {tagType}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label>
-          Time Period:
-          <input
-            type="text"
-            name="timeperiod"
-            value={form.timeperiod}
-            onChange={handleChange}
-          />
-        </label>
-        <button type="submit">Submit</button>
+        <div className="edit-tagname-header">Edit Tag Name</div>
+        <HexColorPicker
+          color={form.color}
+          onChange={handleColorChange}
+          className="edit-tagname-color-input"
+        />
+        <input
+          type="text"
+          name="name"
+          className="edit-tagname-input-box"
+          placeholder="Name"
+          value={form.name}
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          name="tagType"
+          className="edit-tagname-input-box"
+          placeholder="Tag Type"
+          value={form.tagType}
+          readOnly
+        />
+        <div className="tagname-button-container">
+          <button type="submit" className="edit-tagname-button-form">
+            Submit
+          </button>
+          <button
+            type="button"
+            onClick={closeEdit}
+            className="close-tagname-button"
+          >
+            Close
+          </button>
+        </div>
       </form>
-    </>
+    </div>
   );
 }

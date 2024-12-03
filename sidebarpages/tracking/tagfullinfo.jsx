@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./tagfullinfo.css";
@@ -7,6 +7,8 @@ import ProgressBar from "../../boilerplates/progressbar";
 import { useNavigate } from "react-router-dom";
 import TagGraph from "../graph/taggraph";
 import LabelOutlinedIcon from "@mui/icons-material/LabelOutlined";
+import EditTagName from "./edittagname";
+import EditTarget from "./edittarget";
 
 export default function Tagfullinfo() {
   const { id } = useParams();
@@ -36,11 +38,23 @@ export default function Tagfullinfo() {
     }
   }, 0);
   const navigate = useNavigate();
+  const [editing, setEditing] = useState(false);
+  const [editingTarget, setEditingTarget] = useState(false);
   const onClickEdit = () => {
-    navigate(`/tag/edit/${id}`);
+    setEditing(true);
+    // navigate(`/tag/edit/${id}`);
+  };
+  const closeEdit = () => {
+    setEditing(false);
+    // console.log("closeEdit");
   };
   const onClickEditTarget = () => {
-    navigate(`/tag/edittarget/${id}`);
+    setEditingTarget(true);
+    // navigate(`/tag/edittarget/${id}`);
+  };
+  const closeEditTarget = () => {
+    setEditingTarget(false);
+    // console.log("closeEditTarget");
   };
 
   return (
@@ -61,9 +75,11 @@ export default function Tagfullinfo() {
       <div className="tag-full-edit" onClick={onClickEdit}>
         Edit
       </div>
+      {editing && <EditTagName closeEdit={closeEdit} />}
       <div className="tag-full-edit" onClick={onClickEditTarget}>
         Edit Targets
       </div>
+      {editingTarget && <EditTarget closeEditTarget={closeEditTarget} />}
       <TagGraph id={id} />
       <div className="tag-full-payments">
         <h2 className="tag-full-payments-title">Past Payments</h2>

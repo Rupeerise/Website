@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState, useRef } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { months } from "../../utilities/months";
-import { useSelector } from "react-redux";
-import "./tagfullinfo.css";
+import { useSelector, useDispatch } from "react-redux";
+import "./edittarget.css";
 import { years } from "../../utilities/years";
 import { addTarget, updateTarget } from "../../store/tagArraySlice";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 
-export default function EditTag() {
+export default function EditTarget({ closeEditTarget }) {
   const { id } = useParams();
   const tagArray = useSelector((state) => state.tagArray.value);
   const tag = tagArray.find((tag) => tag._id === id);
@@ -24,7 +22,7 @@ export default function EditTag() {
     )?.amount ?? 0;
 
   const _id = targets.find(
-    (target) => target.month === thismonth && target.thisyear
+    (target) => target.month === thismonth && target.year === thisyear
   )?._id;
 
   const [form, setForm] = useState({
@@ -34,6 +32,9 @@ export default function EditTag() {
     _id: _id,
     tagid: id,
   });
+
+  const formRef = useRef(null);
+
   const getamount = () => {
     const month = form.month;
     const year = form.year;
@@ -49,6 +50,7 @@ export default function EditTag() {
       _id: _id,
     }));
   };
+
   useEffect(() => {
     getamount();
   }, [form.month, form.year]);
@@ -62,6 +64,7 @@ export default function EditTag() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (form._id) {
@@ -69,25 +72,44 @@ export default function EditTag() {
     } else {
       dispatch(addTarget(form));
     }
-    navigate(`/tag/${id}`);
+    closeEditTarget();
   };
 
+  const handleClickOutside = (event) => {
+    if (formRef.current && !formRef.current.contains(event.target)) {
+      closeEditTarget();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div>
-      <h1>Edit Tag</h1>
+    <div className="edit-target-container" ref={formRef}>
       <form onSubmit={handleSubmit}>
+        <div className="edit-target-header">Edit Target</div>
         <label>
           Amount:
           <input
             type="number"
             name="amount"
+            className="edit-target-input-box"
             value={form.amount}
             onChange={handleChange}
           />
         </label>
         <label>
           Month:
-          <select name="month" value={form.month} onChange={handleChange}>
+          <select
+            name="month"
+            className="edit-target-input-box"
+            value={form.month}
+            onChange={handleChange}
+          >
             {months.map((month, index) => (
               <option key={month.value} value={month.value}>
                 {month.month}
@@ -97,7 +119,12 @@ export default function EditTag() {
         </label>
         <label>
           Year:
-          <select name="year" value={form.year} onChange={handleChange}>
+          <select
+            name="year"
+            className="edit-target-input-box"
+            value={form.year}
+            onChange={handleChange}
+          >
             {years.map((year, index) => (
               <option key={index} value={year}>
                 {year}
@@ -105,7 +132,18 @@ export default function EditTag() {
             ))}
           </select>
         </label>
-        <button type="submit">Submit</button>
+        <div className="target-button-container">
+          <button type="submit" className="edit-target-button-form">
+            Submit
+          </button>
+          <button
+            type="button"
+            onClick={closeEditTarget}
+            className="close-target-button"
+          >
+            Close
+          </button>
+        </div>
       </form>
     </div>
   );

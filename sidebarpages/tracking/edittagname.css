@@ -1,9 +1,9 @@
-.add-tracking-container {
+.edit-tagname-container {
   position: fixed;
   top: 50%;
   left: 50%;
   margin-top: -16rem;
-  margin-left: -16.5rem;
+  margin-left: -19rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,7 +15,7 @@
   padding: 3rem;
 }
 
-.add-tracking-button-form {
+.edit-tagname-button-form {
   font-size: 1.2rem;
   margin-top: 1rem;
   padding: 0.5rem;
@@ -23,15 +23,15 @@
   border-radius: 0.5rem;
   background: rgb(255, 255, 255);
 }
-.add-tracking-button-form:hover {
+.edit-tagname-button-form:hover {
   background-color: #00ff00;
   color: #000000;
   cursor: pointer;
   border: 1px solid #000000;
 }
 
-.add-tracking-input-box {
-  font-size: 1.2rem; /* Adjust as needed */
+.edit-tagname-input-box {
+  font-size: 1.2rem;
   width: 100%;
   border-radius: 0.5rem;
   padding: 0.5rem;
@@ -40,7 +40,7 @@
   margin-top: 0.5rem;
 }
 
-.close-tracking-button {
+.close-tagname-button {
   font-size: 1.1rem;
   margin-top: 1rem;
   padding: 0.5rem;
@@ -48,25 +48,25 @@
   border-radius: 0.5rem;
   background: rgb(255, 255, 255);
 }
-.close-tracking-button:hover {
+.close-tagname-button:hover {
   background-color: #ff0000;
   color: #ffffff;
   cursor: pointer;
   border: 1px solid #000000;
 }
 
-.tracking-button-container {
+.tagname-button-container {
   display: flex;
   justify-content: space-between;
 }
 
-.add-tracking-header {
+.edit-tagname-header {
   font-size: 1.5rem;
   text-align: center;
   padding-bottom: 1rem;
 }
 
-.add-tracking-color-input {
+.edit-tagname-color-input {
   width: 100%;
   margin: auto;
 }

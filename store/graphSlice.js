@@ -40,7 +40,7 @@ export const graphSlice = createSlice({
   initialState: {
     startdate: new Date().toISOString(),
     enddate: new Date().toISOString(),
-    paymentType: "credit",
+    paymentType: "paid",
   },
   reducers: {
     setStartDate: (state, action) => {

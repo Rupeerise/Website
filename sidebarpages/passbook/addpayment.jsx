@@ -11,11 +11,13 @@ export default function AddPayment({ closePopup }) {
     _id: tagArray[0]._id,
     amount: "",
     date: currentDate,
-    paymentType: "credit",
+    paymentType: "paid",
     isDone: true,
   });
 
-  const paymentTypeenum = ["credit", "debit"];
+  const formRef = React.useRef(null);
+
+  const paymentTypeenum = ["paid", "received"];
   const handleChange = (event) => {
     setForm({
       ...form,
@@ -31,14 +33,27 @@ export default function AddPayment({ closePopup }) {
     closePopup();
   };
 
+  const handleClickOutside = (event) => {
+    if (formRef.current && !formRef.current.contains(event.target)) {
+      closePopup();
+    }
+  };
+
+  React.useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className="add-payment-container">
+    <div className="add-payment-container" ref={formRef}>
       <form onSubmit={handleSubmit}>
         <div className="add-payment-header">Add new Payment</div>
         <select
           name="_id"
           className="add-payment-input-box"
-          value={form.tagid}
+          value={form._id}
           onChange={handleChange}
         >
           {tagArray.map((tag) => (
