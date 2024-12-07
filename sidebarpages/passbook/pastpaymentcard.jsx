@@ -24,7 +24,9 @@ const PastPaymentCard = ({ payment }) => {
         </div>
         <div className="past-payment-tag">
           <SellIcon className="sell-icon" />
-          <p className="past-payment-tag-name">{payment.tagid.name}</p>
+          <p className="past-payment-tag-name">
+            {payment.tagid?.name || payment.loanid?.name}
+          </p>
         </div>
       </div>
       <div className="past-payment-right">

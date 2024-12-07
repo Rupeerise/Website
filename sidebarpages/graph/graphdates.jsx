@@ -4,7 +4,7 @@ import {
   setStartDate,
   setEndDate,
   setMonthStartAndEnd,
-  changePaymentType,
+  setGraphType,
   setWeekStartAndEnd,
 } from "../../store/graphSlice";
 import "./graphdates.css";
@@ -74,7 +74,7 @@ export default function GraphDates() {
   }, [startdate, enddate]);
 
   return (
-    <>
+    <div className="graphdates_container">
       <div className="graphdates">
         <div>
           <label htmlFor="startdate">Start Date:</label>
@@ -109,7 +109,7 @@ export default function GraphDates() {
             name="paymentType"
             value={paymentType}
             onChange={(e) => {
-              dispatch(changePaymentType(e.target.value));
+              dispatch(setGraphType(e.target.value));
             }}
           >
             {paymentenums.map((item, index) => (
@@ -137,6 +137,6 @@ export default function GraphDates() {
           </select>
         </div>
       </div>
-    </>
+    </div>
   );
 }

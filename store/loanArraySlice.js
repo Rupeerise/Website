@@ -1,4 +1,4 @@
-const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const getLoanArray = createAsyncThunk("loanArray/getLoanArray", async () => {
   let backendUrl = import.meta.env.VITE_TEST_BACKEND;

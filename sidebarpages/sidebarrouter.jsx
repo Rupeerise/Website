@@ -16,6 +16,7 @@ import Tagfullinfo from "./tracking/tagfullinfo";
 import { useParams } from "react-router-dom";
 import EditTarget from "./tracking/edittarget";
 import EditTagName from "./tracking/edittagname";
+import { getLoanArray } from "../store/loanArraySlice";
 
 function SidebarRouter() {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ function SidebarRouter() {
     dispatch(getPaymentArray());
     dispatch(getTagArray());
     dispatch(getCurrency());
+    dispatch(getLoanArray());
   }, [dispatch]);
 
   const { id } = useParams();
@@ -34,11 +36,9 @@ function SidebarRouter() {
       <Boilerplate />
       <div className="page-container">
         <Sidebar />
-        {location.pathname === "/payments" && (
-          <PassbookBody paymentArray={[]} />
-        )}
+        {location.pathname === "/payments" && <PassbookBody />}
         {location.pathname === "/tag" && <TrackingBody />}
-        {location.pathname === "/" && <GraphBody tagArray={[]} />}
+        {location.pathname === "/" && <GraphBody />}
         {location.pathname === "/home" && <GraphBody />}
         {location.pathname === "/tag/" + id && <Tagfullinfo />}
         {location.pathname === "/tag/edit/" + id && <EditTagName />}

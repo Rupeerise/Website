@@ -30,13 +30,8 @@ export default function Tagfullinfo() {
       new Date(payment.date).getMonth() === thismonth &&
       new Date(payment.date).getFullYear() === thisyear
   );
-  const current = tagpaycurr.reduce((acc, payment) => {
-    if (payment.paymentType === "credit") {
-      return acc + payment.amount;
-    } else {
-      return acc - payment.amount;
-    }
-  }, 0);
+  const current = tagpaycurr.reduce((acc, payment) => acc + payment.amount, 0);
+  console.log(current);
   const navigate = useNavigate();
   const [editing, setEditing] = useState(false);
   const [editingTarget, setEditingTarget] = useState(false);
