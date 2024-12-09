@@ -6,86 +6,100 @@ import {
   setMonthStartAndEnd,
   setGraphType,
   setWeekStartAndEnd,
+  setLastMonthStartAndEnd,
+  setYearStartAndEnd,
 } from "../../store/graphSlice";
+import {
+  isCurrentMonth,
+  isCurrentWeek,
+  isLastMonth,
+  isCurrentYear,
+} from "../../utilities/dateutilities";
 import "./graphdates.css";
 
 export default function GraphDates() {
+  const enums = ["Current Month", "Current Week", "Last Month", "Current Year"];
+  const [selectedValue, setSelectedValue] = useState("Current Month");
   let startdate = useSelector((state) => state.graph.startdate);
   let enddate = useSelector((state) => state.graph.enddate);
-  let paymentType = useSelector((state) => state.graph.paymentType);
+  let graphType = useSelector((state) => state.graph.graphType);
 
-  const enums = ["none", "Current Month", "Current Week"];
-
-  const formatDateToInputValue = (dateString) => {
-    const date = new Date(dateString);
-    const year = date.getFullYear();
-    const month = (date.getMonth() + 1).toString().padStart(2, "0"); // Convert month to 2 digits
-    const day = date.getDate().toString().padStart(2, "0"); // Convert day to 2 digits
-    return `${year}-${month}-${day}`;
-  };
-
-  // Format dates for input value
-  startdate = formatDateToInputValue(startdate);
-  enddate = formatDateToInputValue(enddate);
+  startdate = new Date(startdate);
+  enddate = new Date(enddate);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(setMonthStartAndEnd());
-  }, []);
+  }, [dispatch]);
 
-  const paymentenums = ["paid", "received"];
-
-  const [filter, setFilter] = useState("Current Month");
-  const filterchange = (e) => {
-    console.log(e.target.value);
-    if (e.target.value === "Current Month") {
-      dispatch(setMonthStartAndEnd());
-    } else if (e.target.value === "Current Week") {
-      dispatch(setWeekStartAndEnd());
+  const setDates = (value) => {
+    setSelectedValue(value);
+    switch (value) {
+      case "Current Week":
+        dispatch(setWeekStartAndEnd());
+        break;
+      case "Current Month":
+        dispatch(setMonthStartAndEnd());
+        break;
+      case "Last Month":
+        dispatch(setLastMonthStartAndEnd());
+        break;
+      case "Current Year":
+        dispatch(setYearStartAndEnd());
+        break;
+      default:
+        break;
     }
-    setFilter(e.target.value);
   };
 
-  // check if startdate and enddate are month start and end and same for week
   useEffect(() => {
-    const teststartdate = new Date(startdate);
-    const testenddate = new Date(enddate);
-    if (
-      testenddate.getDate() ==
-        new Date(
-          testenddate.getFullYear(),
-          testenddate.getMonth() + 1,
-          0
-        ).getDate() &&
-      teststartdate.getDate() == 1 &&
-      teststartdate.getMonth() == testenddate.getMonth()
-    ) {
-      setFilter("Current Month");
-    } else if (
-      teststartdate.getDate() == testenddate.getDate() - testenddate.getDay() &&
-      testenddate.getDate() ==
-        teststartdate.getDate() + 6 - teststartdate.getDay()
-    ) {
-      setFilter("Current Week");
+    if (isCurrentMonth(startdate, enddate)) {
+      setSelectedValue("Current Month");
+    } else if (isCurrentWeek(startdate, enddate)) {
+      setSelectedValue("Current Week");
+    } else if (isLastMonth(startdate, enddate)) {
+      setSelectedValue("Last Month");
+    } else if (isCurrentYear(startdate, enddate)) {
+      setSelectedValue("Current Year");
     } else {
-      setFilter("none");
+      setSelectedValue("none");
     }
   }, [startdate, enddate]);
 
+  const handleDateChange = (e, isStartDate) => {
+    const date = new Date(e.target.value);
+    if (isStartDate) {
+      dispatch(setStartDate(date.toISOString()));
+    } else {
+      dispatch(setEndDate(date.toISOString()));
+    }
+  };
+
   return (
-    <div className="graphdates_container">
-      <div className="graphdates">
+    <div className="graphdates-container">
+      <div className="horizontal-picker-container">
+        {enums.map((item) => (
+          <button
+            key={item}
+            className={`horizontal-picker-item ${
+              selectedValue === item ? "selected-horizontal-picker-item" : ""
+            }`}
+            onClick={() => setDates(item)}
+          >
+            {item}
+          </button>
+        ))}
+      </div>
+      <div className="date-picker-container">
         <div>
           <label htmlFor="startdate">Start Date:</label>
           <input
             type="date"
             id="startdate"
             name="startdate"
-            value={startdate}
-            onChange={(e) => {
-              dispatch(setStartDate(e.target.value));
-            }}
+            value={startdate.toISOString().split("T")[0]}
+            onChange={(e) => handleDateChange(e, true)}
           />
         </div>
         <div>
@@ -94,48 +108,23 @@ export default function GraphDates() {
             type="date"
             id="enddate"
             name="enddate"
-            value={enddate}
-            onChange={(e) => {
-              dispatch(setEndDate(e.target.value));
-            }}
+            value={enddate.toISOString().split("T")[0]}
+            onChange={(e) => handleDateChange(e, false)}
           />
         </div>
       </div>
-      <div className="graphdates">
-        <div>
-          <label htmlFor="paymentType">Payment Type:</label>
-          <select
-            id="paymentType"
-            name="paymentType"
-            value={paymentType}
-            onChange={(e) => {
-              dispatch(setGraphType(e.target.value));
-            }}
+      <div className="horizontal-picker-container">
+        {["paid", "received"].map((item) => (
+          <button
+            key={item}
+            className={`horizontal-picker-item ${
+              graphType === item ? "selected-horizontal-picker-item" : ""
+            }`}
+            onClick={() => dispatch(setGraphType(item))}
           >
-            {paymentenums.map((item, index) => (
-              <option key={index} value={item}>
-                {item}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <label htmlFor="filter">Filter:</label>
-          <select
-            id="filter"
-            name="filter"
-            value={filter}
-            onChange={(e) => {
-              filterchange(e);
-            }}
-          >
-            {enums.map((item, index) => (
-              <option key={index} value={item}>
-                {item}
-              </option>
-            ))}
-          </select>
-        </div>
+            {item}
+          </button>
+        ))}
       </div>
     </div>
   );

@@ -17,6 +17,7 @@ import { useParams } from "react-router-dom";
 import EditTarget from "./tracking/edittarget";
 import EditTagName from "./tracking/edittagname";
 import { getLoanArray } from "../store/loanArraySlice";
+import Loanbody from "./tracking/loanbody";
 
 function SidebarRouter() {
   const dispatch = useDispatch();
@@ -43,6 +44,7 @@ function SidebarRouter() {
         {location.pathname === "/tag/" + id && <Tagfullinfo />}
         {location.pathname === "/tag/edit/" + id && <EditTagName />}
         {location.pathname === "/tag/edittarget/" + id && <EditTarget />}
+        {location.pathname === "/loan/" + id && <Loanbody />}
       </div>
       <div className="footer">
         <Footer />

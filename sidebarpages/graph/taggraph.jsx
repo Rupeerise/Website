@@ -11,7 +11,7 @@ export default function TagGraph({ id }) {
   const paymentArray = useSelector((state) => state.paymentArray.value);
 
   const filteredPayments = paymentArray.filter(
-    (payment) => payment.tagid._id === id
+    (payment) => payment.tagid?._id === id
   );
 
   let targetdata = targets.map((target) => target.amount);

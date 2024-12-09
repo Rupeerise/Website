@@ -19,14 +19,14 @@ function TrackingBody() {
           />
         ))
       ) : (
-        <div>No tracking data available.</div>
+        <></>
       )}
       {loanArray && loanArray.length > 0 ? (
         loanArray.map((loanObject) => (
           <IndividualLoan key={loanObject._id} loanObject={loanObject} />
         ))
       ) : (
-        <div>No loan data available.</div>
+        <></>
       )}
     </div>
   );

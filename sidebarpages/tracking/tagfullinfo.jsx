@@ -16,7 +16,7 @@ export default function Tagfullinfo() {
   const paymentArray = useSelector((state) => state.paymentArray.value);
   const tag = tagArray.find((tag) => tag._id === id);
   const tagPayments = paymentArray.filter(
-    (payment) => payment.tagid._id === id
+    (payment) => payment.tagid?._id === id
   );
 
   const targets = tag?.targets || [];
@@ -31,7 +31,6 @@ export default function Tagfullinfo() {
       new Date(payment.date).getFullYear() === thisyear
   );
   const current = tagpaycurr.reduce((acc, payment) => acc + payment.amount, 0);
-  console.log(current);
   const navigate = useNavigate();
   const [editing, setEditing] = useState(false);
   const [editingTarget, setEditingTarget] = useState(false);

@@ -73,8 +73,17 @@ export default function App() {
               </Provider>
             }
           />
+
           <Route
             path="/tag/edit/:id"
+            element={
+              <Provider store={store}>
+                <SidebarRouter />
+              </Provider>
+            }
+          />
+          <Route
+            path="/loan/:id"
             element={
               <Provider store={store}>
                 <SidebarRouter />
