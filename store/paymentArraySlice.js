@@ -111,4 +111,4 @@ export const paymentArraySlice = createSlice({
 });
 
 export default paymentArraySlice.reducer;
-export { getPaymentArray, deletePayment, addPayment };
+export { getPaymentArray, deletePayment, addPayment, updatePayment };

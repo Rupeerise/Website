@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import "./pastpaymentcard.css";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import SellIcon from "@mui/icons-material/Sell";
+import EditPayment from "./editpayment";
 
 const PastPaymentCard = ({ payment }) => {
   // Convert the date to a more readable format
@@ -12,6 +13,16 @@ const PastPaymentCard = ({ payment }) => {
     style: "currency",
     currency: "INR",
   }).format(payment.amount);
+
+  const [popup, setPopup] = useState(false);
+
+  const closePopup = () => {
+    setPopup(false);
+  };
+
+  const openPopup = () => {
+    setPopup(true);
+  };
 
   return (
     <div className="past-payment">
@@ -29,11 +40,12 @@ const PastPaymentCard = ({ payment }) => {
           </p>
         </div>
       </div>
-      <div className="past-payment-right">
+      <div className="past-payment-right" onClick={openPopup}>
         <div className="past-payment-morevert">
           <MoreVertIcon />
         </div>
       </div>
+      {popup && <EditPayment closePopup={closePopup} payment={payment} />}
     </div>
   );
 };

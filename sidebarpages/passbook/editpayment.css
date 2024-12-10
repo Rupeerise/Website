@@ -1,4 +1,4 @@
-.add-tracking-container {
+.edit-payment-container {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -6,7 +6,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 38rem;
+  width: 45rem;
   height: auto;
   background-color: rgb(159, 223, 255);
   border: 2px solid black;
@@ -14,13 +14,18 @@
   padding: 3rem;
 }
 
-.add-tracking-header {
+.edit-payment-header {
   font-size: 1.5rem;
   text-align: center;
   padding-bottom: 1rem;
 }
 
-.add-tracking-input-box {
+.edit-payment-label {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+}
+
+.edit-payment-input-box {
   font-size: 1.2rem;
   width: 100%;
   border-radius: 0.5rem;
@@ -30,8 +35,8 @@
   margin-top: 0.5rem;
 }
 
-.add-tracking-button-form {
-  font-size: 1.2rem;
+.edit-payment-button {
+  font-size: 1.5rem;
   margin-top: 1rem;
   padding: 0.5rem;
   border: 1px solid black;
@@ -39,15 +44,15 @@
   background: rgb(255, 255, 255);
 }
 
-.add-tracking-button-form:hover {
+.edit-payment-button:hover {
   background-color: #00ff00;
   color: #000000;
   cursor: pointer;
   border: 1px solid #000000;
 }
 
-.close-tracking-button {
-  font-size: 1.1rem;
+.close-payment-button {
+  font-size: 1.5rem;
   margin-top: 1rem;
   padding: 0.5rem;
   border: 1px solid black;
@@ -55,25 +60,19 @@
   background: rgb(255, 255, 255);
 }
 
-.close-tracking-button:hover {
+.close-payment-button:hover {
   background-color: #ff0000;
   color: #ffffff;
   cursor: pointer;
   border: 1px solid #000000;
 }
 
-.tracking-button-container {
+.payment-button-container {
   display: flex;
   justify-content: space-between;
 }
 
-.color-picker-container {
-  display: flex;
-  justify-content: center;
-  margin: 1rem 0;
-}
-
-.add-tracking-color-input {
-  width: 100%;
-  margin: auto;
+.edit-payment-error {
+  color: red;
+  margin-top: 1rem;
 }

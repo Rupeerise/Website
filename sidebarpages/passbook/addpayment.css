@@ -2,17 +2,37 @@
   position: fixed;
   top: 50%;
   left: 50%;
-  margin-top: -15rem;
-  margin-left: -22.5rem;
+  transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
   align-items: center;
   width: 45rem;
-  height: 30rem;
+  height: auto;
   background-color: rgb(159, 223, 255);
   border: 2px solid black;
   border-radius: 1rem;
   padding: 3rem;
+}
+
+.add-payment-header {
+  font-size: 1.5rem;
+  text-align: center;
+  padding-bottom: 1rem;
+}
+
+.add-payment-label {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+}
+
+.add-payment-input-box {
+  font-size: 1.2rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  padding-left: 1rem;
+  border: 1px solid black;
+  margin-top: 0.5rem;
 }
 
 .add-payment-button {
@@ -23,6 +43,7 @@
   border-radius: 0.5rem;
   background: rgb(255, 255, 255);
 }
+
 .add-payment-button:hover {
   background-color: #00ff00;
   color: #000000;
@@ -30,15 +51,6 @@
   border: 1px solid #000000;
 }
 
-.add-payment-input-box {
-  font-size: 2rem; /* Adjust as needed */
-  width: 100%;
-  border-radius: 0.5rem;
-  padding: 0.5rem;
-  padding-left: 1rem;
-  border: 1px solid black;
-  margin-top: 0.5rem;
-}
 .close-payment-button {
   font-size: 1.5rem;
   margin-top: 1rem;
@@ -47,6 +59,7 @@
   border-radius: 0.5rem;
   background: rgb(255, 255, 255);
 }
+
 .close-payment-button:hover {
   background-color: #ff0000;
   color: #ffffff;
@@ -59,8 +72,7 @@
   justify-content: space-between;
 }
 
-.add-payment-header {
-  font-size: 1.5rem;
-  text-align: center;
-  padding-bottom: 1rem;
+.add-payment-error {
+  color: red;
+  margin-top: 1rem;
 }

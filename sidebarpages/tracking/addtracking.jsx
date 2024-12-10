@@ -1,40 +1,54 @@
-import * as React from "react";
-import "./addtracking.css";
-import { addTag } from "../../store/tagArraySlice";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
+import { addTag } from "../../store/tagArraySlice";
+import { addLoan } from "../../store/loanArraySlice";
 import { HexColorPicker } from "react-colorful";
+import "./addtracking.css";
 
 export default function AddTracking({ closePopup }) {
-  const [form, setForm] = React.useState({
+  const [form, setForm] = useState({
     name: "",
     target: "",
     tagType: "income",
-    color: "red",
-    timePeriod: 0,
+    amount: 0,
+    interestRate: 0,
+    color: "#7C11E7", // Pre-selected color
   });
 
   const dispatch = useDispatch();
-  const formRef = React.useRef(null);
+  const formRef = useRef(null);
 
-  const handleChange = (event) => {
-    setForm({
-      ...form,
-      [event.target.name]: event.target.value,
-    });
+  const TagTypeEnum = ["income", "expense", "emi", "loan", "investment"];
+
+  const handleChange = (field, value) => {
+    setForm((prevForm) => ({
+      ...prevForm,
+      [field]: value,
+    }));
   };
 
-  const handleColorChange = (color) => {
-    setForm({
-      ...form,
-      color: color,
-    });
-    console.log(form.color);
-  };
-
-  const handleSubmit = async (event) => {
+  const handleAddNewTag = (event) => {
     event.preventDefault();
-    dispatch(addTag(form));
-    setForm({ name: "", target: "" });
+    if (
+      form.tagType === "loan" ||
+      form.tagType === "emi" ||
+      form.tagType === "investment"
+    ) {
+      dispatch(addLoan(form));
+    } else {
+      dispatch(addTag(form));
+    }
+    onRequestClosed();
+  };
+
+  const onRequestClosed = () => {
+    handleChange("name", "");
+    handleChange("target", "");
+    handleChange("tagType", "income");
+    handleChange("amount", 0);
+    handleChange("interestRate", 0);
+    handleChange("color", "#7C11E7");
+    closePopup();
   };
 
   const handleClickOutside = (event) => {
@@ -43,7 +57,7 @@ export default function AddTracking({ closePopup }) {
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
@@ -52,51 +66,98 @@ export default function AddTracking({ closePopup }) {
 
   return (
     <div className="add-tracking-container" ref={formRef}>
-      <form onSubmit={handleSubmit}>
-        <div className="add-tracking-header">Add new Tracking</div>
-        <HexColorPicker
-          color={form.color}
-          onChange={handleColorChange}
-          className="add-tracking-color-input"
-        />
-        <input
-          type="text"
-          name="name"
-          className="add-tracking-input-box"
-          placeholder="name"
-          value={form.name}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="target"
-          className="add-tracking-input-box"
-          placeholder="target per month"
-          value={form.target}
-          onChange={handleChange}
-        />
+      <form onSubmit={handleAddNewTag}>
+        <div className="add-tracking-header">Add New Tag</div>
         <select
           name="tagType"
           className="add-tracking-input-box"
           value={form.tagType}
-          onChange={handleChange}
+          onChange={(e) => handleChange("tagType", e.target.value)}
         >
-          <option value="income">income</option>
-          <option value="expense">expense</option>
-          <option value="emi">emi</option>
-          <option value="loan">loan</option>
-          <option value="investment">investment</option>
+          {TagTypeEnum.map((item, index) => (
+            <option key={index} value={item}>
+              {item}
+            </option>
+          ))}
         </select>
+
+        <div className="color-picker-container">
+          <HexColorPicker
+            color={form.color}
+            onChange={(color) => handleChange("color", color)}
+            className="add-tracking-color-input"
+          />
+        </div>
+
+        <input
+          type="text"
+          name="name"
+          className="add-tracking-input-box"
+          placeholder="Name"
+          value={form.name}
+          onChange={(e) => handleChange("name", e.target.value)}
+        />
+
+        {["income", "expense"].includes(form.tagType) && (
+          <>
+            <input
+              type="text"
+              name="target"
+              className="add-tracking-input-box"
+              placeholder="Target"
+              value={form.target}
+              onChange={(e) => handleChange("target", e.target.value)}
+            />
+          </>
+        )}
+
+        {["emi", "loan", "investment"].includes(form.tagType) && (
+          <>
+            <input
+              type="text"
+              name="amount"
+              className="add-tracking-input-box"
+              placeholder="Amount"
+              value={form.amount}
+              onChange={(e) => handleChange("amount", e.target.value)}
+            />
+            {["emi", "loan"].includes(form.tagType) && (
+              <>
+                <input
+                  type="text"
+                  name="interestRate"
+                  className="add-tracking-input-box"
+                  placeholder="Interest Rate in %"
+                  value={form.interestRate}
+                  onChange={(e) => handleChange("interestRate", e.target.value)}
+                />
+              </>
+            )}
+            {["investment"].includes(form.tagType) && (
+              <>
+                <input
+                  type="text"
+                  name="interestRate"
+                  className="add-tracking-input-box"
+                  placeholder="Expected returns in %"
+                  value={form.interestRate}
+                  onChange={(e) => handleChange("interestRate", e.target.value)}
+                />
+              </>
+            )}
+          </>
+        )}
+
         <div className="tracking-button-container">
           <button type="submit" className="add-tracking-button-form">
-            Add Tracking
+            Add New Tag
           </button>
           <button
             type="button"
-            onClick={closePopup}
+            onClick={onRequestClosed}
             className="close-tracking-button"
           >
-            Close
+            Cancel
           </button>
         </div>
       </form>

@@ -1,25 +1,30 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addPayment } from "../../store/paymentArraySlice";
-import "./addpayment.css";
+import { updatePayment } from "../../store/paymentArraySlice";
+import "./editpayment.css";
 
-export default function AddPayment({ closePopup }) {
+export default function EditPayment({ closePopup, payment }) {
+  console.log(payment);
   const dispatch = useDispatch();
-  const paymentTypeEnum = ["paid", "received"];
   const tagArray = useSelector((state) => state.tagArray.value);
   const loanArray = useSelector((state) => state.loanArray.value);
+  const paymentTypeEnum = ["credit", "debit"];
 
   const [combinedArray, setCombinedArray] = useState([
     ...tagArray.map((tag) => ({ ...tag, type: "tag" })),
     ...loanArray.map((loan) => ({ ...loan, type: "loan" })),
   ]);
 
+  const initialId = payment?.tagid?._id || payment?.loanid?._id || "";
+  const initialIdType = payment?.tagid ? "tag" : payment?.loanid ? "loan" : "";
+
   const [form, setForm] = useState({
-    id: combinedArray.length > 0 ? combinedArray[0]._id : "",
-    idType: combinedArray.length > 0 ? combinedArray[0].type : "",
-    amount: "",
-    date: new Date().toISOString().split("T")[0],
-    paymentType: paymentTypeEnum[0],
+    _id: payment?._id, // Ensure _id is included in the form state
+    id: initialId,
+    idType: initialIdType,
+    amount: String(payment.amount),
+    date: new Date(payment.date).toISOString().split("T")[0],
+    paymentType: payment.paymentType,
   });
 
   const [error, setError] = useState("");
@@ -38,16 +43,17 @@ export default function AddPayment({ closePopup }) {
       ...loanArray.map((loan) => ({ ...loan, type: "loan" })),
     ];
 
-    if (paymentType === "paid") {
-      filteredArray = filteredArray.filter(
-        (tag) =>
-          tag.tagType === "expense" ||
-          tag.tagType === "loan" ||
-          tag.tagType === "emi"
-      );
-    } else if (paymentType === "received") {
+    if (paymentType === "credit") {
       filteredArray = filteredArray.filter(
         (tag) => tag.tagType === "income" || tag.tagType === "investment"
+      );
+    } else if (paymentType === "debit") {
+      filteredArray = filteredArray.filter(
+        (tag) =>
+          tag.tagType === "loan" ||
+          tag.tagType === "expense" ||
+          tag.tagType === "investment" ||
+          tag.tagType === "emi"
       );
     } else {
       setError("Please select a payment type.");
@@ -59,13 +65,11 @@ export default function AddPayment({ closePopup }) {
       handleChange("id", filteredArray[0]._id);
       handleChange("idType", filteredArray[0].type);
     } else {
-      setError(
-        "No matching tags found for the selected payment type. Please add a tag or loan."
-      );
+      setError("No matching ids found for the selected payment type.");
     }
   };
 
-  const handleAddPayment = (event) => {
+  const handleUpdatePayment = (event) => {
     event.preventDefault();
     if (!form.id) {
       setError("Please select either a tag or a loan.");
@@ -81,15 +85,8 @@ export default function AddPayment({ closePopup }) {
       loanid: form.idType === "loan" ? form.id : "",
     };
     setError("");
-    dispatch(addPayment(paymentData));
-    closePopup(); // Close the modal after adding the payment
-    setForm({
-      id: "",
-      idType: "",
-      amount: "",
-      date: new Date().toISOString().split("T")[0],
-      paymentType: paymentTypeEnum[0],
-    });
+    dispatch(updatePayment(paymentData));
+    closePopup(); // Close the modal after updating the payment
   };
 
   useEffect(() => {
@@ -118,13 +115,13 @@ export default function AddPayment({ closePopup }) {
   }, []);
 
   return (
-    <div className="add-payment-container" ref={formRef}>
-      <form onSubmit={handleAddPayment}>
-        <div className="add-payment-header">Add New Payment</div>
-        <label className="add-payment-label">Payment Type</label>
+    <div className="edit-payment-container" ref={formRef}>
+      <form onSubmit={handleUpdatePayment}>
+        <div className="edit-payment-header">Edit Payment</div>
+        <label className="edit-payment-label">Payment Type</label>
         <select
           name="paymentType"
-          className="add-payment-input-box"
+          className="edit-payment-input-box"
           value={form.paymentType}
           onChange={(e) => {
             handleChange("paymentType", e.target.value);
@@ -140,10 +137,10 @@ export default function AddPayment({ closePopup }) {
 
         {paymentTypeSelected && (
           <>
-            <label className="add-payment-label">Tag</label>
+            <label className="edit-payment-label">Tag</label>
             <select
               name="id"
-              className="add-payment-input-box"
+              className="edit-payment-input-box"
               value={form.id}
               onChange={(e) => {
                 const selectedIndex = e.target.selectedIndex;
@@ -158,30 +155,30 @@ export default function AddPayment({ closePopup }) {
               ))}
             </select>
 
-            <label className="add-payment-label">Amount</label>
+            <label className="edit-payment-label">Amount</label>
             <input
               type="text"
               name="amount"
-              className="add-payment-input-box"
+              className="edit-payment-input-box"
               placeholder="Amount"
               value={form.amount}
               onChange={(e) => handleChange("amount", e.target.value)}
             />
 
-            <label className="add-payment-label">Date</label>
+            <label className="edit-payment-label">Date</label>
             <input
               type="date"
               name="date"
-              className="add-payment-input-box"
+              className="edit-payment-input-box"
               value={form.date}
               onChange={(e) => handleChange("date", e.target.value)}
             />
 
-            {error && <div className="add-payment-error">{error}</div>}
+            {error && <div className="edit-payment-error">{error}</div>}
 
             <div className="payment-button-container">
-              <button type="submit" className="add-payment-button">
-                Add Payment
+              <button type="submit" className="edit-payment-button">
+                Update Payment
               </button>
               <button
                 type="button"
