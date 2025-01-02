@@ -11,88 +11,25 @@ import store from "../store/store";
 
 export default function App() {
   return (
-    <>
+    <Provider store={store}>
       <BrowserRouter>
         <Routes>
-          <Route
-            index
-            element={
-              <Provider store={store}>
-                <SidebarRouter />
-              </Provider>
-            }
-          />
-          <Route
-            path="/"
-            element={
-              <Provider store={store}>
-                <SidebarRouter />
-              </Provider>
-            }
-          />
-          <Route
-            path="/home"
-            element={
-              <Provider store={store}>
-                <SidebarRouter />
-              </Provider>
-            }
-          />
+          <Route index element={<SidebarRouter />} />
+          <Route path="/" element={<SidebarRouter />} />
+          <Route path="/home" element={<SidebarRouter />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/info" element={<Info />} />
-          <Route
-            path="/payments"
-            element={
-              <Provider store={store}>
-                <SidebarRouter />
-              </Provider>
-            }
-          />
-          <Route
-            path="/tag"
-            element={
-              <Provider store={store}>
-                <SidebarRouter />
-              </Provider>
-            }
-          />
-          <Route
-            path="/tag/:id"
-            element={
-              <Provider store={store}>
-                <SidebarRouter />
-              </Provider>
-            }
-          />
-          <Route
-            path="/tag/edittarget/:id"
-            element={
-              <Provider store={store}>
-                <SidebarRouter />
-              </Provider>
-            }
-          />
-
-          <Route
-            path="/tag/edit/:id"
-            element={
-              <Provider store={store}>
-                <SidebarRouter />
-              </Provider>
-            }
-          />
-          <Route
-            path="/loan/:id"
-            element={
-              <Provider store={store}>
-                <SidebarRouter />
-              </Provider>
-            }
-          />
+          <Route path="/payments" element={<SidebarRouter />} />
+          <Route path="/tag" element={<SidebarRouter />} />
+          <Route path="/tag/:id" element={<SidebarRouter />} />
+          <Route path="/tag/edittarget/:id" element={<SidebarRouter />} />
+          <Route path="/tag/edit/:id" element={<SidebarRouter />} />
+          <Route path="/loan/:id" element={<SidebarRouter />} />
+          <Route path="/investment/:id" element={<SidebarRouter />} />
           <Route path="*" element={<h1>Error 404 Not Found</h1>} />
         </Routes>
       </BrowserRouter>
-    </>
+    </Provider>
   );
 }

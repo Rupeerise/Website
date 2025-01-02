@@ -10,9 +10,9 @@ export default function AddTracking({ closePopup }) {
     name: "",
     target: "",
     tagType: "income",
-    amount: 0,
-    interestRate: 0,
-    color: "#7C11E7", // Pre-selected color
+    amount: "",
+    interestRate: "",
+    color: "#7C11E7",
   });
 
   const dispatch = useDispatch();

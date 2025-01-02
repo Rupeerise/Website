@@ -21,7 +21,12 @@ function IndividualLoan({ loanObject }) {
   );
 
   const onClick = () => {
-    navigate("/loan/" + loanObject?._id);
+    if (loanObject?.tagType === "loan") {
+      navigate("/loan/" + loanObject?._id);
+    }
+    if (loanObject?.tagType === "investment") {
+      navigate("/investment/" + loanObject?._id);
+    }
   };
 
   const [textColor, setTextColor] = useState("black");

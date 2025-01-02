@@ -8,7 +8,7 @@ export default function EditPayment({ closePopup, payment }) {
   const dispatch = useDispatch();
   const tagArray = useSelector((state) => state.tagArray.value);
   const loanArray = useSelector((state) => state.loanArray.value);
-  const paymentTypeEnum = ["credit", "debit"];
+  const paymentTypeEnum = ["paid", "received"];
 
   const [combinedArray, setCombinedArray] = useState([
     ...tagArray.map((tag) => ({ ...tag, type: "tag" })),
