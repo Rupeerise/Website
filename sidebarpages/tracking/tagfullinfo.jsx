@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import "./tagfullinfo.css";
 import PastPaymentCard from "../passbook/pastpaymentcard";
 import ProgressBar from "../../boilerplates/progressbar";
@@ -9,6 +9,7 @@ import TagGraph from "../graph/taggraph";
 import LabelOutlinedIcon from "@mui/icons-material/LabelOutlined";
 import EditTagName from "./edittagname";
 import EditTarget from "./edittarget";
+import { deleteTag } from "../../store/tagArraySlice";
 
 export default function Tagfullinfo() {
   const { id } = useParams();
@@ -50,6 +51,11 @@ export default function Tagfullinfo() {
     setEditingTarget(false);
     // console.log("closeEditTarget");
   };
+  const dispatch = useDispatch();
+  const handleDelete = () => {
+    dispatch(deleteTag(id));
+    navigate("/tag");
+  };
 
   return (
     <div className="tag-full">
@@ -72,6 +78,9 @@ export default function Tagfullinfo() {
       {editing && <EditTagName closeEdit={closeEdit} />}
       <div className="tag-full-edit" onClick={onClickEditTarget}>
         Edit Targets
+      </div>
+      <div className="tag-full-edit" onClick={handleDelete}>
+        Delete
       </div>
       {editingTarget && <EditTarget closeEditTarget={closeEditTarget} />}
       <TagGraph id={id} />

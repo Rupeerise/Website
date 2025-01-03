@@ -28,7 +28,7 @@ const deleteTag = createAsyncThunk("tagArray/delete", async (id) => {
     credentials: "include",
   });
   if (response.ok) {
-    return true;
+    return id;
   } else {
     console.log("HTTP-Error: " + response.status);
     return false;
@@ -126,6 +126,7 @@ export const tagArraySlice = createSlice({
         state.value = action.payload;
       })
       .addCase(deleteTag.fulfilled, (state, action) => {
+        console.log(action.payload);
         state.value = state.value.filter((tag) => tag._id !== action.payload);
       })
       .addCase(addTag.fulfilled, (state, action) => {

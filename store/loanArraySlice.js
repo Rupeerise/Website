@@ -96,7 +96,9 @@ export const loanArraySlice = createSlice({
       })
       .addCase(updateLoan.fulfilled, (state, action) => {
         state.value = state.value.map((loan) =>
-          loan._id === action.payload._id ? action.payload : loan
+          loan._id === action.payload.updateLoan._id
+            ? action.payload.updateLoan
+            : loan
         );
       });
   },
