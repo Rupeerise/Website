@@ -43,13 +43,24 @@ export default function UpdateLoan({ id, setIsUpdateModalVisible }) {
           placeholder="Name"
           className="update-loan-input"
         />
-        <input
+        {/* <input
           type="number"
           value={updatedLoan.amount}
           onChange={(e) => handleChange("amount", e.target.value)}
           placeholder="Amount"
           className="update-loan-input"
-        />
+        /> */}
+        {["emi", "loan"].includes(loan.type) ? (
+          <input
+            type="number"
+            value={updatedLoan.amount}
+            onChange={(e) => handleChange("amount", e.target.value)}
+            placeholder="Amount"
+            className="update-loan-input"
+          />
+        ) : (
+          <></>
+        )}
         <input
           type="number"
           value={updatedLoan.interestRate}
