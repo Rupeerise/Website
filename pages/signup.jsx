@@ -1,14 +1,14 @@
 import * as React from "react";
 import { useState } from "react";
 import "./signup.css";
-import PersonIcon from "@mui/icons-material/Person";
-import HttpsIcon from "@mui/icons-material/Https";
+import { currencyArray } from "../utilities/currency";
 
-export default function Login() {
+export default function Signup() {
+  console.log("Signup");
   let [FormData, setFormData] = useState({
-    fullname: "",
     username: "",
     password: "",
+    currency: "INR",
   });
 
   let handleInputChange = (event) => {
@@ -37,74 +37,79 @@ export default function Login() {
       console.log(jsonResponse);
       // Clear the form
       setFormData({
-        fullname: "",
         username: "",
         password: "",
+        currency: "INR",
       });
-      window.location = "/";
+      const redirectUrl = new URLSearchParams(window.location.search).get(
+        "redirect"
+      );
+      if (redirectUrl) {
+        window.location = redirectUrl;
+        return;
+      } else {
+        window.location = "/";
+      }
     } else {
       console.log("HTTP-Error: " + response.status);
     }
   };
 
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    const redirectUrl = new URLSearchParams(window.location.search).get(
+      "redirect"
+    );
+    if (redirectUrl) {
+      window.location = redirectUrl;
+    } else {
+      window.location = "/login";
+    }
+  };
+
   return (
     <>
-      <div className="signup-container">
-        <div className="signup-img"></div>
-        <form action="Login" onSubmit={handleSubmit}>
-          <h1>Sign Up</h1>
+      <form action="Login" onSubmit={handleSubmit} className="signup-container">
+        <h1>Sign Up</h1>
+        <input
+          className="signup-input-field"
+          type="text"
+          placeholder="Username"
+          value={FormData.username}
+          onChange={handleInputChange}
+          name="username"
+        />
 
-          <div className="signup-right">
-            <div className="signup-input">
-              <PersonIcon className="signup-icon" />
-              <input
-                className="signup-input-box"
-                type="text"
-                placeholder="Full Name"
-                value={FormData.fullname}
-                onChange={handleInputChange}
-                name="fullname"
-              />
-            </div>
-            <hr />
+        <input
+          className="signup-input-field"
+          type="password"
+          placeholder="Password"
+          name="password"
+          value={FormData.password}
+          onChange={handleInputChange}
+        />
 
-            <div className="signup-input">
-              <PersonIcon className="signup-icon" />
-              <input
-                className="signup-input-box"
-                type="text"
-                placeholder="Username"
-                value={FormData.username}
-                onChange={handleInputChange}
-                name="username"
-              />
-            </div>
-            <hr />
+        <select
+          className="signup-input-field"
+          name="currency"
+          value={FormData.currency}
+          onChange={handleInputChange}
+        >
+          {currencyArray.map((currency) => (
+            <option key={currency.code} value={currency.code}>
+              {currency.code}
+            </option>
+          ))}
+        </select>
 
-            <div className="signup-input">
-              <HttpsIcon className="signup-icon" />
-              <input
-                className="signup-input-box"
-                type="password"
-                placeholder="Password"
-                name="password"
-                value={FormData.password}
-                onChange={handleInputChange}
-              />
-            </div>
-            <hr />
+        <button type="submit" className="signup-button">
+          Sign Up
+        </button>
 
-            <div className="singup-button-container"></div>
-            <button type="submit" className="signup-button">
-              Sign Up
-            </button>
-
-            <p className="signup-login">
-              Already have an account? <a href="/login">Login</a>
-            </p>
-          </div>
-        </form>
-      </div>
+        <button type="button" className="signup-button" onClick={handleLogin}>
+          Login
+        </button>
+      </form>
     </>
   );
 }

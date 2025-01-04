@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { handleUnauthorized } from "../utilities/navigation";
 
 const getLoanArray = createAsyncThunk("loanArray/getLoanArray", async () => {
   let backendUrl = import.meta.env.VITE_TEST_BACKEND;
@@ -9,6 +10,9 @@ const getLoanArray = createAsyncThunk("loanArray/getLoanArray", async () => {
     },
     credentials: "include",
   });
+  if (response.status === 401) {
+    handleUnauthorized();
+  }
   if (response.ok) {
     let jsonResponse = await response.json();
     return jsonResponse;
@@ -27,6 +31,9 @@ const deleteLoan = createAsyncThunk("loanArray/deleteLoan", async (id) => {
     },
     credentials: "include",
   });
+  if (response.status === 401) {
+    handleUnauthorized();
+  }
   if (response.ok) {
     return id;
   } else {
@@ -37,7 +44,6 @@ const deleteLoan = createAsyncThunk("loanArray/deleteLoan", async (id) => {
 
 const addLoan = createAsyncThunk("loanArray/addLoan", async (loan) => {
   let backendUrl = import.meta.env.VITE_TEST_BACKEND;
-  //   console.log(apiUrl + "/loan");
   let response = await fetch(backendUrl + "/loan", {
     method: "POST",
     headers: {
@@ -46,6 +52,9 @@ const addLoan = createAsyncThunk("loanArray/addLoan", async (loan) => {
     credentials: "include",
     body: JSON.stringify(loan),
   });
+  if (response.status === 401) {
+    handleUnauthorized();
+  }
   if (response.ok) {
     let jsonResponse = await response.json();
     return jsonResponse;
@@ -65,9 +74,11 @@ const updateLoan = createAsyncThunk("loanArray/updateLoan", async (loan) => {
     credentials: "include",
     body: JSON.stringify(loan),
   });
+  if (response.status === 401) {
+    handleUnauthorized();
+  }
   if (response.ok) {
     let jsonResponse = await response.json();
-    // console.log(jsonResponse);
     return jsonResponse;
   } else {
     console.log("HTTP-Error: " + response.status);
@@ -87,11 +98,9 @@ export const loanArraySlice = createSlice({
         state.value = action.payload;
       })
       .addCase(deleteLoan.fulfilled, (state, action) => {
-        // console.log(action.payload);
         state.value = state.value.filter((loan) => loan._id !== action.payload);
       })
       .addCase(addLoan.fulfilled, (state, action) => {
-        // console.log(action.payload.newPayment);
         state.value.push(action.payload.newLoan);
       })
       .addCase(updateLoan.fulfilled, (state, action) => {

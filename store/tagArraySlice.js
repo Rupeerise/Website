@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { handleUnauthorized } from "../utilities/navigation";
 
 const getTagArray = createAsyncThunk("tagArray/get", async () => {
   let backendUrl = import.meta.env.VITE_TEST_BACKEND;
@@ -9,6 +10,9 @@ const getTagArray = createAsyncThunk("tagArray/get", async () => {
     },
     credentials: "include",
   });
+  if (response.status === 401) {
+    handleUnauthorized();
+  }
   if (response.ok) {
     let jsonResponse = await response.json();
     return jsonResponse;
@@ -27,6 +31,9 @@ const deleteTag = createAsyncThunk("tagArray/delete", async (id) => {
     },
     credentials: "include",
   });
+  if (response.status === 401) {
+    handleUnauthorized();
+  }
   if (response.ok) {
     return id;
   } else {
@@ -45,7 +52,9 @@ const addTag = createAsyncThunk("tagArray/add", async (tag) => {
     credentials: "include",
     body: JSON.stringify(tag),
   });
-  console.log(response);
+  if (response.status === 401) {
+    handleUnauthorized();
+  }
   if (response.ok) {
     let jsonResponse = await response.json();
     return jsonResponse;
@@ -65,6 +74,9 @@ const addTarget = createAsyncThunk("tagArray/addTarget", async (form) => {
     credentials: "include",
     body: JSON.stringify(form),
   });
+  if (response.status === 401) {
+    handleUnauthorized();
+  }
   if (response.ok) {
     let jsonResponse = await response.json();
     return jsonResponse;
@@ -85,6 +97,9 @@ const updateTarget = createAsyncThunk("tagArray/updateTarget", async (form) => {
     credentials: "include",
     body: JSON.stringify(form),
   });
+  if (response.status === 401) {
+    handleUnauthorized();
+  }
   if (response.ok) {
     let jsonResponse = await response.json();
     return jsonResponse;
@@ -105,6 +120,9 @@ const updateTag = createAsyncThunk("tagArray/updateTag", async (tag) => {
     credentials: "include",
     body: JSON.stringify(tag),
   });
+  if (response.status === 401) {
+    handleUnauthorized();
+  }
   if (response.ok) {
     let jsonResponse = await response.json();
     return jsonResponse;

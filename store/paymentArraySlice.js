@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { handleUnauthorized } from "../utilities/navigation";
 
 const getPaymentArray = createAsyncThunk("paymentArray/get", async () => {
   let backendUrl = import.meta.env.VITE_TEST_BACKEND;
@@ -9,6 +10,9 @@ const getPaymentArray = createAsyncThunk("paymentArray/get", async () => {
     },
     credentials: "include",
   });
+  if (response.status === 401) {
+    handleUnauthorized();
+  }
   if (response.ok) {
     let jsonResponse = await response.json();
     return jsonResponse;
@@ -27,6 +31,9 @@ const deletePayment = createAsyncThunk("paymentArray/delete", async (id) => {
     },
     credentials: "include",
   });
+  if (response.status === 401) {
+    handleUnauthorized();
+  }
   if (response.ok) {
     return true;
   } else {
@@ -45,6 +52,9 @@ const addPayment = createAsyncThunk("paymentArray/add", async (payment) => {
     credentials: "include",
     body: JSON.stringify(payment),
   });
+  if (response.status === 401) {
+    handleUnauthorized();
+  }
   if (response.ok) {
     let jsonResponse = await response.json();
     return jsonResponse;
@@ -67,6 +77,9 @@ const updatePayment = createAsyncThunk(
       credentials: "include",
       body: JSON.stringify(payment),
     });
+    if (response.status === 401) {
+      handleUnauthorized();
+    }
     if (response.ok) {
       let jsonResponse = await response.json();
       return jsonResponse;

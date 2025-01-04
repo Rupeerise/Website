@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { handleUnauthorized } from "../utilities/navigation";
 
 const getCurrency = createAsyncThunk("currency/get", async () => {
   let backendUrl = import.meta.env.VITE_TEST_BACKEND;
@@ -9,6 +10,9 @@ const getCurrency = createAsyncThunk("currency/get", async () => {
     },
     credentials: "include",
   });
+  if (response.status === 401) {
+    handleUnauthorized();
+  }
   if (response.ok) {
     let jsonResponse = await response.json();
     return jsonResponse;
@@ -28,6 +32,9 @@ const updateCurrency = createAsyncThunk("currency/update", async (currency) => {
     credentials: "include",
     body: JSON.stringify(currency),
   });
+  if (response.status === 401) {
+    handleUnauthorized();
+  }
   if (response.ok) {
     let jsonResponse = await response.json();
     return jsonResponse;
