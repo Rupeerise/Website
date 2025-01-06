@@ -119,11 +119,12 @@ export default function Pichart() {
 
   return (
     <div className="pichart">
-      <Chart
-        type="pie"
-        data={graphType === "paid" ? dataPaidConfig : dataReceivedConfig}
-        options={options}
-      />
+      {graphType === "paid" && (
+        <Chart type="pie" data={dataPaidConfig} options={options} />
+      )}
+      {graphType === "received" && (
+        <Chart type="pie" data={dataReceivedConfig} options={options} />
+      )}
     </div>
   );
 }

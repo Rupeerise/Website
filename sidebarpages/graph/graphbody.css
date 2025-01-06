@@ -3,7 +3,7 @@
   margin: 0 auto;
   margin-top: 1rem;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
 }
 .charts {
   display: grid;
