@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "./sidebar.css";
 import StyleIcon from "@mui/icons-material/Style";
-import TableChartIcon from "@mui/icons-material/TableChart";
-import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import BookIcon from "@mui/icons-material/Book";
 import EqualizerIcon from "@mui/icons-material/Equalizer";
 import { Link } from "react-router-dom";
@@ -18,7 +17,12 @@ export default function Sidebar() {
       path: "/payments",
     },
     { key: "3", Icon: StyleIcon, label: "Tags", path: "/tag" },
-    { key: "6", Icon: CalendarMonthIcon, label: "Calendar" },
+    {
+      key: "4",
+      Icon: AccountBalanceWalletIcon,
+      label: "Budget",
+      path: "/budget",
+    },
   ];
   const handleMouseEnter = () => setIsOpen(true);
   const handleMouseLeave = () => setIsOpen(false);
@@ -38,8 +42,8 @@ export default function Sidebar() {
                 style={{ textDecoration: "none", color: "inherit" }}
                 className={`sidenav-list-item ${isOpen ? "open" : ""}`}
               >
-                <Icon fontSize="inherit" />
-                <p className="sidenav-label">{label}</p>
+                <Icon fontSize="inherit" className="sidenav-icon" />
+                <span className="sidenav-label">{label}</span>
               </Link>
             </li>
           ))}

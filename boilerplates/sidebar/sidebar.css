@@ -8,15 +8,9 @@
 }
 
 .sidebar {
-  position: absolute; /* Changed from commented to active */
-  left: 0; /* Changed from commented to active */
   text-decoration: none;
   background-color: rgb(191, 200, 255);
   height: 100%; /* Changed from commented to active */
-  margin-top: 3rem; /* Changed from commented to active */
-  margin-left: 2rem; /* Changed from commented to active */
-  overflow: hidden; /* Changed from commented to active */
-  border-radius: 1rem; /* Changed from commented to active */
   z-index: 1000; /* Ensure sidebar is above main body */
 }
 
@@ -33,10 +27,8 @@
 }
 
 .sidenav-list-item {
-  padding-top: 15px;
-  padding-bottom: 15px;
-  padding-left: 20px;
-  padding-right: 20px;
+  width: 60px;
+  height: 60px;
   cursor: pointer;
   color: black;
   display: flex;
@@ -53,30 +45,37 @@
   transition: background-color 0.2s, box-shadow 0.5s;
 }
 
-.sidenav-list-item a {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  padding-top: 5px;
+.sidenav-icon {
+  margin: auto;
 }
 
-.sidenav-list-item p {
-  margin-left: 10px;
-  font-size: 25px;
-}
 /* sidebar.css */
 .sidenav-label {
+  position: absolute;
+  left: 60px;
   opacity: 0;
-  max-width: 0; /* Start with max-width at 0 */
   overflow: hidden; /* Prevent content from overflowing */
   display: inline-block; /* Allows max-width animation */
   white-space: nowrap; /* Keep the label in a single line */
   transform: translateX(-20px);
-  transition: opacity 0.5s, max-width 0.5s ease, transform 0.5s ease;
+  display: flex;
+  align-items: center;
+  height: 60px;
+  width: 150px;
+  font-size: 25px;
+  background-color: rgb(191, 200, 255);
+  transition: padding-left 0.5s ease, opacity 0.5s, max-width 0.5s ease,
+    transform 0.5s ease; /* Combine transitions */
+}
+
+.sidenav-label:hover {
+  background-color: rgb(147, 156, 216);
 }
 
 .sidenav-list-item.open .sidenav-label {
   opacity: 1;
-  max-width: 200px; /* Adjust based on the expected width of the label */
+  padding-left: 10px;
+  max-width: 200px;
   transform: translateX(0);
+  transition: padding-left 0.5s ease; /* Add this line for slow opening margin */
 }
