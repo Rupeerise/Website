@@ -66,10 +66,28 @@ export default function Login() {
     }
   };
 
+  const handleGoogle = async (event) => {
+    event.preventDefault();
+    const backendUrl = import.meta.env.VITE_TEST_BACKEND;
+    const response = await fetch(backendUrl + "/api/auth/google/url", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    });
+    const jsonResponse = await response.json();
+    window.location = jsonResponse.url;
+  };
+
   return (
     <>
       <form action="Login" onSubmit={handleSubmit} className="login-container">
         <h1>Login</h1>
+
+        <button type="button" className="login-button" onClick={handleGoogle}>
+          Google
+        </button>
 
         <input
           type="text"

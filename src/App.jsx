@@ -27,6 +27,7 @@ export default function App() {
           <Route path="/tag/edit/:id" element={<SidebarRouter />} />
           <Route path="/loan/:id" element={<SidebarRouter />} />
           <Route path="/investment/:id" element={<SidebarRouter />} />
+          <Route path="/auth/google/callback" element={<SidebarRouter />} />
           <Route path="*" element={<h1>Error 404 Not Found</h1>} />
         </Routes>
       </BrowserRouter>

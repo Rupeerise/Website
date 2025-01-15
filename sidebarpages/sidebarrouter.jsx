@@ -47,6 +47,7 @@ function SidebarRouter() {
         {location.pathname === "/tag/edittarget/" + id && <EditTarget />}
         {location.pathname === "/loan/" + id && <Loanbody />}
         {location.pathname === "/investment/" + id && <InvestmentBody />}
+        {location.pathname === "/auth/google/callback" && <GraphBody />}
       </div>
       <div className="footer">
         <Footer />

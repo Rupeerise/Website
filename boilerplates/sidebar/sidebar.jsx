@@ -1,25 +1,23 @@
 import React, { useState } from "react";
 import "./sidebar.css";
-import ImportContactsIcon from "@mui/icons-material/ImportContacts";
+import StyleIcon from "@mui/icons-material/Style";
 import TableChartIcon from "@mui/icons-material/TableChart";
-import CalculateIcon from "@mui/icons-material/Calculate";
-import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-import ArchiveIcon from "@mui/icons-material/Archive";
-import AnalyticsIcon from "@mui/icons-material/Analytics";
+import BookIcon from "@mui/icons-material/Book";
+import EqualizerIcon from "@mui/icons-material/Equalizer";
 import { Link } from "react-router-dom";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
   const icons = [
-    { key: "1", Icon: AnalyticsIcon, label: "Graphs", path: "/" },
+    { key: "1", Icon: EqualizerIcon, label: "Graphs", path: "/" },
     {
       key: "2",
-      Icon: ImportContactsIcon,
+      Icon: BookIcon,
       label: "Payments",
       path: "/payments",
     },
-    { key: "3", Icon: TableChartIcon, label: "Tracking", path: "/tag" },
+    { key: "3", Icon: StyleIcon, label: "Tags", path: "/tag" },
     { key: "6", Icon: CalendarMonthIcon, label: "Calendar" },
   ];
   const handleMouseEnter = () => setIsOpen(true);

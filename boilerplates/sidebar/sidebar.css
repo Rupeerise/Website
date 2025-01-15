@@ -8,15 +8,16 @@
 }
 
 .sidebar {
-  /* position: absolute; */
-  /* left: 0; */
+  position: absolute; /* Changed from commented to active */
+  left: 0; /* Changed from commented to active */
   text-decoration: none;
   background-color: rgb(191, 200, 255);
-  /* height: 100%;
-  margin-top: 3rem;
-  margin-left: 2rem; */
-  /* overflow: hidden;
-  border-radius: 1rem; */
+  height: 100%; /* Changed from commented to active */
+  margin-top: 3rem; /* Changed from commented to active */
+  margin-left: 2rem; /* Changed from commented to active */
+  overflow: hidden; /* Changed from commented to active */
+  border-radius: 1rem; /* Changed from commented to active */
+  z-index: 1000; /* Ensure sidebar is above main body */
 }
 
 .sidenav-container {
@@ -45,7 +46,11 @@
 
 .sidenav-list-item:hover {
   background-color: rgb(147, 156, 216);
-  padding-left: 1rem;
+  box-shadow: 0 0 10px 0 rgb(0, 0, 0);
+}
+
+.sidenav-list-item:hover {
+  transition: background-color 0.2s, box-shadow 0.5s;
 }
 
 .sidenav-list-item a {

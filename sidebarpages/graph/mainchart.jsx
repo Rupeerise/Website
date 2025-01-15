@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Chart } from "react-chartjs-2";
 import { Chart as Chartjs } from "chart.js/auto";
 
-export default function Mainchart() {
+export default function Mainchart({ setIsGraph }) {
   const tagArray = useSelector((state) => state.tagArray.value);
   const loanArray = useSelector((state) => state.loanArray.value);
   let paymentArray = useSelector((state) => state.paymentArray.value);
@@ -91,7 +91,7 @@ export default function Mainchart() {
         data: dataPaid,
         backgroundColor: colorsPaid.map((color) => `${color}60`), // Adding transparency
         borderColor: colorsPaid,
-        borderWidth: 5,
+        borderWidth: 2,
       },
       {
         type: "line",
@@ -112,7 +112,7 @@ export default function Mainchart() {
         data: dataReceived,
         backgroundColor: colorsReceived.map((color) => `${color}60`), // Adding transparency
         borderColor: colorsReceived,
-        borderWidth: 5,
+        borderWidth: 2,
       },
       {
         type: "line",
@@ -153,6 +153,20 @@ export default function Mainchart() {
       },
     },
   };
+
+  if (graphType === "paid") {
+    if (dataPaidConfig.datasets[0].data.every((item) => item === 0)) {
+      setIsGraph(false);
+    } else {
+      setIsGraph(true);
+    }
+  } else {
+    if (dataReceivedConfig.datasets[0].data.every((item) => item === 0)) {
+      setIsGraph(false);
+    } else {
+      setIsGraph(true);
+    }
+  }
 
   return (
     <div className="barchart">
