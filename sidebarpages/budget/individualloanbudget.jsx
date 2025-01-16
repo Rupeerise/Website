@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import "./budget.css";
 
 export default function IndividualLoanBudget({ loan }) {
   const paymentArray = useSelector((state) => state.paymentArray.value);
@@ -19,30 +20,9 @@ export default function IndividualLoanBudget({ loan }) {
     0
   );
   return (
-    <div style={styles.container} key={loan._id}>
-      <h2 style={styles.title}>{loan?.name}</h2>
-      <p style={styles.target}>{current}</p>
+    <div className="individualloanbudget-container" key={loan._id}>
+      <h2 className="individualloanbudget-title">{loan?.name}</h2>
+      <p className="individualloanbudget-target">{current}</p>
     </div>
   );
 }
-
-const styles = {
-  container: {
-    margin: 0,
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    width: "100%",
-  },
-  title: {
-    fontSize: "16px",
-    fontWeight: "bold",
-    textAlign: "center",
-  },
-  target: {
-    fontSize: "16px",
-    fontWeight: "bold",
-    textAlign: "center",
-  },
-};

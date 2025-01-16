@@ -139,11 +139,16 @@ export default function BudgetGraph() {
   };
 
   return (
-    <div>
+    <div className="budget-graph">
       {graphType === "paid" ? (
         <Chart type="bar" data={dataPaidConfig} options={options} />
       ) : (
         <Chart type="bar" data={dataReceivedConfig} options={options} />
+      )}
+      {graphType === "paid" ? (
+        <Chart type="pie" data={dataPaidConfig} options={options} />
+      ) : (
+        <Chart type="pie" data={dataReceivedConfig} options={options} />
       )}
       <div>
         <p style={{ color: savings >= 0 ? "green" : "red" }}>

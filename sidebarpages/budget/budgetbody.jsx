@@ -29,9 +29,9 @@ export default function BudgetBody() {
   }
 
   return (
-    <div style={{ margin: 0, backgroundColor: "white", display: "flex" }}>
-      <BudgetGraph />
+    <div className="budgetbody-container">
       <BudgetUpper />
+      <BudgetGraph />
       {tagArray.map((tag) => (
         <IndividualBudget tag={tag} key={tag._id} />
       ))}

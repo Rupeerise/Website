@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateTarget } from "../../store/tagArraySlice";
+import "./budget.css";
 
 export default function IndividualBudget({ tag }) {
   const target = tag.targets.find(
@@ -23,11 +24,11 @@ export default function IndividualBudget({ tag }) {
   });
 
   return (
-    <div style={styles.container} key={tag._id}>
-      <h2 style={styles.title}>{tag?.name}</h2>
+    <div className="individualbudget-container" key={tag._id}>
+      <h2 className="individualbudget-title">{tag?.name}</h2>
       <input
         type="number"
-        style={styles.input}
+        className="individualbudget-input"
         onChange={(e) => setForm({ ...form, amount: e.target.value })}
         value={form.amount}
         onBlur={() => dispatch(updateTarget(form))}
@@ -35,25 +36,3 @@ export default function IndividualBudget({ tag }) {
     </div>
   );
 }
-
-const styles = {
-  container: {
-    margin: 0,
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    width: "100%",
-  },
-  title: {
-    fontSize: "16px",
-    fontWeight: "bold",
-    textAlign: "center",
-  },
-  input: {
-    width: "100%",
-    height: "40px",
-    margin: "12px",
-    borderWidth: "1px",
-  },
-};
