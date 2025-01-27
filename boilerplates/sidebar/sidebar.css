@@ -70,6 +70,7 @@
 
 .sidenav-label:hover {
   background-color: rgb(147, 156, 216);
+  /* background color transition */
 }
 
 .sidenav-list-item.open .sidenav-label {
