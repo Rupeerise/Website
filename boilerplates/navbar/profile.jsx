@@ -20,10 +20,7 @@ export default function Profile() {
           <div className="navbar-profile-name">{username}</div>
         </div>
         <div className="dropdown-content">
-          <div className="profile-dropdown">Profile</div>
-          <div className="profile-dropdown">language</div>
-          <div className="profile-dropdown">Mode light/dark</div>
-          <div className="profile-dropdown">settings</div>
+          <div className="profile-dropdown">Autopay</div>
           <Logout />
         </div>
       </div>

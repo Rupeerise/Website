@@ -21,9 +21,9 @@ export default function Logout() {
 
   return (
     <>
-      <button className="profile-dropdown" onClick={logout}>
+      <div className="profile-dropdown" onClick={logout}>
         Logout
-      </button>
+      </div>
     </>
   );
 }
