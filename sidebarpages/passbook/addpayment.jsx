@@ -43,7 +43,8 @@ export default function AddPayment({ closePopup }) {
         (tag) =>
           tag.tagType === "expense" ||
           tag.tagType === "loan" ||
-          tag.tagType === "emi"
+          tag.tagType === "emi" ||
+          tag.tagType === "investment"
       );
     } else if (paymentType === "received") {
       filteredArray = filteredArray.filter(

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Chart } from "react-chartjs-2";
 import { Chart as Chartjs } from "chart.js/auto";
@@ -10,6 +10,7 @@ export default function Mainchart({ setIsGraph }) {
   let startdate = useSelector((state) => state.graph.startdate);
   let enddate = useSelector((state) => state.graph.enddate);
   let graphType = useSelector((state) => state.graph.graphType);
+  const tagArrayStatus = useSelector((state) => state.tagArray.status);
 
   startdate = new Date(startdate);
   enddate = new Date(enddate);
@@ -154,19 +155,21 @@ export default function Mainchart({ setIsGraph }) {
     },
   };
 
-  if (graphType === "paid") {
-    if (dataPaidConfig.datasets[0].data.every((item) => item === 0)) {
+  const graphTypething = () => {
+    if (graphType === "paid" && dataPaid.length === 0) {
       setIsGraph(false);
+      return null;
+    } else if (graphType === "received" && dataReceived.length === 0) {
+      setIsGraph(false);
+      return null;
     } else {
       setIsGraph(true);
     }
-  } else {
-    if (dataReceivedConfig.datasets[0].data.every((item) => item === 0)) {
-      setIsGraph(false);
-    } else {
-      setIsGraph(true);
-    }
-  }
+  };
+
+  useEffect(() => {
+    graphTypething();
+  }, [tagArrayStatus]);
 
   return (
     <div className="barchart">
