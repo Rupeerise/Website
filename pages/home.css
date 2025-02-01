@@ -1,5 +1,6 @@
 .page-container {
   display: flex;
+  flex-direction: row;
   grid-template-columns: auto auto;
   min-height: 100vh;
 }

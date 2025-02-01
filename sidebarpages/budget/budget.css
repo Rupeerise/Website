@@ -38,10 +38,8 @@
 
 .budgetbody-container {
   margin: 0;
-  background-color: rgb(255, 255, 255);
   display: flex;
   flex-direction: column;
-  width: 100%;
 }
 
 .budgetupper-horizontalPickerContainer {

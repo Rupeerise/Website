@@ -12,6 +12,7 @@
   background-color: rgb(191, 200, 255);
   height: 100%; /* Changed from commented to active */
   z-index: 1000; /* Ensure sidebar is above main body */
+  width: 60px;
 }
 
 .sidenav-container {
@@ -24,6 +25,7 @@
 
 .sidenav-list {
   list-style-type: none;
+  width: 60px;
 }
 
 .sidenav-list-item {

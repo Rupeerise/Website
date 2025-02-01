@@ -28,27 +28,23 @@ export default function Sidebar() {
   const handleMouseLeave = () => setIsOpen(false);
 
   return (
-    <div
-      className="sidebar"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      <div>
-        <ul className="sidenav-list">
-          {icons.map(({ Icon, label, path }, index) => (
-            <li key={index}>
-              <Link
-                to={path}
-                style={{ textDecoration: "none", color: "inherit" }}
-                className={`sidenav-list-item ${isOpen ? "open" : ""}`}
-              >
-                <Icon fontSize="inherit" className="sidenav-icon" />
-                <span className="sidenav-label">{label}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
+    <div className="sidebar">
+      <ul className="sidenav-list">
+        {icons.map(({ Icon, label, path }, index) => (
+          <li key={index}>
+            <Link
+              to={path}
+              style={{ textDecoration: "none", color: "inherit" }}
+              className={`sidenav-list-item ${isOpen ? "open" : ""}`}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
+              <Icon fontSize="inherit" className="sidenav-icon" />
+              <span className="sidenav-label">{label}</span>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

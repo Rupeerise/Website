@@ -12,6 +12,7 @@ export default function Profile() {
   useEffect(() => {
     dispatch(getUsername());
   }, [dispatch]);
+
   return (
     <>
       <div className="profile-dropdown-container">
@@ -20,7 +21,9 @@ export default function Profile() {
           <div className="navbar-profile-name">{username}</div>
         </div>
         <div className="dropdown-content">
-          <div className="profile-dropdown">Autopay</div>
+          <a className="profile-dropdown" href="/autopay">
+            Autopay
+          </a>
           <Logout />
         </div>
       </div>

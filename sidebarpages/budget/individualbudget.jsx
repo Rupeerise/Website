@@ -12,7 +12,7 @@ export default function IndividualBudget({ tag }) {
   const dispatch = useDispatch();
 
   const [form, setForm] = useState({
-    amount: target.toString(),
+    amount: target ? target.toString() : "0",
     month: new Date().getMonth(),
     year: new Date().getFullYear(),
     _id: tag.targets.find(

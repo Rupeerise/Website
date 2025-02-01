@@ -20,6 +20,7 @@ import { getLoanArray } from "../store/loanArraySlice";
 import Loanbody from "./tracking/loanbody";
 import InvestmentBody from "./tracking/investmentbody";
 import BudgetBody from "./budget/budgetbody";
+import AutopayBody from "../sidebarpages/autopay/autopaybody";
 
 function SidebarRouter() {
   const dispatch = useDispatch();
@@ -50,6 +51,7 @@ function SidebarRouter() {
         {location.pathname === "/investment/" + id && <InvestmentBody />}
         {location.pathname === "/auth/google/callback" && <GraphBody />}
         {location.pathname === "/budget" && <BudgetBody />}
+        {location.pathname === "/autopay" && <AutopayBody />}
       </div>
       <div className="footer">
         <Footer />
