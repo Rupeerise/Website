@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Boilerplate from "./../boilerplates/boilerplate";
 import Footer from "./../boilerplates/footer";
-import Sidebar from "./../boilerplates/sidebar/sidebar";
 import "./../pages/home.css";
 // import "./passbook.css";
 import PassbookBody from "./passbook/passbookbody";
@@ -21,6 +20,7 @@ import Loanbody from "./tracking/loanbody";
 import InvestmentBody from "./tracking/investmentbody";
 import BudgetBody from "./budget/budgetbody";
 import AutopayBody from "../sidebarpages/autopay/autopaybody";
+import MySidebar from "./../boilerplates/sidebar/sidebar";
 
 function SidebarRouter() {
   const dispatch = useDispatch();
@@ -34,12 +34,13 @@ function SidebarRouter() {
   }, [dispatch]);
 
   const { id } = useParams();
+  const [collapsed, setCollapsed] = useState(true);
 
   return (
     <div>
-      <Boilerplate />
+      <Boilerplate setCollapsed={setCollapsed} collapsed={collapsed} />
       <div className="page-container">
-        <Sidebar />
+        <MySidebar collapsed={collapsed} />
         {location.pathname === "/payments" && <PassbookBody />}
         {location.pathname === "/tag" && <TrackingBody />}
         {location.pathname === "/" && <GraphBody />}

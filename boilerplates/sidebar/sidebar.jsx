@@ -5,9 +5,10 @@ import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import BookIcon from "@mui/icons-material/Book";
 import EqualizerIcon from "@mui/icons-material/Equalizer";
 import { Link } from "react-router-dom";
+import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 
-export default function Sidebar() {
-  const [isOpen, setIsOpen] = useState(false);
+export default function MySidebar({ collapsed }) {
+  console.log(collapsed);
   const icons = [
     { key: "1", Icon: EqualizerIcon, label: "Graphs", path: "/" },
     {
@@ -24,27 +25,22 @@ export default function Sidebar() {
       path: "/budget",
     },
   ];
-  const handleMouseEnter = () => setIsOpen(true);
-  const handleMouseLeave = () => setIsOpen(false);
 
   return (
-    <div className="sidebar">
-      <ul className="sidenav-list">
-        {icons.map(({ Icon, label, path }, index) => (
-          <li key={index}>
-            <Link
-              to={path}
-              style={{ textDecoration: "none", color: "inherit" }}
-              className={`sidenav-list-item ${isOpen ? "open" : ""}`}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
+    <>
+      <Sidebar collapsed={collapsed}>
+        <Menu>
+          {icons.map((icon) => (
+            <MenuItem
+              key={icon.key}
+              component={<Link to={icon.path} />}
+              icon={<icon.Icon />}
             >
-              <Icon fontSize="inherit" className="sidenav-icon" />
-              <span className="sidenav-label">{label}</span>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+              {icon.label}
+            </MenuItem>
+          ))}
+        </Menu>
+      </Sidebar>
+    </>
   );
 }

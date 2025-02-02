@@ -48,7 +48,12 @@
 }
 
 .sidenav-icon {
+  height: 60px;
+  width: 60px;
   margin: auto;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 /* sidebar.css */
@@ -57,7 +62,7 @@
   left: 60px;
   opacity: 0;
   overflow: hidden; /* Prevent content from overflowing */
-  display: inline-block; /* Allows max-width animation */
+  display: none; /* Allows max-width animation */
   white-space: nowrap; /* Keep the label in a single line */
   transform: translateX(-20px);
   display: flex;
