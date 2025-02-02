@@ -1,22 +1,35 @@
 import React from "react";
+import "./autopaybody.css";
+import { useSelector } from "react-redux";
+import IndividualAutoPay from "./individualautopay";
 
 export default function AutopayBody() {
+  const tagArray = useSelector((state) => state.tagArray.value);
+  const loanArray = useSelector((state) => state.loanArray.value);
+
+  const filteredTagArray = tagArray.filter(
+    (tag) => tag.autopayArray && tag.autopayArray.length > 0
+  );
+  const filteredLoanArray = loanArray.filter(
+    (loan) => loan.autopayArray && loan.autopayArray.length > 0
+  );
+
+  const Autopays = [
+    ...filteredTagArray.flatMap((tag) => tag.autopayArray),
+    ...filteredLoanArray.flatMap((loan) => loan.autopayArray),
+  ];
+
   return (
-    <div>
-      <h1>Autopay</h1>
-      <p>
-        Under construction Lorem ipsum dolor sit amet consectetur adipisicing
-        elit. Odio asperiores fugiat, obcaecati ratione laborum nam officiis
-        magnam odit veritatis ut porro aut reiciendis consequuntur consectetur
-        alias enim atque dolores. Culpa sint impedit facere repudiandae nisi
-        similique veritatis alias eos? Consequatur quis, necessitatibus officiis
-        libero similique laudantium. Veniam laudantium porro, sequi provident,
-        dolorum sunt voluptatibus, ex mollitia ipsa et eligendi repellat ab
-        blanditiis velit incidunt totam nam animi assumenda sit quam iure quod
-        sed dolores in. Tempore quibusdam sint a saepe maiores incidunt facilis
-        vel deserunt reiciendis, neque earum modi eligendi, obcaecati,
-        consectetur iure? Odit, nulla libero maxime cumque nobis minima.
-      </p>
+    <div className="autopay-container">
+      <div className="autopay-header">
+        <h1>AutoPay</h1>
+        <button className="autopay-button">Add AutoPay</button>
+      </div>
+      <div className="autopay-list">
+        {Autopays.map((autopay) => (
+          <IndividualAutoPay autopay={autopay} key={autopay._id} />
+        ))}
+      </div>
     </div>
   );
 }

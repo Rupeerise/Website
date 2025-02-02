@@ -1,0 +1,44 @@
+.individual-autopay-container {
+  width: 100%;
+  border: 2px solid #89d3ff;
+  padding: 15px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.individual-autopay-upper,
+.individual-autopay-lower {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.individual-autopay-title {
+  font-weight: bold;
+}
+
+.individual-autopay-tag {
+  display: flex;
+  align-items: center;
+}
+
+.individual-autopay-button {
+  background-color: #007aff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
