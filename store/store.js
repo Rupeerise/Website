@@ -6,6 +6,8 @@ import { currencySlice } from "./currencySlice";
 import { graphSlice } from "./graphSlice";
 import { loanArraySlice } from "./loanArraySlice";
 import { budgetSlice } from "./budgetSlice";
+import toastMiddleware from "./toastMiddleware";
+import { messageSlice } from "./messageSlice";
 
 export const store = configureStore({
   reducer: {
@@ -16,7 +18,10 @@ export const store = configureStore({
     graph: graphSlice.reducer,
     loanArray: loanArraySlice.reducer,
     budget: budgetSlice.reducer,
+    messages: messageSlice.reducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(toastMiddleware),
 });
 
 export default store;

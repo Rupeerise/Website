@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 
 export default function MySidebar({ collapsed }) {
-  console.log(collapsed);
   const icons = [
     { key: "1", Icon: EqualizerIcon, label: "Graphs", path: "/" },
     {

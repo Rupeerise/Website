@@ -8,10 +8,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SidebarRouter from "../sidebarpages/sidebarrouter";
 import { Provider } from "react-redux";
 import store from "../store/store";
+import { ToastContainer } from "react-toastify";
 
 export default function App() {
   return (
     <Provider store={store}>
+      <ToastContainer />
       <BrowserRouter>
         <Routes>
           <Route index element={<SidebarRouter />} />
