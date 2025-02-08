@@ -9,7 +9,9 @@ export default function Footer() {
         <p className="footer-col-container">Login</p>
         <p className="footer-col-container">Pricing</p>
         <p className="footer-col-container">Support</p>
-        <p className="footer-col-container">FAQ</p>
+        <a className="footer-col-container" href="/faq">
+          FAQ
+        </a>
       </div>
       <div className="footer-col">
         <h1 className="footer-col-title">Contact</h1>

@@ -10,6 +10,7 @@ import SidebarRouter from "../sidebarpages/sidebarrouter";
 import { Provider } from "react-redux";
 import store from "../store/store";
 import Privacypolicy from "../pages/privacypolicy";
+import Faq from "../pages/faq";
 import { ToastContainer } from "react-toastify";
 
 export default function App() {
@@ -36,6 +37,7 @@ export default function App() {
           <Route path="/autopay" element={<SidebarRouter />} />
           <Route path="/termsofservice" element={<Termsofservice />} />
           <Route path="/privacypolicy" element={<Privacypolicy />} />
+          <Route path="/faq" element={<Faq />} />
           <Route path="*" element={<h1>Error 404 Not Found</h1>} />
         </Routes>
       </BrowserRouter>
