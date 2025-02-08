@@ -1,7 +1,7 @@
 import React from "react";
 import "./footer.css";
 
-export default function footer() {
+export default function Footer() {
   return (
     <div className="footer">
       <div className="footer-col">
@@ -17,8 +17,12 @@ export default function footer() {
       </div>
       <div className="footer-col">
         <h1 className="footer-col-title">Legal</h1>
-        <p className="footer-col-container">Terms of Service</p>
-        <p className="footer-col-container">Privacy Policy</p>
+        <a className="footer-col-container" href="/termsofservice">
+          Terms of Service
+        </a>
+        <a className="footer-col-container" href="/privacypolicy">
+          Privacy Policy
+        </a>
       </div>
     </div>
   );

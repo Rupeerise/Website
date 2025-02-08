@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Boilerplate from "./../boilerplates/boilerplate";
 import Footer from "./../boilerplates/footer";
 import "./../pages/home.css";
-// import "./passbook.css";
 import PassbookBody from "./passbook/passbookbody";
 import { useDispatch } from "react-redux";
 import TrackingBody from "./tracking/Trackingbody";

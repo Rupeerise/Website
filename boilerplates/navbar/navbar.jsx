@@ -9,9 +9,11 @@ export default function Navbar({ setCollapsed, collapsed }) {
   };
   return (
     <span className="navbar">
-      <button onClick={handleCollapse}>
-        <DensityMediumIcon />
-      </button>
+      {setCollapsed && (
+        <button onClick={handleCollapse}>
+          <DensityMediumIcon />
+        </button>
+      )}
       <Profile />
     </span>
   );
