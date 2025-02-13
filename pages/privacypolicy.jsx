@@ -9,7 +9,7 @@ export default function Privacypolicy() {
       <Navbar />
       <div className="privacypolicy-body">
         <h1 className="privacypolicy-heading">Privacy Policy</h1>
-        <p className="privacypolicy-paragraph">Last Updated: [Date]</p>
+        <p className="privacypolicy-paragraph">Last Updated: 13-feb-2025</p>
 
         <h2 className="privacypolicy-subheading">1. Introduction</h2>
         <p className="privacypolicy-paragraph">

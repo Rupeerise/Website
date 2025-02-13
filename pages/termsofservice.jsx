@@ -9,7 +9,7 @@ export default function Termsofservice() {
       <Navbar />
       <div className="tos-body">
         <h1 className="tos-heading">Terms of Service</h1>
-        <p className="tos-paragraph">Last Updated: [Date]</p>
+        <p className="tos-paragraph">Last Updated: 13-feb-2025 </p>
 
         <h2 className="tos-subheading">1. Acceptance of Terms</h2>
         <p className="tos-paragraph">
