@@ -1,0 +1,17 @@
+.datecontainer {
+  position: fixed;
+  z-index: 2;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: aqua;
+  width: 12rem;
+  height: 3.5rem;
+  border-radius: 2rem;
+  display: flex;
+  align-items: center;
+  font-size: 1.72rem;
+}
+.datecontainer-icon {
+  margin-left: 2rem;
+  margin-right: 0.7rem;
+}

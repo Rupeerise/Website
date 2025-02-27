@@ -1,0 +1,68 @@
+.add-secondary-tracking-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -10rem;
+  margin-left: -22.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45rem;
+  height: 20rem;
+  background-color: rgb(159, 223, 255);
+  border: 2px solid black;
+  border-radius: 1rem;
+  padding: 3rem;
+  z-index: 100;
+}
+
+.add-secondary-tracking-button {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  background: rgb(255, 255, 255);
+}
+.add-secondary-tracking-button:hover {
+  background-color: #00ff00;
+  color: #000000;
+  cursor: pointer;
+  border: 1px solid #000000;
+}
+
+.add-secondary-tracking-input-box {
+  font-size: 2rem; /* Adjust as needed */
+  width: 100%;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  padding-left: 1rem;
+  border: 1px solid black;
+  margin-top: 0.5rem;
+}
+
+.close-secondary-tracking-button {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  background: rgb(255, 255, 255);
+}
+.close-secondary-tracking-button:hover {
+  background-color: #ff0000;
+  color: #ffffff;
+  cursor: pointer;
+  border: 1px solid #000000;
+}
+
+.secondary-tracking-button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-secondary-tracking-header {
+  font-size: 1.5rem;
+  text-align: center;
+  padding-bottom: 1rem;
+}
