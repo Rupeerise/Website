@@ -9,23 +9,37 @@ import { useEffect } from "react";
 export default function Profile() {
   const dispatch = useDispatch();
   const username = useSelector((state) => state.username.value);
+  const authorization = useSelector((state) => state.username.autorization);
   useEffect(() => {
     dispatch(getUsername());
   }, [dispatch]);
+
   return (
     <>
       <div className="profile-dropdown-container">
         <div className="navbar-profile">
-          <AccountCircleIcon className="navbar-profile-icon" fontSize="large" />
-          <div className="navbar-profile-name">{username}</div>
+          {authorization ? (
+            <>
+              <AccountCircleIcon
+                className="navbar-profile-icon"
+                fontSize="large"
+              />
+              <div className="navbar-profile-name">{username}</div>
+            </>
+          ) : (
+            <a href="/login" className="navbar-signin">
+              Sign In
+            </a>
+          )}
         </div>
-        <div className="dropdown-content">
-          <div className="profile-dropdown">Profile</div>
-          <div className="profile-dropdown">language</div>
-          <div className="profile-dropdown">Mode light/dark</div>
-          <div className="profile-dropdown">settings</div>
-          <Logout />
-        </div>
+        {authorization && (
+          <div className="dropdown-content">
+            <a className="profile-dropdown" href="/autopay">
+              Autopay
+            </a>
+            <Logout />
+          </div>
+        )}
       </div>
     </>
   );

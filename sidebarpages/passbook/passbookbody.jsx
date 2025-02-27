@@ -1,44 +1,94 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./passbookbody.css";
 import AddPayment from "./addpayment";
-import Card from "@mui/material/Card";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 import PastPaymentCard from "./pastpaymentcard";
 import { getPaymentArray } from "../../store/paymentArraySlice";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
 
 const PassbookBody = () => {
   const [showAddPayment, setShowAddPayment] = useState(false);
   const dispatch = useDispatch();
   const paymentArray = useSelector((state) => state.paymentArray.value);
+
   useEffect(() => {
     dispatch(getPaymentArray());
   }, [dispatch]);
+
+  const startOfWeek = (date) => {
+    const day = date.getDay();
+    const diff = date.getDate() - day + (day === 0 ? -6 : 1);
+    return new Date(date.setDate(diff));
+  };
+
+  const endOfWeek = (date) => {
+    const day = date.getDay();
+    const diff = date.getDate() + (6 - day);
+    return new Date(date.setDate(diff));
+  };
+
+  const formatDate = (date) => {
+    const options = { month: "short", day: "numeric", year: "numeric" };
+    return date.toLocaleDateString("en-US", options);
+  };
+
+  const segregatePayments = (payments) => {
+    const futurePayments = [];
+    const pastPayments = {};
+
+    payments.forEach((payment) => {
+      const paymentDate = new Date(payment.date);
+      const currentDate = new Date();
+      if (paymentDate > currentDate) {
+        futurePayments.push(payment);
+      } else {
+        const weekStart = startOfWeek(new Date(paymentDate));
+        const weekEnd = endOfWeek(new Date(paymentDate));
+        const week = `${formatDate(weekStart)} - ${formatDate(weekEnd)}`;
+        if (!pastPayments[week]) {
+          pastPayments[week] = [];
+        }
+        pastPayments[week].push(payment);
+      }
+    });
+
+    return { futurePayments, pastPayments };
+  };
+
+  const { futurePayments, pastPayments } = segregatePayments(paymentArray);
+
   return (
     <div className="passbookpage-body">
-      <Card className="add-payment">
-        <Box className="add-payment-content" p={2}>
-          <Typography variant="h5">Passbook</Typography>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={() => setShowAddPayment(true)}
-          >
-            Add A Payment
-          </Button>
-          {showAddPayment && (
-            <AddPayment closePopup={() => setShowAddPayment(false)} />
-          )}
-        </Box>
-      </Card>
-      <hr className="horizontal-line" />
-      <h2>Payments</h2>
-      {paymentArray.map((payment) => (
-        <PastPaymentCard key={payment._id} payment={payment} />
-      ))}
+      <div className="add-payment">
+        <div className="add-payment-content">Passbook</div>
+        <div
+          className="passbookpage-addpayment"
+          onClick={() => setShowAddPayment(true)}
+        >
+          Add new payment
+        </div>
+        {showAddPayment && (
+          <AddPayment closePopup={() => setShowAddPayment(false)} />
+        )}
+      </div>
+      <h2 className="passbookpage-text">Payments</h2>
+      <div className="passbook-main">
+        {futurePayments.length > 0 && (
+          <>
+            <h3>Future Payments</h3>
+            {futurePayments.map((payment) => (
+              <PastPaymentCard key={payment._id} payment={payment} />
+            ))}
+          </>
+        )}
+        {Object.keys(pastPayments).map((week) => (
+          <div key={week} style={{ width: `100%` }}>
+            <h3>{`${week}`}</h3>
+            {pastPayments[week].map((payment) => (
+              <PastPaymentCard key={payment._id} payment={payment} />
+            ))}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

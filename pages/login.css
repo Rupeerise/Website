@@ -1,63 +1,44 @@
-.login-container{
-  width: 50vw;
+.login-container {
+  background-color: white;
+  width: 100%;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 200px;
-  font-family:'Times New Roman', Times, serif
+  flex-direction: column;
 }
 
-.login-container h1{
+.login-container h1 {
   text-align: center;
   font-size: 36px;
 }
 
-.login-input{
+.login-input {
   margin-top: 10px;
-}
-
-.login-input input{
-  height: 40px;
-  border-radius: 100px;
-  outline: none;
-  border: none;
-  padding: 20px 45px 5px 20px;
-  background: transparent;
-  color: black;
-}
-
-.login-input input::placeholder{
-  color: gray;
-  opacity: 0.6;
-}
-
-.login-forgot{
-  margin-top: 10px;
+  border: 1px solid black;
+  border-radius: 7px;
+  padding: 10px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
 }
 
-.login-container button{
-  margin-top: 10px;
+.login-input-field {
+  border: none;
+  outline: none;
+  width: 20rem;
+  border: 1px solid black;
+  border-radius: 7px;
+  padding: 10px;
+  margin: 0.4rem 0rem;
 }
 
-.login-register{
-  margin-top: 10px;
-}
-
-.login-input .icon{
-  transform: translateY(20%);
-}
-
-.login-button{
-  width: 90px;
-  height: 37px;
-  border-radius: 10px;
+.login-button {
+  width: 20rem;
+  height: 2rem;
+  border-radius: 7px;
   border: none;
   cursor: pointer;
-}
-
-.login-button-container{
-  display: grid;
-  place-items: center;
+  background-color: aqua;
+  margin-top: 5px;
 }

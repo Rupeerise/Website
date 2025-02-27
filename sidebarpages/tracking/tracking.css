@@ -10,7 +10,6 @@
   margin-right: auto;
   border-radius: 1.5rem;
   margin-bottom: 10px;
-  border: solid 1px black;
   font-size: 1.5rem;
 }
 .trackingobjecttop {
@@ -20,4 +19,9 @@
 }
 .tracking-progressbar {
   margin-top: 1.5rem;
+}
+.trackingobjectbottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

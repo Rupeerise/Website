@@ -1,44 +1,35 @@
-import React from "react"
-import "./footer.css"
+import React from "react";
+import "./footer.css";
+import { Link } from "react-router-dom";
 
-export default function footer(){
-  return(
+export default function Footer() {
+  return (
     <div className="footer">
-      <div className="container">
-        <div className="row">
-          {/* column 1 */}
-          <div className="column">
-            <h4>RupeeRise</h4>
-            <ul className="list">
-              <li>4206969</li>
-              <li>Mumbai, India</li>
-              <li>221B, Baker Street</li>
-            </ul>
-          </div>
-          <div className="column">
-            <h4>Something</h4>
-            <ul className="list">
-              <li>Memes</li>
-              <li>Co-Founder</li>
-              <li>CEO</li>
-            </ul>
-          </div>
-          <div className="column">
-            <h4>Something</h4>
-            <ul className="list">
-              <li>Memes</li>
-              <li>Co-Founder</li>
-              <li>CEO</li>
-            </ul>
-          </div>
-        </div>
-        <hr />
-        <div className="row">
-          <p className="col-sm">
-            &copy;{new Date().getFullYear()} RupeeRise | All Rights Reserved | Terms of Service
-          </p>
-        </div>
+      <div className="footer-col">
+        <h1 className="footer-col-title">Links</h1>
+        <p className="footer-col-container">Login</p>
+        <p className="footer-col-container">Pricing</p>
+        <p className="footer-col-container">Support</p>
+        <Link className="footer-col-container" to="/faq">
+          FAQ
+        </Link>
+      </div>
+      <div className="footer-col">
+        <h1 className="footer-col-title">Contact</h1>
+        <p className="footer-col-container">
+          Email:
+          {/* <a href="mailto:admin@vivekwadate.com"> admin@vivekwadate.com </a> */}
+        </p>
+      </div>
+      <div className="footer-col">
+        <h1 className="footer-col-title">Legal</h1>
+        <Link className="footer-col-container" to="/termsofservice">
+          Term of Service
+        </Link>
+        <Link className="footer-col-container" to="/privacypolicy">
+          Privacy Policy
+        </Link>
       </div>
     </div>
-  )
+  );
 }

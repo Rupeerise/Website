@@ -1,0 +1,36 @@
+@keyframes boxBackground {
+  0% {
+    background-color: red;
+  }
+  50% {
+    background-color: blue;
+  }
+  100% {
+    background-color: red;
+  }
+}
+.barchart-loader {
+  width: 100%;
+  height: 25rem;
+  grid-column: 1 / 2;
+  animation: boxBackground 2s infinite;
+}
+
+@keyframes circleBackground {
+  0% {
+    background-color: green;
+  }
+  50% {
+    background-color: yellow;
+  }
+  100% {
+    background-color: green;
+  }
+}
+.piechart-loader {
+  width: 100%;
+  height: 25rem;
+  grid-column: 2 / 3;
+  border-radius: 50%;
+  animation: circleBackground 2s infinite;
+}

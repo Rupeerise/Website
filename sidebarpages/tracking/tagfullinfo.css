@@ -1,0 +1,54 @@
+.tag-full-name {
+  font-size: 2rem;
+  font-weight: bold;
+}
+#tag-full-label-icon {
+  font-size: 2rem;
+}
+.tag-full {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 1rem 15rem;
+}
+.tag-full-bar-top {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+.tag-full-type {
+  align-self: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.tag-full-edit {
+  padding: 0.5rem;
+  margin: 1rem;
+  border-radius: 1rem;
+  background: #89d3ff;
+  width: 5rem;
+  text-align: center;
+}
+.tag-full-graph {
+  width: 100%;
+  padding: 1rem 15rem;
+}
+.tag-full-payments {
+  width: 100%;
+  padding: 1rem 15rem;
+}
+.tag-full-payments-title {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-top: 2.2rem;
+  align-self: center;
+}
+.tag-full-title {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}

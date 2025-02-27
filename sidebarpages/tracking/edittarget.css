@@ -1,0 +1,66 @@
+.edit-target-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 38rem;
+  height: 24rem;
+  background-color: rgb(159, 223, 255);
+  border: 2px solid black;
+  border-radius: 1rem;
+  padding: 3rem;
+}
+
+.edit-target-button-form {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  background: rgb(255, 255, 255);
+}
+.edit-target-button-form:hover {
+  background-color: #00ff00;
+  color: #000000;
+  cursor: pointer;
+  border: 1px solid #000000;
+}
+
+.edit-target-input-box {
+  font-size: 1.2rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  padding-left: 1rem;
+  border: 1px solid black;
+  margin-top: 0.5rem;
+}
+
+.close-target-button {
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  background: rgb(255, 255, 255);
+}
+.close-target-button:hover {
+  background-color: #ff0000;
+  color: #ffffff;
+  cursor: pointer;
+  border: 1px solid #000000;
+}
+
+.target-button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit-target-header {
+  font-size: 1.5rem;
+  text-align: center;
+  padding-bottom: 1rem;
+}

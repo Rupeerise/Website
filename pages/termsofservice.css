@@ -1,0 +1,19 @@
+.tos-body {
+  line-height: 1.6;
+  margin: 20px;
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+}
+.tos-heading {
+  color: #333;
+}
+.tos-subheading {
+  color: #444;
+  margin-top: 1rem;
+  margin-bottom: 0.2rem;
+}
+.tos-paragraph {
+  color: #555;
+  margin-bottom: 0.6rem;
+}

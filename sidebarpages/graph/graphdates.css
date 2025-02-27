@@ -1,0 +1,50 @@
+.graphdates-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  grid-column: 1 / 3;
+}
+
+.horizontal-picker-container {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  margin: 5px 0;
+}
+
+.horizontal-picker-item {
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 10px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.selected-horizontal-picker-item {
+  background-color: #007aff;
+  color: #fff;
+}
+
+.date-picker-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.date-picker-container div {
+  margin: 0 10px;
+}
+
+.date-picker-container label {
+  margin-right: 5px;
+}
+
+.date-picker-container input {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}

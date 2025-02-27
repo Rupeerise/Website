@@ -1,12 +1,10 @@
 import * as React from "react";
 import Navbar from "./navbar/navbar";
-import CurrentDate from "./currentdate";
 
-export default function Boilerplate({ username, setIsOpen, isOpen }) {
+export default function Boilerplate({ setCollapsed, collapsed }) {
   return (
     <>
-      <Navbar username={username} setIsOpen={setIsOpen} isOpen={isOpen} />
-      <CurrentDate />
+      <Navbar setCollapsed={setCollapsed} collapsed={collapsed} />
     </>
   );
 }

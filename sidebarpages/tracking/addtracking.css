@@ -2,17 +2,32 @@
   position: fixed;
   top: 50%;
   left: 50%;
-  margin-top: -10rem;
-  margin-left: -16.5rem;
+  transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
   align-items: center;
   width: 38rem;
-  height: 18rem;
+  height: auto;
   background-color: rgb(159, 223, 255);
   border: 2px solid black;
   border-radius: 1rem;
   padding: 3rem;
+}
+
+.add-tracking-header {
+  font-size: 1.5rem;
+  text-align: center;
+  padding-bottom: 1rem;
+}
+
+.add-tracking-input-box {
+  font-size: 1.2rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  padding-left: 1rem;
+  border: 1px solid black;
+  margin-top: 0.5rem;
 }
 
 .add-tracking-button-form {
@@ -23,21 +38,12 @@
   border-radius: 0.5rem;
   background: rgb(255, 255, 255);
 }
+
 .add-tracking-button-form:hover {
   background-color: #00ff00;
   color: #000000;
   cursor: pointer;
   border: 1px solid #000000;
-}
-
-.add-tracking-input-box {
-  font-size: 1.2rem; /* Adjust as needed */
-  width: 100%;
-  border-radius: 0.5rem;
-  padding: 0.5rem;
-  padding-left: 1rem;
-  border: 1px solid black;
-  margin-top: 0.5rem;
 }
 
 .close-tracking-button {
@@ -48,6 +54,7 @@
   border-radius: 0.5rem;
   background: rgb(255, 255, 255);
 }
+
 .close-tracking-button:hover {
   background-color: #ff0000;
   color: #ffffff;
@@ -60,8 +67,13 @@
   justify-content: space-between;
 }
 
-.add-tracking-header {
-  font-size: 1.5rem;
-  text-align: center;
-  padding-bottom: 1rem;
+.color-picker-container {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.add-tracking-color-input {
+  width: 100%;
+  margin: auto;
 }

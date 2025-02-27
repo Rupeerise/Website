@@ -1,63 +1,45 @@
-import * as React from "react";
+import React, { useState } from "react";
 import "./sidebar.css";
-import ImportContactsIcon from "@mui/icons-material/ImportContacts";
-import TableChartIcon from "@mui/icons-material/TableChart";
-import CalculateIcon from "@mui/icons-material/Calculate";
+import StyleIcon from "@mui/icons-material/Style";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
-import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-import ArchiveIcon from "@mui/icons-material/Archive";
-import AnalyticsIcon from "@mui/icons-material/Analytics";
+import BookIcon from "@mui/icons-material/Book";
+import EqualizerIcon from "@mui/icons-material/Equalizer";
 import { Link } from "react-router-dom";
+import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 
-export default function Sidebar({ isOpen }) {
+export default function MySidebar({ collapsed }) {
   const icons = [
-    { key: "1", 
-      Icon: AnalyticsIcon, 
-      label: "Graphs", 
-      path: "/" 
-    },
+    { key: "1", Icon: EqualizerIcon, label: "Graphs", path: "/" },
     {
       key: "2",
-      Icon: ImportContactsIcon,
-      label: "Passbook",
-      path: "/passbook",
+      Icon: BookIcon,
+      label: "Payments",
+      path: "/payments",
     },
-    { key: "3", 
-      Icon: TableChartIcon, 
-      label: "Tracking", 
-      path: "/tag" },
+    { key: "3", Icon: StyleIcon, label: "Tags", path: "/tag" },
     {
       key: "4",
-      Icon: CalculateIcon,
-      label: "Calculators",
-    },
-    { key: "5", 
-      Icon: AccountBalanceWalletIcon, 
-      label: "Budget" 
-    },
-    { key: "6", 
-      Icon: CalendarMonthIcon, 
-      label: "Calendar" 
+      Icon: AccountBalanceWalletIcon,
+      label: "Budget",
+      path: "/budget",
     },
   ];
 
   return (
-    <div className="sidebar">
-      <div>
-        <ul className="sidenav-list">
-          {icons.map(({ Icon, label, path }, index) => (
-            <li key={index} className="sidenav-list-item">
-              <Link
-                to={path}
-                style={{ textDecoration: "none", color: "inherit" }}
-              >
-                <Icon fontSize="inherit" />
-                {isOpen && <p>{label}</p>}
-              </Link>
-            </li>
+    <>
+      <Sidebar collapsed={collapsed}>
+        <Menu>
+          {icons.map((icon) => (
+            <MenuItem
+              key={icon.key}
+              component={<Link to={icon.path} />}
+              icon={<icon.Icon />}
+            >
+              {icon.label}
+            </MenuItem>
           ))}
-        </ul>
-      </div>
-    </div>
+        </Menu>
+      </Sidebar>
+    </>
   );
 }

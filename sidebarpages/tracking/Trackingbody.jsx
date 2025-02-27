@@ -2,10 +2,13 @@ import React from "react";
 import TrackingObject from "./Trackingobject";
 import AddTrackingButton from "./addtrackingbutton";
 import "./tracking.css";
+import { useSelector } from "react-redux";
+import IndividualLoan from "./individualloan";
 
-function TrackingBody({ tagArray }) {
-  console.log(tagArray);
-  return (  
+function TrackingBody() {
+  const tagArray = useSelector((state) => state.tagArray.value);
+  const loanArray = useSelector((state) => state.loanArray.value);
+  return (
     <div className="trackingbody">
       <AddTrackingButton />
       {tagArray && tagArray.length > 0 ? (
@@ -16,7 +19,14 @@ function TrackingBody({ tagArray }) {
           />
         ))
       ) : (
-        <div>No tracking data available.</div>
+        <></>
+      )}
+      {loanArray && loanArray.length > 0 ? (
+        loanArray.map((loanObject) => (
+          <IndividualLoan key={loanObject._id} loanObject={loanObject} />
+        ))
+      ) : (
+        <></>
       )}
     </div>
   );

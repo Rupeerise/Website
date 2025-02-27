@@ -35,11 +35,7 @@ function Home() {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
-      <Boilerplate
-        username={user ? user.username : ""}
-        setIsOpen={setIsOpen}
-        isOpen={isOpen}
-      />
+      <Boilerplate setIsOpen={setIsOpen} isOpen={isOpen} />
       <div className="page-container">
         <Sidebar isOpen={isOpen} />
         <MainBody trackingArray={user ? user.trackingArray : []} />

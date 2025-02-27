@@ -1,70 +1,84 @@
-import * as React from "react";
-import "./mainbody.css";
+import React, { useEffect, useState } from "react";
+import "./graphbody.css";
 import Mainchart from "./mainchart";
+import GraphDates from "./graphdates";
 import Pichart from "./pichart";
-import Maintext from "./maintext";
 import { useSelector } from "react-redux";
+import GraphLoader from "./graphloader";
+import Nographdisplay from "./nographdisplay";
+import { processGraphData } from "./graphfunction";
 
 export default function GraphBody() {
-  const user = useSelector((state) => state.user);
-  let trackingArray = [];
-  if (user && user.trackingArray) {
-    trackingArray = user.trackingArray;
-  }
-  const names = trackingArray.map((item) => item.name);
-  const current = trackingArray.map((item) => item.current);
-  const target = trackingArray.map((item) => item.target);
+  const [isGraph, setIsGraph] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+  const loanArray = useSelector((state) => state.loanArray.value);
+  const paymentArray = useSelector((state) => state.paymentArray.value);
+  const tagArray = useSelector((state) => state.tagArray.value);
+  let startdate = useSelector((state) => state.graph.startdate);
+  let enddate = useSelector((state) => state.graph.enddate);
+  let graphType = useSelector((state) => state.graph.graphType);
+  let loanStatus = useSelector((state) => state.loanArray.status);
+  let paymentStatus = useSelector((state) => state.paymentArray.status);
+  let tagStatus = useSelector((state) => state.tagArray.status);
 
-  const [displayInfo, setDisplayInfo] = React.useState("current"); // default to 'current'
+  const {
+    labelsPaid,
+    dataPaid,
+    colorsPaid,
+    labelsReceived,
+    dataReceived,
+    colorsReceived,
+  } = processGraphData({
+    tagArray,
+    graphType,
+    loanArray,
+    paymentArray,
+    startdate,
+    enddate,
+  });
 
-  const handleButtonClick = (infoType) => {
-    if (infoType === "current") {
-      setDisplayInfo("current");
-    } else if (infoType === "target") {
-      setDisplayInfo("target");
+  useEffect(() => {
+    if (
+      loanStatus === "success" &&
+      paymentStatus === "success" &&
+      tagStatus === "success"
+    ) {
+      setIsLoading(false);
     }
-  };
+    if (
+      loanStatus === "loading" ||
+      paymentStatus === "loading" ||
+      tagStatus === "loading"
+    ) {
+      setIsLoading(true);
+    }
+  }, [loanStatus, paymentStatus, tagStatus]);
+
+  useEffect(() => {
+    if (labelsPaid.length === 0 && graphType == "paid") {
+      setIsGraph(false);
+    } else if (labelsReceived.length === 0 && graphType == "received") {
+      setIsGraph(false);
+    } else {
+      setIsGraph(true);
+    }
+  }, [labelsPaid, labelsReceived]);
 
   return (
     <div className="mainbody">
-      <div className="charts">
-        <div className="barchart">
-          <Mainchart labels={names} current={current} target={target} />
+      <GraphDates />
+      {isLoading ? (
+        <div className="graphcontainer">
+          <GraphLoader />
         </div>
-        <div className="pichartcontainer">
-          <div className="pichart">
-            <Pichart
-              labels={names}
-              current={current}
-              target={target}
-              displayInfo={displayInfo}
-            />
-          </div>
-          <button
-            onClick={() => handleButtonClick("current")}
-            className="pichartbutton"
-            style={
-              displayInfo === "current"
-                ? { backgroundColor: "#34eb34", color: "black" }
-                : {}
-            }
-          >
-            Current
-          </button>
-          <button
-            onClick={() => handleButtonClick("target")}
-            className="pichartbutton"
-            style={
-              displayInfo === "target"
-                ? { backgroundColor: "#34eb34", color: "black" }
-                : {}
-            }
-          >
-            Target
-          </button>
+      ) : isGraph ? (
+        <div className="graphcontainer">
+          <Mainchart />
+          <Pichart />
         </div>
-      </div>
-      <Maintext />
+      ) : (
+        <Nographdisplay />
+      )}
     </div>
   );
 }

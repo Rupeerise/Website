@@ -1,0 +1,83 @@
+.individualloanbudget-container {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.individualloanbudget-title,
+.individualloanbudget-target {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.individualbudget-container {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.individualbudget-title {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.individualbudget-input {
+  width: 100%;
+  height: 40px;
+  margin: 12px;
+  border-width: 1px;
+}
+
+.budgetbody-container {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.budgetupper-horizontalPickerContainer {
+  display: flex;
+  flex-direction: row;
+  margin: 1rem;
+  padding: 5px;
+  align-items: center;
+  justify-content: center;
+}
+
+.budgetupper-horizontalPickerItem {
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+.budgetupper-selectedHorizontalPickerItem {
+  background-color: #007aff;
+}
+
+.budgetupper-horizontalPickerText {
+  color: #000;
+}
+
+.budgetupper-selectedHorizontalPickerText {
+  color: #fff;
+}
+
+.budget-graph {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%; /* Adjust the width as needed */
+  height: 30rem; /* Adjust the height as needed */
+  margin: 0 auto; /* Center the graph */
+}

@@ -3,14 +3,39 @@
   margin: 0 auto;
   margin-top: 1rem;
 }
+.graphcontainer {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+.no-graph {
+  text-align: center;
+  height: 20rem;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
 .charts {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
 }
 
+.graphdates_container {
+  grid-column: 1 / 3;
+}
+
 .barchart {
   margin: 2rem;
+  grid-column: 1 / 2;
+}
+
+.pichart {
+  width: 100%;
+  height: 100%;
+  grid-column: 2 / 3;
 }
 .pichartcontainer {
   margin: 2rem;
@@ -18,9 +43,7 @@
   grid-template-columns: 1fr 1fr;
   max-width: 100vw;
 }
-.pichart {
-  grid-column: span 2;
-}
+
 .pichartbutton {
   padding: 1rem 2rem;
   font-size: 1.2rem;

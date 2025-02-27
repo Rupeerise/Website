@@ -5,6 +5,7 @@
   align-items: center;
   height: 7.5rem;
   border-radius: 2rem;
+  margin-top: 1rem;
 }
 .past-payment-left {
   display: flex;
@@ -34,12 +35,13 @@
   align-items: center;
 }
 .past-payment-tag-name {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   color: #000000;
   margin-left: 1rem;
 }
 .past-payment-amount {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
   color: #000000;
 }
 .past-payment-date {
