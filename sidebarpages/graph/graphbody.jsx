@@ -8,7 +8,7 @@ import GraphLoader from "./graphloader";
 import Nographdisplay from "./nographdisplay";
 import { processGraphData } from "./graphfunction";
 
-export default function GraphBody() {
+function GraphBody() {
   const [isGraph, setIsGraph] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const loanArray = useSelector((state) => state.loanArray.value);
@@ -82,3 +82,5 @@ export default function GraphBody() {
     </div>
   );
 }
+
+export default  GraphBody;

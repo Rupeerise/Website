@@ -1,0 +1,144 @@
+/* Header */
+
+.loan-body-main { 
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 1rem 15rem;
+}
+
+.loan-info-header h2 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: #222;
+  text-align: center;
+  font-weight: 700;
+  margin-top: 1.5rem;
+}
+
+/* Loan Amount & Interest Section */
+.loan-amount-interest {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  width: 90%;
+  margin: 2rem auto;
+  font-size: 1.5rem;
+  color: #000000;
+  font-weight: 600;
+  padding: 2rem 3rem;
+  background-color: #18a8ad;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+  min-height: 180px;
+  gap: 2rem;
+}
+
+/* Buttons */
+.loan-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.edit-btn,
+.delete-btn {
+  padding: 14px 28px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  gap: 1.5rem;
+}
+
+.edit-btn {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.edit-btn:hover {
+  background-color: #43a047;
+  transform: translateY(-2px);
+}
+
+.delete-btn {
+  background-color: #f44336;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #e53935;
+  transform: translateY(-2px);
+}
+
+/* Graph Wrapper */
+.loangraph-wrapper {
+  width: 100%;
+  padding: 1rem 15rem;
+  
+}
+
+/* Tabs */
+.loan-tabs {
+  width: 100%;
+  padding: 1rem 15rem;
+  gap: 10rem;
+}
+
+.tab {
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  background-color: #e0e0e0;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.tab.active {
+  background-color: #28a745;
+  color: white;
+}
+
+/* Payments List */
+.loanbody-payments {
+  width: 100%;
+  padding: 1rem 15rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .loanbody-wrapper {
+    padding: 1rem;
+  }
+
+  .loan-amount-interest {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.5rem;
+    font-size: 1.2rem;
+  }
+
+  .loan-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .edit-btn,
+  .delete-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .loan-tabs {
+    flex-direction: column;
+  }
+}

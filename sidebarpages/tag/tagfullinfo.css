@@ -1,28 +1,28 @@
-.tag-full-name {
+.tag-full-info-name {
   font-size: 2rem;
   font-weight: bold;
 }
-#tag-full-label-icon {
+#tag-full-info-label-icon {
   font-size: 2rem;
 }
-.tag-full {
+.tag-full-info {
   display: flex;
   flex-direction: column;
   width: 100%;
   padding: 1rem 15rem;
 }
-.tag-full-bar-top {
+.tag-full-info-bar-top {
   display: flex;
   flex-direction: row;
   width: 100%;
   justify-content: space-between;
 }
-.tag-full-type {
+.tag-full-info-type {
   align-self: center;
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
-.tag-full-edit {
+.tag-full-info-edit {
   padding: 0.5rem;
   margin: 1rem;
   border-radius: 1rem;
@@ -30,21 +30,21 @@
   width: 5rem;
   text-align: center;
 }
-.tag-full-graph {
+.tag-full-info-graph {
   width: 100%;
   padding: 1rem 15rem;
 }
-.tag-full-payments {
+.tag-full-info-payments {
   width: 100%;
   padding: 1rem 15rem;
 }
-.tag-full-payments-title {
+.tag-full-info-payments-title {
   font-size: 1.5em;
   font-weight: bold;
   margin-top: 2.2rem;
   align-self: center;
 }
-.tag-full-title {
+.tag-full-info-title {
   display: flex;
   flex-direction: row;
   width: 100%;

@@ -11,7 +11,7 @@ import EditTagName from "./edittagname";
 import EditTarget from "./edittarget";
 import { deleteTag } from "../../store/tagArraySlice";
 
-export default function Tagfullinfo() {
+export default function TagFullInfo() {
   const { id } = useParams();
   const tagArray = useSelector((state) => state.tagArray.value);
   const paymentArray = useSelector((state) => state.paymentArray.value);
@@ -37,19 +37,15 @@ export default function Tagfullinfo() {
   const [editingTarget, setEditingTarget] = useState(false);
   const onClickEdit = () => {
     setEditing(true);
-    // navigate(`/tag/edit/${id}`);
   };
   const closeEdit = () => {
     setEditing(false);
-    // console.log("closeEdit");
   };
   const onClickEditTarget = () => {
     setEditingTarget(true);
-    // navigate(`/tag/edittarget/${id}`);
   };
   const closeEditTarget = () => {
     setEditingTarget(false);
-    // console.log("closeEditTarget");
   };
   const dispatch = useDispatch();
   const handleDelete = () => {
@@ -58,34 +54,34 @@ export default function Tagfullinfo() {
   };
 
   return (
-    <div className="tag-full">
-      <div className="tag-full-title">
-        <LabelOutlinedIcon id="tag-full-label-icon" />
-        <h1 className="tag-full-name">{tag?.name}</h1>
+    <div className="tag-full-info">
+      <div className="tag-full-info-title">
+        <LabelOutlinedIcon id="tag-full-info-label-icon" />
+        <h1 className="tag-full-info-name">{tag?.name}</h1>
       </div>
 
-      <div className="tag-full-bar-top">
+      <div className="tag-full-info-bar-top">
         <h2>Current: {current}</h2>
         <h2>Target: {target ? target.amount : 0}</h2>
       </div>
       <ProgressBar value={(current / (target ? target.amount : 1)) * 100} />
-      <div className="tag-full-type">
+      <div className="tag-full-info-type">
         <h2>Tag Type: {tag?.tagType}</h2>
       </div>
-      <div className="tag-full-edit" onClick={onClickEdit}>
+      <div className="tag-full-info-edit" onClick={onClickEdit}>
         Edit
       </div>
       {editing && <EditTagName closeEdit={closeEdit} />}
-      <div className="tag-full-edit" onClick={onClickEditTarget}>
+      <div className="tag-full-info-edit" onClick={onClickEditTarget}>
         Edit Targets
       </div>
-      <div className="tag-full-edit" onClick={handleDelete}>
+      <div className="tag-full-info-edit" onClick={handleDelete}>
         Delete
       </div>
       {editingTarget && <EditTarget closeEditTarget={closeEditTarget} />}
       <TagGraph id={id} />
-      <div className="tag-full-payments">
-        <h2 className="tag-full-payments-title">Past Payments</h2>
+      <div className="tag-full-info-payments">
+        <h2 className="tag-full-info-payments-title">Past Payments</h2>
         {tagPayments.map((payment) => (
           <PastPaymentCard key={payment._id} payment={payment} />
         ))}

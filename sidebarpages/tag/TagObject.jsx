@@ -4,8 +4,9 @@ import { getTagArray } from "../../store/tagArraySlice";
 import ProgressBar from "../../boilerplates/progressbar";
 import { useNavigate } from "react-router-dom";
 
-function TrackingObject({ trackingObject }) {
-  const targets = trackingObject?.targets;
+function TagObject({ tagObject }) {
+
+  const targets = tagObject?.targets;
 
   const currency = useSelector((state) => state.currency.value);
   const paymentArray = useSelector((state) => state.paymentArray.value);
@@ -18,12 +19,12 @@ function TrackingObject({ trackingObject }) {
   );
   const navigate = useNavigate();
   const onClick = () => {
-    navigate("/tag/" + trackingObject?._id);
+    navigate("/tag/" + tagObject?._id);
   };
 
   const thismonth = paymentArray.filter(
     (payment) =>
-      payment.tagid?._id === trackingObject?._id &&
+      payment.tagid?._id === tagObject?._id &&
       new Date(payment.date).getMonth() === month &&
       new Date(payment.date).getFullYear() === year
   );
@@ -33,7 +34,6 @@ function TrackingObject({ trackingObject }) {
   );
   const [textColor, setTextColor] = useState("black");
 
-  // Function to determine if a color is light or dark
   const isColorLight = (color) => {
     const hex = color.replace("#", "");
     const r = parseInt(hex.substring(0, 2), 16);
@@ -43,33 +43,33 @@ function TrackingObject({ trackingObject }) {
     return brightness > 155;
   };
 
-  // Update the text color once the color is available
   useEffect(() => {
-    if (trackingObject?.color) {
-      setTextColor(isColorLight(trackingObject?.color) ? "black" : "white");
+    if (tagObject?.color) {
+      setTextColor(isColorLight(tagObject?.color) ? "black" : "white");
     }
-  }, [trackingObject?.color]);
+  }, [tagObject?.color]);
+
   return (
     <div
-      className="trackingobject"
-      key={trackingObject._id}
+      className="tagobject"
+      key={tagObject._id}
       onClick={onClick}
       style={{
-        backgroundColor: trackingObject?.color,
+        backgroundColor: tagObject?.color,
         cursor: "pointer",
         color: textColor,
       }}
     >
-      <div className="trackingobjecttop">
-        <div>{trackingObject?.name}</div>
+      <div className="tagobjecttop">
+        <div>{tagObject?.name}</div>
         <div>This month : {thisMonthTotal}</div>
       </div>
-      <div className="trackingobjectbottom">
-        <div>Type: {trackingObject?.tagType}</div>
+      <div className="tagobjectbottom">
+        <div>Type: {tagObject?.tagType}</div>
         <div>Target: {currenttarget ? currenttarget.amount : 0}</div>
       </div>
     </div>
   );
 }
 
-export default TrackingObject;
+export default TagObject;

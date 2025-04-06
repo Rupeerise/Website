@@ -51,7 +51,27 @@ const PassbookBody = () => {
       }
     });
 
-    return { futurePayments, pastPayments };
+  // Sort future payments in ascending order (oldest first)
+  futurePayments.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+  // Sort past payments in each week from most recent to oldest
+  Object.keys(pastPayments).forEach((week) => {
+    pastPayments[week].sort((a, b) => new Date(b.date) - new Date(a.date));
+  });
+
+  // Sort weeks in descending order (most recent first)
+  const sortedPastPayments = Object.keys(pastPayments)
+    .sort((a, b) => {
+      const dateA = new Date(a.split(" - ")[1]); // End date of week
+      const dateB = new Date(b.split(" - ")[1]);
+      return dateB - dateA;
+    })
+    .reduce((acc, key) => {
+      acc[key] = pastPayments[key];
+      return acc;
+    }, {});
+
+  return { futurePayments, pastPayments: sortedPastPayments };
   };
 
   const { futurePayments, pastPayments } = segregatePayments(paymentArray);

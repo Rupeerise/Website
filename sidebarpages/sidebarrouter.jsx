@@ -4,19 +4,19 @@ import Footer from "./../boilerplates/footer";
 import "./../pages/home.css";
 import PassbookBody from "./passbook/passbookbody";
 import { useDispatch } from "react-redux";
-import TrackingBody from "./tracking/Trackingbody";
+import TagBody from "./tag/Tagbody";
 import GraphBody from "./graph/graphbody";
 import { getUsername } from "../store/usernameSlice";
 import { getPaymentArray } from "../store/paymentArraySlice";
 import { getTagArray } from "../store/tagArraySlice";
 import { getCurrency } from "../store/currencySlice";
-import Tagfullinfo from "./tracking/tagfullinfo";
+import Tagfullinfo from "./tag/tagfullinfo";
 import { useParams } from "react-router-dom";
-import EditTarget from "./tracking/edittarget";
-import EditTagName from "./tracking/edittagname";
+import EditTarget from "./tag/edittarget";
+import EditTagName from "./tag/edittagname";
 import { getLoanArray } from "../store/loanArraySlice";
-import Loanbody from "./tracking/loanbody";
-import InvestmentBody from "./tracking/investmentbody";
+import Loanbody from "./tag/loanbody";
+import InvestmentBody from "./tag/investmentbody";
 import BudgetBody from "./budget/budgetbody";
 import AutopayBody from "../sidebarpages/autopay/autopaybody";
 import MySidebar from "./../boilerplates/sidebar/sidebar";
@@ -41,7 +41,7 @@ function SidebarRouter() {
       <div className="page-container">
         <MySidebar collapsed={collapsed} />
         {location.pathname === "/payments" && <PassbookBody />}
-        {location.pathname === "/tag" && <TrackingBody />}
+        {location.pathname === "/tag" && <TagBody />}
         {location.pathname === "/" && <GraphBody />}
         {location.pathname === "/home" && <GraphBody />}
         {location.pathname === "/tag/" + id && <Tagfullinfo />}

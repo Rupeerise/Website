@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import "./tag.css"; // Ensure the correct CSS file is imported
 
 function IndividualLoan({ loanObject }) {
   const paymentArray = useSelector((state) => state.paymentArray.value);
@@ -50,7 +51,7 @@ function IndividualLoan({ loanObject }) {
 
   return (
     <div
-      className="trackingobject"
+      className="tagobject"
       key={loanObject._id}
       onClick={onClick}
       style={{
@@ -59,11 +60,11 @@ function IndividualLoan({ loanObject }) {
         color: textColor,
       }}
     >
-      <div className="trackingobjecttop">
+      <div className="tagobjecttop">
         <div>{loanObject?.name}</div>
         <div>Target: {thisMonthTotal}</div>
       </div>
-      <div className="trackingobjectbottom">
+      <div className="tagobjectbottom">
         <div>Type: {loanObject?.tagType}</div>
         <div>This month: {thisMonthTotal}</div>
       </div>

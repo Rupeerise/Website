@@ -22,7 +22,7 @@ export default function UpdateLoan({ id, setIsUpdateModalVisible }) {
       [field]: value,
     }));
   };
-
+  
   const handleUpdateLoan = () => {
     dispatch(updateLoan(updatedLoan));
     setIsUpdateModalVisible(false);

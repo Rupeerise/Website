@@ -100,7 +100,7 @@ export default function EditTagName({ closeEdit }) {
             onClick={closeEdit}
             className="close-tagname-button"
           >
-            Close
+           Close
           </button>
         </div>
       </form>

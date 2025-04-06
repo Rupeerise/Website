@@ -1,4 +1,4 @@
-.add-tracking-container {
+.add-tag-container {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -14,13 +14,13 @@
   padding: 3rem;
 }
 
-.add-tracking-header {
+.add-tag-header {
   font-size: 1.5rem;
   text-align: center;
   padding-bottom: 1rem;
 }
 
-.add-tracking-input-box {
+.add-tag-input-box {
   font-size: 1.2rem;
   width: 100%;
   border-radius: 0.5rem;
@@ -30,7 +30,7 @@
   margin-top: 0.5rem;
 }
 
-.add-tracking-button-form {
+.add-tag-button-form {
   font-size: 1.2rem;
   margin-top: 1rem;
   padding: 0.5rem;
@@ -39,14 +39,14 @@
   background: rgb(255, 255, 255);
 }
 
-.add-tracking-button-form:hover {
+.add-tag-button-form:hover {
   background-color: #00ff00;
   color: #000000;
   cursor: pointer;
   border: 1px solid #000000;
 }
 
-.close-tracking-button {
+.close-tag-button {
   font-size: 1.1rem;
   margin-top: 1rem;
   padding: 0.5rem;
@@ -55,14 +55,14 @@
   background: rgb(255, 255, 255);
 }
 
-.close-tracking-button:hover {
+.close-tag-button:hover {
   background-color: #ff0000;
   color: #ffffff;
   cursor: pointer;
   border: 1px solid #000000;
 }
 
-.tracking-button-container {
+.tag-button-container {
   display: flex;
   justify-content: space-between;
 }
@@ -73,7 +73,7 @@
   margin: 1rem 0;
 }
 
-.add-tracking-color-input {
+.add-tag-color-input {
   width: 100%;
   margin: auto;
 }
