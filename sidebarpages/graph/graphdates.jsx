@@ -93,13 +93,14 @@ export default function GraphDates() {
       </div>
       <div className="date-picker-container">
         <div>
-          <label htmlFor="startdate">Start Date:</label>
+        <label htmlFor="startdate">Start Date:</label>
           <input
-            type="date"
-            id="startdate"
-            name="startdate"
-            value={startdate.toISOString().split("T")[0]}
-            onChange={(e) => handleDateChange(e, true)}
+           type="date"
+           id="startdate"
+           name="startdate"
+           value={startdate.toISOString().split("T")[0]}
+           onChange={(e) => handleDateChange(e, true)}
+           onClick={(e) => e.target.showPicker && e.target.showPicker()} // 💡 Forces calendar open on some browsers
           />
         </div>
         <div>
@@ -110,6 +111,7 @@ export default function GraphDates() {
             name="enddate"
             value={enddate.toISOString().split("T")[0]}
             onChange={(e) => handleDateChange(e, false)}
+            onClick={(e) => e.target.showPicker && e.target.showPicker()} 
           />
         </div>
       </div>

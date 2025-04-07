@@ -176,6 +176,7 @@ export default function AddPayment({ closePopup }) {
               className="add-payment-input-box"
               value={form.date}
               onChange={(e) => handleChange("date", e.target.value)}
+              onClick={(e) => e.target.showPicker && e.target.showPicker()} 
             />
 
             {error && <div className="add-payment-error">{error}</div>}
