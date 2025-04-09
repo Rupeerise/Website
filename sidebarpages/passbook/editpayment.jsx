@@ -2,10 +2,11 @@ import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updatePayment } from "../../store/paymentArraySlice";
 import "./editpayment.css";
+import { deletePayment } from "../../store/paymentArraySlice"; 
 
 export default function EditPayment({ closePopup, payment }) {
   console.log(payment);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const tagArray = useSelector((state) => state.tagArray.value);
   const loanArray = useSelector((state) => state.loanArray.value);
   const paymentTypeEnum = ["paid", "received"];
@@ -114,10 +115,26 @@ export default function EditPayment({ closePopup, payment }) {
     };
   }, []);
 
+  const dispatch = useDispatch();
+
+  const handleDelete = async () => {
+      dispatch(deletePayment(payment._id));
+  };
+
+
   return (
     <div className="edit-payment-container" ref={formRef}>
       <form onSubmit={handleUpdatePayment}>
-        <div className="edit-payment-header">Edit Payment</div>
+        <div className="edit-payment-header">
+        <h2>Edit Payment</h2>
+        <button
+                type="button"
+                onClick={closePopup}
+                className="close-payment-button"
+              >
+                Close
+        </button>
+        </div>
         <label className="edit-payment-label">Payment Type</label>
         <select
           name="paymentType"
@@ -181,13 +198,7 @@ export default function EditPayment({ closePopup, payment }) {
               <button type="submit" className="edit-payment-button">
                 Update Payment
               </button>
-              <button
-                type="button"
-                onClick={closePopup}
-                className="close-payment-button"
-              >
-                Close
-              </button>
+              <button className="delete-payment-button" onClick={handleDelete}>Delete</button>
             </div>
           </>
         )}

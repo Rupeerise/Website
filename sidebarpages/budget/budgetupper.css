@@ -1,0 +1,31 @@
+
+.budgetupper-horizontalPickerContainer {
+    display: flex;
+    flex-direction: row;
+    margin: 1rem;
+    padding: 5px;
+    align-items: center;
+    justify-content: center;
+  }
+ 
+  .budgetupper-horizontalPickerItem {
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    margin: 0 5px;
+  }
+  
+  .budgetupper-selectedHorizontalPickerItem {
+    background-color: #007aff;
+  }
+  
+  .budgetupper-horizontalPickerText {
+    color: #000;
+  }
+  
+  .budgetupper-selectedHorizontalPickerText {
+    color: #fff;
+  }
+  

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setGraphType } from "../../store/budgetSlice";
-import "./budget.css";
+import "./budgetupper.css";
 
 export default function BudgetUpper() {
   const graphType = useSelector((state) => state.budget.graphType);

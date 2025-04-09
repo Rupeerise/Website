@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./pastpaymentcard.css";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import SellIcon from "@mui/icons-material/Sell";
-import PaymentUpdateDelete from "./paymentupdatedelete";
+import EditPayment from "./editpayment";
 
 const PastPaymentCard = ({ payment }) => {
   const date = new Date(payment.date).toLocaleDateString("en-GB");
@@ -39,7 +39,7 @@ const PastPaymentCard = ({ payment }) => {
         </div>
       </div>
       {popup && (
-        <PaymentUpdateDelete closePopup={closePopup} payment={payment} />
+        <EditPayment closePopup={closePopup} payment={payment} />
       )}
     </div>
   );

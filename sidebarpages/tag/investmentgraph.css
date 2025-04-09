@@ -1,0 +1,48 @@
+.graph-container {
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .graph-container:hover {
+    transform: scale(1.01); /* Slight zoom on hover for interactivity */
+  }
+  
+  .graph-controls {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    font-size: 1rem;
+  }
+  
+  .graph-controls label {
+    color: #333;
+    font-weight: 500;
+  }
+  
+  .graph-controls select {
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #f9f9f9;
+    transition: all 0.2s ease;
+  }
+  
+  .graph-controls select:hover,
+  .graph-controls select:focus {
+    border-color: #007bff;
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+    outline: none;
+  }
+  

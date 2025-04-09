@@ -68,15 +68,17 @@ export default function TagFullInfo() {
       <div className="tag-full-info-type">
         <h2>Tag Type: {tag?.tagType}</h2>
       </div>
+      <div className="tag-full-info-edit-container">
       <div className="tag-full-info-edit" onClick={onClickEdit}>
         Edit
       </div>
       {editing && <EditTagName closeEdit={closeEdit} />}
-      <div className="tag-full-info-edit" onClick={onClickEditTarget}>
+      <div className="tag-full-info-edit-target" onClick={onClickEditTarget}>
         Edit Targets
       </div>
-      <div className="tag-full-info-edit" onClick={handleDelete}>
+      <div className="tag-full-info-delete" onClick={handleDelete}>
         Delete
+      </div>
       </div>
       {editingTarget && <EditTarget closeEditTarget={closeEditTarget} />}
       <TagGraph id={id} />

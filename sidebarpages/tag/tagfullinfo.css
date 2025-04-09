@@ -22,6 +22,16 @@
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
+.tag-full-info-edit-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  /* align at center horizontally */
+  justify-content: center;
+  gap: 5rem;
+  margin-bottom: 2rem;
+}
 .tag-full-info-edit {
   padding: 0.5rem;
   margin: 1rem;
@@ -31,6 +41,7 @@
   text-align: center;
 }
 .tag-full-info-graph {
+  margin-top: 2rem;
   width: 100%;
   padding: 1rem 15rem;
 }
@@ -51,4 +62,29 @@
   align-items: center;
   justify-content: center;
   margin-top: 2rem;
+}
+.tag-full-info-edit{
+  padding: 0.5rem;
+  margin: 1rem;
+  border-radius: 1rem;
+  background: #06dd3c;
+  width: 5rem;
+  text-align: center;
+}
+.tag-full-info-edit-target{
+  padding: 0.5rem;
+  margin: 1rem;
+  border-radius: 1rem;
+  background: #ff0000;
+  width: 5rem;
+  text-align: center;
+}
+
+.tag-full-info-delete{
+  padding: 0.5rem;
+  margin: 1rem;
+  border-radius: 1rem;
+  background: #ff0000;
+  width: 5rem;
+  text-align: center;
 }

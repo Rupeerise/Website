@@ -22,22 +22,29 @@ function InvestmentBody() {
     return (
       <div className="investmentbody">
         <div className="investment_tag">{investment.name}</div>
-        <InvestmentGraph id={id} />
-        <div
-          className="investmentbody_edit"
-          onClick={() => setIsUpdateModalVisible(true)}
-        >
+        
+
+        <div className="loan-buttons">
+        <div className="edit-btn" onClick={() => setIsUpdateModalVisible(true)}>
           Edit
         </div>
+        <div className="delete-btn" onClick={handleDelete}>
+          Delete
+        </div>
+        </div>
+
+
         {isUpdateModalVisible && (
           <UpdateLoan
             id={id}
             setIsUpdateModalVisible={setIsUpdateModalVisible}
           />
         )}
-        <div className="investmentbody_edit" onClick={handleDelete}>
-          Delete
-        </div>
+         
+         <div className="investmentgraph-wrapper">
+                 <InvestmentGraph id={id} />
+          </div>
+        
       </div>
     );
   } else {

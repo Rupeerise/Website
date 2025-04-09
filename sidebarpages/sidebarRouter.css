@@ -1,0 +1,54 @@
+/* sidebarRouter.css */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f5f7fa;
+  }
+  
+  .content-wrapper {
+    display: flex;
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .page-content {
+    flex: 1;
+    padding: 1.5rem;
+    overflow-y: auto;
+    transition: all 0.3s ease;
+    will-change: transform, opacity;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin: 1rem;
+  }
+  
+  .page-transitioning {
+    animation: pulse 0.5s ease;
+  }
+  
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+    50% {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+    100% {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+  }
+  
+  /* Media Queries for Responsiveness */
+  @media (max-width: 768px) {
+    .content-wrapper {
+      flex-direction: column;
+    }
+    
+    .page-content {
+      margin: 0.5rem;
+      padding: 1rem;
+    }
+  }

@@ -1,0 +1,46 @@
+@keyframes boxBackground {
+  0% {
+    background-color: rgb(227, 227, 227);
+  }
+  50% {
+    background-color: rgb(100, 100, 100);
+  }
+  100% {
+    background-color: rgb(227, 227, 227);
+  }
+}
+.barchart_loader {
+  width: 100%;
+  height: 25rem;
+  grid-column: 1 / 2;
+}
+.barchart_loader__slice {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5rem;
+  animation: boxBackground 2s infinite;
+}
+
+@keyframes circleBackground {
+  0% {
+    background-color: rgb(227, 227, 227);
+  }
+  50% {
+    background-color: rgb(100, 100, 100);
+  }
+  100% {
+    background-color: rgb(227, 227, 227);
+  }
+}
+.piechart_loader {
+  width: 100%;
+  height: 25rem;
+  grid-column: 2 / 3;
+  padding: 2rem;
+}
+.piechart_loader__slice {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  animation: circleBackground 2s infinite;
+}

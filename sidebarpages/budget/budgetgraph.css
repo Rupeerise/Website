@@ -1,0 +1,52 @@
+.budget-graph {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 1rem;
+  /* background-color: #f9f9f9; */
+  border-radius: 8px;
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+}
+
+.chart-container {
+  display: flex;
+  width: 100%;
+  min-height: 400px;
+  margin-bottom: 1rem;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.bar-chart {
+  width: 60%;
+  height: 400px;
+  padding-right: 1rem;
+}
+
+.pie-chart {
+  width: 40%;
+  height: 400px;
+}
+
+.budget-savings-info {
+  text-align: center;
+  padding: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .chart-container {
+    flex-direction: column;
+    min-height: auto;
+  }
+  
+  .bar-chart, .pie-chart {
+    width: 100%;
+    height: 300px;
+    padding-right: 0;
+    margin-bottom: 1.5rem;
+  }
+
+}

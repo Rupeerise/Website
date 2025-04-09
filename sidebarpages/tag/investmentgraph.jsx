@@ -135,7 +135,7 @@ export default function InvestmentGraph({ id }) {
   };
 
   return (
-    <div style={{ width: "100%", height: "100%" }}>
+    <div className="graph-container">
       {graphDisplay === "invested" ? (
         <Chart type="line" data={dataInvested} options={options} />
       ) : graphDisplay === "withdrawn" ? (
@@ -144,8 +144,9 @@ export default function InvestmentGraph({ id }) {
         <Chart type="line" data={dataValue} options={options} />
       )}
       <div className="graph-controls">
-        <label>Graph Display: </label>
+        <label htmlFor="graphDisplay">Graph Display:</label>
         <select
+          id="graphDisplay"
           value={graphDisplay}
           onChange={(e) => setGraphDisplay(e.target.value)}
         >

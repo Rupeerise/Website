@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import "./passbookbody.css";
+import { useDispatch, useSelector } from "react-redux";
+import { getPaymentArray } from "../../store/paymentArraySlice";
 import AddPayment from "./addpayment";
 import PastPaymentCard from "./pastpaymentcard";
-import { getPaymentArray } from "../../store/paymentArraySlice";
-import { useDispatch, useSelector } from "react-redux";
+import "./passbookbody.css";
 
 const PassbookBody = () => {
   const [showAddPayment, setShowAddPayment] = useState(false);
@@ -14,96 +14,86 @@ const PassbookBody = () => {
     dispatch(getPaymentArray());
   }, [dispatch]);
 
-  const startOfWeek = (date) => {
-    const day = date.getDay();
-    const diff = date.getDate() - day + (day === 0 ? -6 : 1);
-    return new Date(date.setDate(diff));
-  };
-
-  const endOfWeek = (date) => {
-    const day = date.getDay();
-    const diff = date.getDate() + (6 - day);
-    return new Date(date.setDate(diff));
+  const getWeekRange = (date) => {
+    const start = new Date(date);
+    const end = new Date(date);
+    const day = start.getDay();
+    start.setDate(start.getDate() - day + (day === 0 ? -6 : 1));
+    end.setDate(start.getDate() + 6);
+    return `${formatDate(start)} - ${formatDate(end)}`;
   };
 
   const formatDate = (date) => {
-    const options = { month: "short", day: "numeric", year: "numeric" };
-    return date.toLocaleDateString("en-US", options);
+    return date.toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    });
   };
 
   const segregatePayments = (payments) => {
+    const now = new Date();
     const futurePayments = [];
     const pastPayments = {};
 
     payments.forEach((payment) => {
-      const paymentDate = new Date(payment.date);
-      const currentDate = new Date();
-      if (paymentDate > currentDate) {
+      const date = new Date(payment.date);
+      if (date > now) {
         futurePayments.push(payment);
       } else {
-        const weekStart = startOfWeek(new Date(paymentDate));
-        const weekEnd = endOfWeek(new Date(paymentDate));
-        const week = `${formatDate(weekStart)} - ${formatDate(weekEnd)}`;
-        if (!pastPayments[week]) {
-          pastPayments[week] = [];
-        }
+        const week = getWeekRange(date);
+        if (!pastPayments[week]) pastPayments[week] = [];
         pastPayments[week].push(payment);
       }
     });
 
-  // Sort future payments in ascending order (oldest first)
-  futurePayments.sort((a, b) => new Date(a.date) - new Date(b.date));
+    futurePayments.sort((a, b) => new Date(a.date) - new Date(b.date));
+    Object.values(pastPayments).forEach((list) =>
+      list.sort((a, b) => new Date(b.date) - new Date(a.date))
+    );
 
-  // Sort past payments in each week from most recent to oldest
-  Object.keys(pastPayments).forEach((week) => {
-    pastPayments[week].sort((a, b) => new Date(b.date) - new Date(a.date));
-  });
+    const sortedPast = Object.keys(pastPayments)
+      .sort((a, b) => new Date(b.split(" - ")[1]) - new Date(a.split(" - ")[1]))
+      .reduce((acc, key) => {
+        acc[key] = pastPayments[key];
+        return acc;
+      }, {});
 
-  // Sort weeks in descending order (most recent first)
-  const sortedPastPayments = Object.keys(pastPayments)
-    .sort((a, b) => {
-      const dateA = new Date(a.split(" - ")[1]); // End date of week
-      const dateB = new Date(b.split(" - ")[1]);
-      return dateB - dateA;
-    })
-    .reduce((acc, key) => {
-      acc[key] = pastPayments[key];
-      return acc;
-    }, {});
-
-  return { futurePayments, pastPayments: sortedPastPayments };
+    return { futurePayments, pastPayments: sortedPast };
   };
 
   const { futurePayments, pastPayments } = segregatePayments(paymentArray);
 
   return (
-    <div className="passbookpage-body">
-      <div className="add-payment">
-        <div className="add-payment-content">Passbook</div>
-        <div
-          className="passbookpage-addpayment"
+    <div className="passbook-body">
+      <div className="passbook-header">
+        <h2 className="passbook-title">Passbook</h2>
+        <button
+          className="add-payment-btn"
           onClick={() => setShowAddPayment(true)}
         >
           Add new payment
-        </div>
-        {showAddPayment && (
-          <AddPayment closePopup={() => setShowAddPayment(false)} />
-        )}
+        </button>
       </div>
-      <h2 className="passbookpage-text">Payments</h2>
-      <div className="passbook-main">
+
+      {showAddPayment && (
+        <AddPayment closePopup={() => setShowAddPayment(false)} />
+      )}
+
+      <h3 className="section-title">Payments</h3>
+      <div className="payment-list">
         {futurePayments.length > 0 && (
           <>
-            <h3>Future Payments</h3>
+            <h4 className="subsection-title">Future Payments</h4>
             {futurePayments.map((payment) => (
               <PastPaymentCard key={payment._id} payment={payment} />
             ))}
           </>
         )}
-        {Object.keys(pastPayments).map((week) => (
-          <div key={week} style={{ width: `100%` }}>
-            <h3>{`${week}`}</h3>
-            {pastPayments[week].map((payment) => (
+        {Object.entries(pastPayments).map(([week, list]) => (
+          <div key={week} className="week-group">
+            <h4 className="subsection-title">{week}</h4>
+            {list.map((payment) => (
               <PastPaymentCard key={payment._id} payment={payment} />
             ))}
           </div>

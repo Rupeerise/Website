@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import "./budget.css";
+import "./individualloanbudget.css";
 
 export default function IndividualLoanBudget({ loan }) {
   const paymentArray = useSelector((state) => state.paymentArray.value);
@@ -19,10 +19,15 @@ export default function IndividualLoanBudget({ loan }) {
     (acc, payment) => acc + payment?.amount,
     0
   );
+  
   return (
     <div className="individualloanbudget-container" key={loan._id}>
       <h2 className="individualloanbudget-title">{loan?.name}</h2>
-      <p className="individualloanbudget-target">{current}</p>
+      <div className="individualloanbudget-right-section">
+        <div className="individualloanbudget-value">
+          ${current}
+        </div>
+      </div>
     </div>
   );
 }

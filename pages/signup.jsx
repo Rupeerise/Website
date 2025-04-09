@@ -4,7 +4,6 @@ import "./signup.css";
 import { currencyArray } from "../utilities/currency";
 
 export default function Signup() {
-  console.log("Signup");
   let [FormData, setFormData] = useState({
     username: "",
     password: "",
@@ -35,15 +34,8 @@ export default function Signup() {
     if (response.ok) {
       let jsonResponse = await response.json();
       console.log(jsonResponse);
-      // Clear the form
-      setFormData({
-        username: "",
-        password: "",
-        currency: "INR",
-      });
-      const redirectUrl = new URLSearchParams(window.location.search).get(
-        "redirect"
-      );
+      setFormData({ username: "", password: "", currency: "INR" });
+      const redirectUrl = new URLSearchParams(window.location.search).get("redirect");
       if (redirectUrl) {
         window.location = redirectUrl;
         return;
@@ -57,9 +49,7 @@ export default function Signup() {
 
   const handleLogin = async (event) => {
     event.preventDefault();
-    const redirectUrl = new URLSearchParams(window.location.search).get(
-      "redirect"
-    );
+    const redirectUrl = new URLSearchParams(window.location.search).get("redirect");
     if (redirectUrl) {
       window.location = redirectUrl;
     } else {
@@ -68,27 +58,25 @@ export default function Signup() {
   };
 
   return (
-    <>
-      <form action="Login" onSubmit={handleSubmit} className="signup-container">
-        <h1>Sign Up</h1>
+    <div className="signup-container">
+      <form className="signup-form" onSubmit={handleSubmit}>
+        <h2 className="signup-title">Create Your Account</h2>
         <input
           className="signup-input-field"
           type="text"
+          name="username"
           placeholder="Username"
           value={FormData.username}
           onChange={handleInputChange}
-          name="username"
         />
-
         <input
           className="signup-input-field"
           type="password"
-          placeholder="Password"
           name="password"
+          placeholder="Password"
           value={FormData.password}
           onChange={handleInputChange}
         />
-
         <select
           className="signup-input-field"
           name="currency"
@@ -101,15 +89,13 @@ export default function Signup() {
             </option>
           ))}
         </select>
-
-        <button type="submit" className="signup-button">
+        <button className="signup-button" type="submit">
           Sign Up
         </button>
-
-        <button type="button" className="signup-button" onClick={handleLogin}>
+        <button className="signup-button secondary" onClick={handleLogin}>
           Login
         </button>
       </form>
-    </>
+    </div>
   );
 }

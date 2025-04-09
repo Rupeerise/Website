@@ -13,7 +13,6 @@ export default function Login() {
   let handleInputChange = (event) => {
     let fieldName = event.target.name;
     let newValue = event.target.value;
-
     setFormData((currData) => {
       currData[fieldName] = newValue;
       return { ...currData };
@@ -22,7 +21,6 @@ export default function Login() {
 
   let handleSubmit = async (event) => {
     event.preventDefault();
-
     let response = await fetch(backendUrl + "/api/login", {
       method: "POST",
       headers: {
@@ -35,20 +33,9 @@ export default function Login() {
     if (response.ok) {
       let jsonResponse = await response.json();
       console.log(jsonResponse);
-      // Clear the form
-      setFormData({
-        username: "",
-        password: "",
-      });
-      const redirect = new URLSearchParams(window.location.search).get(
-        "redirect"
-      );
-      if (redirect) {
-        window.location = redirect;
-        return;
-      } else {
-        window.location = "/";
-      }
+      setFormData({ username: "", password: "" });
+      const redirect = new URLSearchParams(window.location.search).get("redirect");
+      window.location = redirect || "/";
     } else {
       console.log("HTTP-Error: " + response.status);
     }
@@ -56,19 +43,14 @@ export default function Login() {
 
   const handleSignup = async (event) => {
     event.preventDefault();
-    const redirect = new URLSearchParams(window.location.search).get(
-      "redirect"
-    );
-    if (redirect) {
-      window.location = `/signup?redirect=${encodeURIComponent(redirect)}`;
-    } else {
-      window.location = "/signup";
-    }
+    const redirect = new URLSearchParams(window.location.search).get("redirect");
+    window.location = redirect
+      ? `/signup?redirect=${encodeURIComponent(redirect)}`
+      : "/signup";
   };
 
   const handleGoogle = async (event) => {
     event.preventDefault();
-    const backendUrl = import.meta.env.VITE_TEST_BACKEND;
     const response = await fetch(backendUrl + "/api/auth/google/url", {
       method: "GET",
       headers: {
@@ -81,20 +63,20 @@ export default function Login() {
   };
 
   return (
-    <>
-      <form action="Login" onSubmit={handleSubmit} className="login-container">
-        <h1>Login</h1>
+    <div className="login-container">
+      <form className="login-form" onSubmit={handleSubmit}>
+        <h2 className="login-title">Welcome Back</h2>
 
-        <button type="button" className="login-button" onClick={handleGoogle}>
-          Google
+        <button type="button" className="login-button google" onClick={handleGoogle}>
+          Continue with Google
         </button>
 
         <input
           type="text"
           placeholder="Username"
+          name="username"
           value={FormData.username}
           onChange={handleInputChange}
-          name="username"
           className="login-input-field"
         />
 
@@ -107,13 +89,13 @@ export default function Login() {
           className="login-input-field"
         />
 
-        <button type="submit" className="login-button">
+        <button type="submit" className="login-button primary">
           Login
         </button>
-        <button type="button" className="login-button" onClick={handleSignup}>
+        <button type="button" className="login-button secondary" onClick={handleSignup}>
           Signup
         </button>
       </form>
-    </>
+    </div>
   );
 }

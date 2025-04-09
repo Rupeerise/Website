@@ -1,8 +1,64 @@
 .investmentbody {
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  height: 100%;
+  padding: 1rem 15rem;
 }
 .investmentbody_edit {
   height: 4rem;
   width: 100%;
+}
+.investment_tag{
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: #222;
+  text-align: center;
+  font-weight: 700;
+  margin-top: 1.5rem;
+}
+
+.loan-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.edit-btn,
+.delete-btn {
+  padding: 14px 28px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  gap: 1.5rem;
+}
+
+.edit-btn {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.edit-btn:hover {
+  background-color: #43a047;
+  transform: translateY(-2px);
+}
+
+.delete-btn {
+  background-color: #f44336;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #e53935;
+  transform: translateY(-2px);
+}
+
+/* Graph Wrapper */
+.investmentgraph-wrapper {
+  width: 100%;
+  padding: 1rem 15rem;
 }

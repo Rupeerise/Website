@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Chart } from "react-chartjs-2";
+import "./budgetgraph.css";
 
 export default function BudgetGraph() {
   const graphType = useSelector((state) => state.budget.graphType);
@@ -78,19 +79,21 @@ export default function BudgetGraph() {
 
   const savings =
     combinedReceivedArray.reduce(
-      (acc, tag) =>
-        acc +
-        tag.targets.find(
+      (acc, tag) => {
+        const target = tag.targets.find(
           (t) => t.year === currentYear && t.month === currentMonth
-        ).amount,
+        );
+        return acc + (target ? target.amount : 0);
+      },
       0
     ) -
     combinedPaidArray.reduce(
-      (acc, tag) =>
-        acc +
-        tag.targets.find(
+      (acc, tag) => {
+        const target = tag.targets.find(
           (t) => t.year === currentYear && t.month === currentMonth
-        ).amount,
+        );
+        return acc + (target ? target.amount : 0);
+      },
       0
     );
 
@@ -130,7 +133,9 @@ export default function BudgetGraph() {
     ],
   };
 
-  const options = {
+  const barOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
     scales: {
       y: {
         beginAtZero: true,
@@ -138,23 +143,35 @@ export default function BudgetGraph() {
     },
   };
 
+  const pieOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+  };
+
   return (
     <div className="budget-graph">
-      {graphType === "paid" ? (
-        <Chart type="bar" data={dataPaidConfig} options={options} />
-      ) : (
-        <Chart type="bar" data={dataReceivedConfig} options={options} />
-      )}
-      {graphType === "paid" ? (
-        <Chart type="pie" data={dataPaidConfig} options={options} />
-      ) : (
-        <Chart type="pie" data={dataReceivedConfig} options={options} />
-      )}
-      <div>
+      <div className="chart-container">
+        <div className="bar-chart">
+          <Chart
+            type="bar"
+            data={graphType === "paid" ? dataPaidConfig : dataReceivedConfig}
+            options={barOptions}
+          />
+        </div>
+        <div className="pie-chart">
+          <Chart
+            type="pie"
+            data={graphType === "paid" ? dataPaidConfig : dataReceivedConfig}
+            options={pieOptions}
+          />
+        </div>
+      </div>
+
+      <div className="budget-savings-info">
         <p style={{ color: savings >= 0 ? "green" : "red" }}>
           {savings >= 0
-            ? `Saving Target: ${savings}`
-            : `You will overspend: ${savings * -1}`}
+            ? `Saving Target: $${savings}`
+            : `You will overspend: $${Math.abs(savings)}`}
         </p>
       </div>
     </div>
